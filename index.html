@@ -1,0 +1,822 @@
+<!doctype html>
+<html lang="ms">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Cek Perlindungan · SAGAN</title>
+<meta name="description" content="Kalau esok jadi apa-apa, family korang boleh bertahan berapa lama? Kalkulator belanja, hutang, simpanan dan perlindungan. Percuma, tak perlu daftar.">
+<meta property="og:title" content="Family korang boleh bertahan berapa lama?">
+<meta property="og:description" content="Cek Perlindungan: kira dalam 3 minit. Percuma, tak perlu daftar.">
+<meta name="theme-color" content="#ffffff">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23141414'/%3E%3Ctext x='32' y='44' font-family='Arial' font-weight='700' font-size='34' text-anchor='middle' fill='white'%3ES%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff;--ink:#141414;--muted:#6B6860;--soft:#A29E94;--line:#ECEAE4;--fill:#F6F5F1;
+  --pink:#FCD7E0;--green:#CFF0CD;--blue:#CDEBF6;--purple:#E7DBFF;--yellow:#FDE7A6;
+  --c-live:#141414;--c-debt:#E4637F;--c-edu:#4FA3D1;--c-final:#B9B4A8;--c-cash:#2F9E57;--c-kwsp:#8DD3A2;--c-cover:#14532D;--c-extra:#7B61D9;
+  --shadow:0 1px 2px rgba(20,20,20,.04),0 12px 32px -16px rgba(20,20,20,.18);color-scheme:light}
+*{box-sizing:border-box;margin:0;padding:0}
+[hidden]{display:none !important}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);font-family:"Plus Jakarta Sans",system-ui,sans-serif;font-weight:500;
+  min-height:100vh;min-height:100dvh;-webkit-font-smoothing:antialiased}
+main{width:100%;max-width:460px;margin:0 auto;padding:0 22px}
+button{font:inherit;color:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.nw{white-space:nowrap}
+.mark{background:linear-gradient(transparent 56%,var(--hl) 56%,var(--hl) 94%,transparent 94%);border-radius:.12em;
+  padding:0 .08em;margin:0 -.08em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.yellow{--hl:var(--yellow)}.pink{--hl:var(--pink)}.green{--hl:var(--green)}
+
+/* Header: back + step on the left, the brand small on the right */
+.top{position:sticky;top:0;z-index:5;background:var(--bg);margin:0 -22px;padding:calc(8px + env(safe-area-inset-top)) 22px 0}
+.row{display:flex;align-items:center;justify-content:space-between;height:44px}
+.nav{display:flex;align-items:center;gap:4px;transition:opacity .2s}
+.nav.off{opacity:0;pointer-events:none}
+.back{width:40px;height:40px;margin-left:-10px;border:0;background:none;display:grid;place-items:center;border-radius:50%}
+.back:active{background:var(--fill)}
+.back svg{width:22px;height:22px}
+.count{font-size:13px;font-weight:700;color:var(--muted);font-variant-numeric:tabular-nums}
+.brand{display:flex;align-items:center;gap:8px;font-size:10.5px;letter-spacing:.26em;white-space:nowrap}
+.brand b{font-weight:800}
+.brand span{font-weight:600;color:var(--muted)}
+.brand i{width:1px;height:11px;background:var(--soft)}
+.track{height:3px;border-radius:2px;background:var(--line);overflow:hidden;margin-top:6px;transition:opacity .2s}
+.track.off{opacity:0}
+.track i{display:block;height:100%;width:0;background:var(--ink);border-radius:2px;transition:width .45s cubic-bezier(.2,.7,.2,1)}
+
+.screen{display:none;padding-top:10px}
+.screen.on{display:flex;flex-direction:column;min-height:calc(100vh - 62px);min-height:calc(100dvh - 62px - env(safe-area-inset-top));animation:in .4s cubic-bezier(.2,.7,.2,1)}
+@keyframes in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.screen:focus{outline:none}
+
+/* Intro, centred like a landing page */
+.intro{text-align:center}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;height:30px;padding:0 13px;border-radius:999px;border:1px solid var(--line);
+  font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-top:14px}
+.eyebrow::before{content:"";width:7px;height:7px;border-radius:50%;background:#3DBE6B}
+.pre{font-weight:700;font-size:17px;line-height:1.4;color:var(--muted);margin-top:20px}
+h1{font-weight:800;font-size:clamp(34px,10vw,44px);line-height:1.05;letter-spacing:-.035em;margin-top:6px;text-wrap:balance}
+.lede{font-size:16px;line-height:1.55;color:var(--muted);margin:14px auto 0;max-width:340px;text-wrap:balance}
+.art{margin:8px auto 0;max-width:250px}
+.art svg{display:block;width:100%;height:auto}
+.gets{list-style:none;text-align:left;margin-top:8px;border:1px solid var(--line);border-radius:20px;padding:4px 18px}
+.gets li{display:flex;gap:14px;align-items:center;padding:14px 0;border-top:1px solid var(--line);font-size:15px;line-height:1.4;font-weight:700}
+.gets li:first-child{border-top:0}
+.gets li span{width:26px;height:26px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-size:12.5px;font-weight:800;flex:none}
+.gets li small{display:block;font-weight:500;font-size:13px;color:var(--muted);margin-top:1px}
+.trust{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 16px;margin-top:14px;font-size:13px;font-weight:600;color:var(--muted)}
+.trust span{display:inline-flex;align-items:center;gap:6px}
+.trust svg{width:14px;height:14px;color:var(--ink)}
+.by{display:flex;align-items:center;justify-content:center;gap:10px;margin:26px 0 30px;font-size:13.5px;font-weight:600;color:var(--muted)}
+.avatar{width:32px;height:32px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-weight:800;font-size:13px;overflow:hidden}
+.avatar img{width:100%;height:100%;object-fit:cover}
+.by b{color:var(--ink);font-weight:700}
+
+/* Step headers, centred */
+.head{text-align:center;padding-top:8px}
+.tag{font-size:11.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.head h2{font-weight:800;font-size:clamp(25px,7.2vw,30px);line-height:1.14;letter-spacing:-.025em;margin-top:8px;text-wrap:balance}
+.head p{font-size:15px;line-height:1.5;color:var(--muted);margin:8px auto 0;max-width:330px;text-wrap:balance}
+
+/* Itemised rows, like a budget sheet */
+.block{margin-top:22px}
+.screen > .block:nth-last-child(2){margin-bottom:22px}
+.block h3{font-size:11.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin:0 2px 8px}
+.lines{border:1px solid var(--line);border-radius:20px;padding:2px 16px;background:#fff;box-shadow:0 1px 2px rgba(20,20,20,.03)}
+.line{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:66px;padding:10px 0;border-top:1px solid var(--line)}
+.line:first-child{border-top:0}
+.l{font-weight:700;font-size:15px;line-height:1.3}
+.l small{display:block;font-weight:500;font-size:12.5px;line-height:1.35;color:var(--muted);margin-top:2px}
+.amt{display:flex;align-items:center;gap:6px;width:134px;height:46px;padding:0 12px;border-radius:12px;background:var(--fill);
+  flex:none;border:1.5px solid transparent;transition:border-color .15s,background .15s}
+.amt:focus-within{border-color:var(--ink);background:#fff}
+.amt i{font-style:normal;font-size:12.5px;font-weight:700;color:var(--soft)}
+.amt input{width:100%;min-width:0;border:0;outline:0;background:transparent;font:inherit;font-weight:800;font-size:17px;
+  text-align:right;color:var(--ink);font-variant-numeric:tabular-nums}
+.amt input::placeholder{color:#C9C5BB}
+.amt.short{width:112px}
+.sub-line{padding:0 0 14px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{min-height:42px;padding:0 16px;border-radius:999px;border:1.5px solid var(--line);background:#fff;font-weight:700;font-size:14.5px;transition:all .15s}
+.chip:active{transform:scale(.97)}
+.chip[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.stepper{display:flex;align-items:center;background:var(--fill);border-radius:999px;flex:none}
+.stepper button{width:42px;height:42px;border:0;background:none;font-size:20px;font-weight:700;line-height:1}
+.stepper output{min-width:26px;text-align:center;font-weight:800;font-size:16px;font-variant-numeric:tabular-nums}
+.check{display:flex;align-items:center;gap:10px;margin:12px 2px 0;font-size:14px;font-weight:600;color:var(--muted)}
+.check input{width:20px;height:20px;accent-color:var(--ink)}
+.range{padding:14px 0 16px}
+.range-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.range-top b{font-size:20px;font-weight:800;font-variant-numeric:tabular-nums;white-space:nowrap}
+input[type=range]{width:100%;margin-top:14px;-webkit-appearance:none;appearance:none;height:6px;border-radius:3px;
+  background:linear-gradient(var(--ink),var(--ink)) 0/var(--p,50%) 100% no-repeat,var(--line)}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:26px;height:26px;border-radius:50%;background:#fff;border:2px solid var(--ink);box-shadow:0 2px 6px rgba(0,0,0,.15)}
+input[type=range]::-moz-range-thumb{width:24px;height:24px;border-radius:50%;background:#fff;border:2px solid var(--ink)}
+
+/* Bottom dock: the live total and the next button */
+.dock{position:sticky;bottom:0;z-index:4;display:flex;align-items:center;gap:14px;margin:auto -22px 0;
+  padding:14px 22px calc(14px + env(safe-area-inset-bottom));background:rgba(255,255,255,.96);border-top:1px solid var(--line);
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.sum{flex:1;min-width:0}
+.sum small{display:block;font-size:12px;font-weight:600;color:var(--muted)}
+.sum b{display:block;font-size:19px;font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.sum em{font-style:normal;font-size:12px;font-weight:700}
+.mini{height:5px;border-radius:3px;background:var(--line);overflow:hidden;margin-top:6px}
+.mini i{display:block;height:100%;width:0;border-radius:3px;transition:width .3s,background .3s}
+.btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:56px;padding:0 24px;
+  border:0;border-radius:999px;background:var(--ink);color:#fff;font-weight:700;font-size:16px;text-decoration:none;
+  text-align:center;transition:transform .12s,opacity .2s}
+.btn:active{transform:scale(.985)}
+.btn[disabled],.btn[aria-disabled="true"]{opacity:.22;pointer-events:none}
+.btn svg{width:20px;height:20px;flex:none}
+.dock .btn{width:auto;flex:none}
+.dock .btn.wide{flex:1}
+.btn.ghost{background:#fff;color:var(--ink);border:1.5px solid var(--line);margin-top:10px}
+.link{display:block;margin:14px auto 0;padding:8px 12px;border:0;background:none;font-weight:700;font-size:15px;color:var(--muted);
+  text-decoration:underline;text-underline-offset:4px;text-decoration-color:var(--soft)}
+
+/* Result */
+.hero{background:var(--ink);color:#fff;border-radius:24px;padding:24px 22px 22px;margin-top:18px;box-shadow:0 24px 50px -26px rgba(20,20,20,.7)}
+.hero .kicker{font-weight:600;font-size:15.5px;line-height:1.4;color:#CFCBC2;text-wrap:balance}
+.big{line-height:1;margin:14px 0 2px;font-variant-numeric:tabular-nums}
+.big b{font-weight:800;font-size:clamp(56px,17vw,72px);letter-spacing:-.045em}
+.big small{font-weight:700;font-size:clamp(20px,6vw,26px);letter-spacing:-.02em;margin:0 4px 0 6px;color:#CFCBC2}
+.meter{margin-top:18px}
+.meter .bar{height:8px;border-radius:4px;background:rgba(255,255,255,.14);overflow:hidden}
+.meter .bar i{display:block;height:100%;width:0;border-radius:4px;transition:width .9s cubic-bezier(.2,.7,.2,1)}
+.meter p{display:flex;justify-content:space-between;gap:10px;font-size:12.5px;font-weight:600;color:#A9A59B;margin-top:8px}
+.hero .note{font-size:14px;line-height:1.5;color:#CFCBC2;margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,.12);text-wrap:pretty}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
+.stat{background:var(--fill);border-radius:16px;padding:13px 12px}
+.stat small{display:block;font-size:11.5px;line-height:1.3;font-weight:600;color:var(--muted)}
+.stat b{display:block;font-size:16px;font-weight:800;margin-top:6px;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.stat b.bad{color:#C6385A}
+.card{border:1px solid var(--line);border-radius:22px;padding:20px 18px 18px;margin-top:14px;background:#fff;box-shadow:var(--shadow)}
+.card > h3{font-size:16px;font-weight:800;letter-spacing:-.01em}
+.card > p.desc{font-size:13.5px;line-height:1.5;color:var(--muted);margin-top:4px}
+.cbar{display:flex;justify-content:space-between;align-items:baseline;margin-top:18px;font-size:13px;font-weight:700;color:var(--muted)}
+.cbar b{font-size:16px;color:var(--ink);font-variant-numeric:tabular-nums}
+.stack{display:flex;height:16px;border-radius:8px;overflow:hidden;background:var(--fill);margin:8px 0 10px}
+.stack i{height:100%;transition:width .8s cubic-bezier(.2,.7,.2,1)}
+.stack i + i{box-shadow:inset 2px 0 0 #fff}
+.stack i.gapseg{background:repeating-linear-gradient(-45deg,#F4B6C5 0 5px,#FDE8EE 5px 10px)}
+.legend{list-style:none}
+.legend li{display:flex;align-items:center;gap:10px;padding:6px 0;font-size:13.5px;line-height:1.35}
+.legend li i{width:10px;height:10px;border-radius:3px;flex:none}
+.legend li span{flex:1;color:var(--muted)}
+.legend li span small{display:block;font-size:11.5px;color:var(--soft)}
+.legend li b{font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
+.gapbox{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:14px;padding:16px;border-radius:16px;background:#FFF1F4}
+.gapbox span{font-size:14px;font-weight:700;line-height:1.3}
+.gapbox span small{display:block;font-size:12px;font-weight:500;color:var(--muted)}
+.gapbox b{font-size:clamp(24px,7vw,30px);font-weight:800;letter-spacing:-.03em;font-variant-numeric:tabular-nums;white-space:nowrap}
+.gapbox.ok{background:#EDF8EF}
+.years{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:14px}
+.years p{font-size:14px;line-height:1.35;font-weight:700}
+.years p small{display:block;font-weight:500;color:var(--muted);font-size:12.5px;margin-top:2px}
+.todo{list-style:none;margin-top:6px}
+.todo li{display:flex;gap:12px;padding:13px 0;border-top:1px solid var(--line)}
+.todo li:first-child{border-top:0}
+.todo li i{width:24px;height:24px;border-radius:50%;flex:none;display:grid;place-items:center;font-style:normal;font-size:12px;font-weight:800;color:#fff;background:var(--ink);margin-top:1px}
+.todo li b{display:block;font-size:15px;line-height:1.35;font-weight:700}
+.todo li span{display:block;font-size:13.5px;line-height:1.45;color:var(--muted);margin-top:2px}
+.cta{font-weight:800;font-size:24px;line-height:1.2;letter-spacing:-.025em;margin-top:6px;text-align:center;text-wrap:balance}
+.cta-sub{font-size:15px;line-height:1.5;color:var(--muted);margin:8px auto 20px;text-align:center;max-width:320px;text-wrap:balance}
+.fine{font-size:12px;line-height:1.55;color:var(--soft);margin:24px 0 8px;text-align:center;text-wrap:pretty}
+.sum small.miss{color:#C6385A;margin-top:4px}
+/* Money over time + the cover simulator */
+.chart{margin-top:16px}
+.chart svg{display:block;width:100%;height:auto;overflow:visible}
+.chart .ax{font-size:11px;font-weight:600;fill:var(--muted)}
+.chart .ax.bad{fill:#C6385A;font-weight:700}
+.story{font-size:15px;line-height:1.5;font-weight:500;margin-top:14px;padding:14px 16px;border-radius:14px;background:var(--fill);text-wrap:pretty}
+.story b{font-weight:800}
+.sim{margin-top:18px;padding-top:16px;border-top:1px solid var(--line)}
+.sim-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.sim-top p{font-size:14.5px;font-weight:700;line-height:1.35}
+.sim-top p small{display:block;font-size:12.5px;font-weight:500;color:var(--muted);margin-top:2px}
+.sim-top b{font-size:20px;font-weight:800;white-space:nowrap;font-variant-numeric:tabular-nums;color:var(--c-extra)}
+#extra{background:linear-gradient(var(--c-extra),var(--c-extra)) 0/var(--p,0%) 100% no-repeat,var(--line)}
+#extra::-webkit-slider-thumb{border-color:var(--c-extra)}
+.sim-out{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:12px;font-size:13.5px;line-height:1.4;color:var(--muted)}
+.sim-out b{color:var(--ink);font-weight:800}
+.pill{border:1.5px solid var(--ink);border-radius:999px;background:#fff;font-weight:700;font-size:13px;padding:8px 13px;white-space:nowrap}
+details.how{margin-top:16px;border-top:1px solid var(--line);padding-top:12px}
+details.how summary{cursor:pointer;font-size:13.5px;font-weight:700;list-style:none;display:flex;justify-content:space-between}
+details.how summary::-webkit-details-marker{display:none}
+details.how summary::after{content:"+";font-weight:800}
+details.how[open] summary::after{content:"−"}
+details.how p{font-size:13px;line-height:1.6;color:var(--muted);margin-top:8px}
+.print-only{display:none}
+@media (prefers-reduced-motion:reduce){.screen.on{animation:none}.track i,.meter .bar i,.stack i,.mini i{transition:none}}
+@media print{
+  @page{margin:14mm}
+  .top,.dock,.btn,.link,.art,.cta,.cta-sub,.sim,.stepper,#years-row,details.how summary::after{display:none !important}
+  .screen{display:none !important}
+  .screen[data-id=result]{display:block !important;min-height:0;animation:none;padding:0}
+  .print-only{display:block;font-size:12px;color:var(--muted);text-align:center;margin-top:6px}
+  .hero,.card,.stat,.stats,.story,.gapbox{break-inside:avoid;box-shadow:none !important}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+</head>
+<body>
+<main>
+  <header class="top">
+    <div class="row">
+      <div class="nav off" id="nav">
+        <button class="back" id="back" aria-label="Kembali"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
+        <span class="count" id="count"></span>
+      </div>
+      <div class="brand" aria-label="SAGAN, AIA Takaful"><b>SAGAN</b><i></i><span>AIA TAKAFUL</span></div>
+    </div>
+    <div class="track off" id="track" aria-hidden="true"><i id="bar"></i></div>
+  </header>
+
+  <!-- ===== Intro ===== -->
+  <section class="screen intro on" data-id="intro" tabindex="-1">
+    <span class="eyebrow">Cek Perlindungan · 3 minit</span>
+    <p class="pre">Kalau esok jadi <span class="nw">apa-apa</span> pada korang,</p>
+    <h1>Family korang boleh bertahan <span class="mark yellow">berapa lama?</span></h1>
+    <p class="lede">Masukkan belanja, hutang, simpanan dan perlindungan korang. Dapat gambaran penuh dalam satu skrin.</p>
+    <div class="art"><!--scene:kira--><svg viewBox="0 0 600 520" role="img" aria-label="Lukisan: seorang lelaki menunjuk kalkulator besar yang tertulis RM ?" font-family="Plus Jakarta Sans" font-weight="800"><filter id="hand0"><feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="2" seed="3"/><feDisplacementMap in="SourceGraphic" scale="6"/></filter><g filter="url(#hand0)"><rect x="96" y="56" width="256" height="420" rx="30" fill="#fff" stroke="#141513" stroke-width="15" stroke-linejoin="round" stroke-linecap="round"/><rect x="124" y="88" width="200" height="104" rx="14" fill="#fff" stroke="#141513" stroke-width="15" stroke-linejoin="round" stroke-linecap="round" stroke-width="11"/><text x="224" y="160" font-size="56" text-anchor="middle" fill="#141513">RM ?</text><rect x="128" y="228" width="46" height="40" rx="12" fill="#141513"/><rect x="192" y="228" width="46" height="40" rx="12" fill="#141513"/><rect x="256" y="228" width="46" height="40" rx="12" fill="#141513"/><rect x="128" y="290" width="46" height="40" rx="12" fill="#141513"/><rect x="192" y="290" width="46" height="40" rx="12" fill="#141513"/><rect x="256" y="290" width="46" height="40" rx="12" fill="#141513"/><rect x="128" y="352" width="46" height="40" rx="12" fill="#141513"/><rect x="192" y="352" width="46" height="40" rx="12" fill="#141513"/><rect x="256" y="352" width="46" height="40" rx="12" fill="#141513"/><rect x="128" y="414" width="174" height="40" rx="12" fill="#141513"/> <path d="M434 358 L422 466 L394 466 M466 358 L478 466 L506 466" fill="none" stroke="#141513" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/> <path d="M418 250 L362 224 M482 250 L520 304 L488 340" fill="none" stroke="#141513" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/> <path d="M414 238 Q450 226 486 238 L492 358 L408 358 Z" fill="#fff" stroke="#141513" stroke-width="15" stroke-linejoin="round" stroke-linecap="round"/> <circle cx="356" cy="222" r="15" fill="#fff" stroke="#141513" stroke-width="11"/><circle cx="486" cy="338" r="15" fill="#fff" stroke="#141513" stroke-width="11"/> <circle cx="450" cy="192" r="42" fill="#fff" stroke="#141513" stroke-width="15" stroke-linejoin="round" stroke-linecap="round"/><circle cx="437" cy="186" r="5" fill="#141513"/><circle cx="463" cy="186" r="5" fill="#141513"/><path d="M434 202 Q450 218 466 202" fill="none" stroke="#141513" stroke-width="15" stroke-linecap="round" stroke-linejoin="round" stroke-width="9"/><path d="M408 188 C408 133 492 133 492 188 C473 171 427 171 408 188 Z" fill="#141513"/> <path d="M548 112 l22 -14 M556 150 l26 2 M540 76 l8 -24" fill="none" stroke="#141513" stroke-width="15" stroke-linecap="round" stroke-linejoin="round" stroke-width="11"/></g></svg><!--/scene--></div>
+    <ul class="gets">
+      <li><span>1</span><div>Berapa lama family boleh bertahan<small>Kalau gaji korang berhenti esok</small></div></li>
+      <li><span>2</span><div>Gap perlindungan, dipecahkan satu-satu<small>Belanja, hutang, pendidikan anak, kos akhir</small></div></li>
+      <li><span>3</span><div>Langkah seterusnya ikut keadaan korang<small>Termasuk semakan medical card</small></div></li>
+    </ul>
+    <div class="dock"><button class="btn wide" data-next>Mula kira
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
+    <div class="trust">
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Percuma</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Tak perlu daftar</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Jawapan tak disimpan</span>
+    </div>
+    <p class="by"><span class="avatar">S</span><span>Disediakan oleh <b>Sagan</b></span></p>
+  </section>
+
+  <!-- ===== 1. About ===== -->
+  <section class="screen" data-id="about" data-step="Tentang korang" tabindex="-1">
+    <div class="head"><p class="tag">Langkah 1 · Tentang korang</p><h2>Mula dengan diri korang</h2>
+      <p>Umur dan gaji tentukan berapa banyak perlindungan yang masuk akal.</p></div>
+    <div class="block"><div class="lines">
+      <label class="line"><span class="l">Umur</span><span class="amt short"><input data-k="age" inputmode="numeric" maxlength="2" placeholder="29" autocomplete="off"><i>tahun</i></span></label>
+      <label class="line"><span class="l">Gaji bersih sebulan<small>Lepas KWSP &amp; cukai</small></span><span class="amt"><i>RM</i><input data-k="income" inputmode="numeric" placeholder="0" autocomplete="off"></span></label>
+    </div></div>
+    <div class="block"><h3>Siapa bergantung pada gaji korang?</h3>
+      <div class="chips" data-group="dep" data-multi>
+        <button class="chip" data-value="pasangan">Pasangan</button>
+        <button class="chip" data-value="anak">Anak</button>
+        <button class="chip" data-value="ibubapa">Ibu bapa</button>
+        <button class="chip" data-value="tiada">Tiada sesiapa</button>
+      </div>
+    </div>
+    <div class="block" data-kids hidden><div class="lines">
+      <div class="line"><span class="l">Bilangan anak</span><span class="stepper"><button data-step="-1" aria-label="Kurang seorang">−</button><output id="nkids">1</output><button data-step="1" aria-label="Tambah seorang">+</button></span></div>
+      <label class="line"><span class="l">Umur anak bongsu</span><span class="amt short"><input data-k="youngest" inputmode="numeric" maxlength="2" placeholder="3" autocomplete="off"><i>tahun</i></span></label>
+    </div></div>
+    <div class="dock"><div class="sum"><small class="miss" data-miss></small></div><button class="btn" data-next disabled>Seterusnya</button></div>
+  </section>
+
+  <!-- ===== 2. Spending ===== -->
+  <section class="screen" data-id="spend" data-step="Belanja" tabindex="-1">
+    <div class="head"><p class="tag">Langkah 2 · Belanja bulanan</p><h2>Ke mana gaji korang pergi?</h2>
+      <p>Anggaran pun boleh. Biar kosong kalau tiada.</p></div>
+    <div class="block"><div class="lines">
+      <label class="line"><span class="l">Ansuran / sewa rumah</span><span class="amt"><i>RM</i><input data-k="s_rumah" inputmode="numeric" placeholder="0" autocomplete="off"></span></label>
+      <label class="line"><span class="l">Ansuran kereta</span><span class="amt"><i>RM</i><input data-k="s_kereta" inputmode="numeric" placeholder="0" autocomplete="off"></span></label>
+      <label class="line"><span class="l">Makan &amp; barang dapur</span><span class="amt"><i>RM</i><input data-k="s_makan" inputmode="numeric" placeholder="0" autocomplete="off"></span></label>
+      <label class="line"><span class="l">Minyak, tol &amp; transport</span><span class="amt"><i>RM</i><input data-k="s_jalan" inputmode="numeric" placeholder="0" autocomplete="off"></span></label>
+      <label class="line" data-kids hidden><span class="l">Anak<small>Sekolah, pengasuh, susu</small></span><span class="amt"><i>RM</i><input data-k="s_anak" inputmode="numeric" placeholder="0" autocomplete="off"></span></label>
+      <label class="line"><span class="l">Bil &amp; utiliti<small>Elektrik, air, internet, telefon</small></span><span class="amt"><i>RM</i><input data-k="s_bil" inputmode="numeric" placeholder="0" autocomplete="off"></span></label>
+      <label class="line"><span class="l">Duit untuk ibu bapa</span><span class="amt"><i>RM</i><input data-k="s_ibubapa" inputmode="numeric" placeholder="0" autocomplete="off"></span></label>
+      <label class="line"><span class="l">Lain-lain<small>Hiburan, shopping, komitmen lain</small></span><span class="amt"><i>RM</i><input data-k="s_lain" inputmode="numeric" placeholder="0" autocomplete="off"></span></label>
+    </div></div>
+    <div class="dock"><div class="sum"><small>Jumlah belanja · <em id="spend-left"></em></small><b id="spend-total">RM0</b><div class="mini"><i id="spend-mini"></i></div><small class="miss" data-miss hidden></small></div>
+      <button class="btn" data-next disabled>Seterusnya</button></div>
+  </section>
+
+  <!-- ===== 3. Debt ===== -->
+  <section class="screen" data-id="debt" data-step="Hutang" tabindex="-1">
+    <div class="head"><p class="tag">Langkah 3 · Hutang</p><h2>Berapa baki hutang korang?</h2>
+      <p>Baki yang tinggal, bukan bayaran bulanan. Biar kosong kalau tiada.</p></div>
+    <div class="block"><div class="lines">
+      <label class="line"><span class="l">Loan rumah</span><span class="amt"><i>RM</i><input data-k="d_rumah" inputmode="numeric" placeholder="0" autocomplete="off"></span></label>
+      <div class="sub-line" id="mrtt" hidden><p class="l" style="font-size:13.5px;margin-bottom:8px">Loan rumah ada MRTT / MLTT?<small>Takaful yang lunaskan loan rumah kalau apa-apa jadi</small></p>
+        <div class="chips" data-group="mrtt">
+          <button class="chip" data-value="ada">Ada</button>
+          <button class="chip" data-value="tiada">Tiada</button>
+          <button class="chip" data-value="unsure">Tak pasti</button>
+        </div></div>
+      <label class="line"><span class="l">Loan kereta</span><span class="amt"><i>RM</i><input data-k="d_kereta" inputmode="numeric" placeholder="0" autocomplete="off"></span></label>
+      <label class="line"><span class="l">Pinjaman peribadi</span><span class="amt"><i>RM</i><input data-k="d_peribadi" inputmode="numeric" placeholder="0" autocomplete="off"></span></label>
+      <label class="line"><span class="l">Kad kredit</span><span class="amt"><i>RM</i><input data-k="d_kad" inputmode="numeric" placeholder="0" autocomplete="off"></span></label>
+      <label class="line"><span class="l">PTPTN / pinjaman belajar</span><span class="amt"><i>RM</i><input data-k="d_ptptn" inputmode="numeric" placeholder="0" autocomplete="off"></span></label>
+      <label class="line"><span class="l">Lain-lain<small>BNPL, pinjaman keluarga</small></span><span class="amt"><i>RM</i><input data-k="d_lain" inputmode="numeric" placeholder="0" autocomplete="off"></span></label>
+    </div></div>
+    <div class="dock"><div class="sum"><small>Jumlah hutang</small><b id="debt-total">RM0</b><small class="miss" data-miss hidden></small></div>
+      <button class="btn" data-next>Seterusnya</button></div>
+  </section>
+
+  <!-- ===== 4. Savings ===== -->
+  <section class="screen" data-id="assets" data-step="Simpanan" tabindex="-1">
+    <div class="head"><p class="tag">Langkah 4 · Simpanan &amp; aset</p><h2>Apa yang family boleh guna?</h2>
+      <p>Duit yang boleh dikeluarkan bila perlu. Tak termasuk rumah dan kereta.</p></div>
+    <div class="block"><div class="lines">
+      <label class="line"><span class="l">Tunai &amp; simpanan bank</span><span class="amt"><i>RM</i><input data-k="a_tunai" inputmode="numeric" placeholder="0" autocomplete="off"></span></label>
+      <label class="line"><span class="l">Pelaburan<small>ASB, Tabung Haji, unit trust, saham</small></span><span class="amt"><i>RM</i><input data-k="a_labur" inputmode="numeric" placeholder="0" autocomplete="off"></span></label>
+      <label class="line"><span class="l">KWSP<small>Semua akaun</small></span><span class="amt"><i>RM</i><input data-k="a_kwsp" inputmode="numeric" placeholder="0" autocomplete="off"></span></label>
+    </div></div>
+    <div class="dock"><div class="sum"><small>Jumlah simpanan &amp; aset</small><b id="asset-total">RM0</b></div>
+      <button class="btn" data-next>Seterusnya</button></div>
+  </section>
+
+  <!-- ===== 5. Cover ===== -->
+  <section class="screen" data-id="cover" data-step="Perlindungan" tabindex="-1">
+    <div class="head"><p class="tag">Langkah 5 · Perlindungan</p><h2>Perlindungan yang korang dah ada</h2>
+      <p>Jumlah yang dibayar kalau korang meninggal dunia.</p></div>
+    <div class="block"><div class="lines">
+      <label class="line"><span class="l">Takaful / insurans sendiri</span><span class="amt"><i>RM</i><input data-k="c_sendiri" inputmode="numeric" placeholder="0" autocomplete="off"></span></label>
+      <label class="line"><span class="l">Dari majikan<small>Group term / group life</small></span><span class="amt"><i>RM</i><input data-k="c_majikan" inputmode="numeric" placeholder="0" autocomplete="off"></span></label>
+    </div>
+    <label class="check"><input type="checkbox" id="unsure"> Tak pasti jumlah sebenar</label></div>
+    <div class="block"><h3>Medical card</h3>
+      <div class="chips" data-group="med">
+        <button class="chip" data-value="sendiri">Ada, bayar sendiri</button>
+        <button class="chip" data-value="syarikat">Syarikat sahaja</button>
+        <button class="chip" data-value="tiada">Tiada</button>
+        <button class="chip" data-value="unsure">Tak pasti</button>
+      </div>
+    </div>
+    <div class="dock"><div class="sum"><small>Jumlah perlindungan hayat</small><b id="cover-total">RM0</b><small class="miss" data-miss hidden></small></div>
+      <button class="btn" data-next disabled>Seterusnya</button></div>
+  </section>
+
+  <!-- ===== 6. Future ===== -->
+  <section class="screen" data-id="future" data-step="Masa depan" tabindex="-1">
+    <div class="head"><p class="tag">Langkah 6 · Masa depan</p><h2>Satu lagi: apa yang family perlukan</h2>
+      <p>Andaian ni boleh diubah lagi lepas nampak keputusan.</p></div>
+    <div class="block" data-dep><div class="lines">
+      <div class="range"><div class="range-top"><span class="l">Sokong family selama<small id="years-why"></small></span><b><output id="years-out"></output> tahun</b></div>
+        <input type="range" id="years" min="1" max="30" step="1" aria-label="Tahun sokongan"></div>
+    </div></div>
+    <div class="block"><div class="lines">
+      <label class="line" data-kids hidden><span class="l">Dana pendidikan<small>Anggaran setiap anak</small></span><span class="amt"><i>RM</i><input data-k="e_anak" inputmode="numeric" placeholder="0" autocomplete="off"></span></label>
+      <label class="line"><span class="l">Kos akhir &amp; urusan pusaka<small>Pengebumian, guaman, urusan harta</small></span><span class="amt"><i>RM</i><input data-k="f_akhir" inputmode="numeric" placeholder="0" autocomplete="off"></span></label>
+    </div></div>
+    <div class="dock"><div class="sum"><small>Jumlah keperluan family</small><b id="need-total">RM0</b></div>
+      <button class="btn" data-next>Lihat keputusan</button></div>
+  </section>
+
+  <!-- ===== Result ===== -->
+  <section class="screen" data-id="result" tabindex="-1">
+    <div class="head"><p class="tag">Keputusan korang</p><h2>Gambaran perlindungan korang</h2><p class="print-only" id="print-meta"></p></div>
+    <div class="hero">
+      <p class="kicker" id="kicker"></p>
+      <p class="big" id="big"></p>
+      <div class="meter" id="meter">
+        <div class="bar"><i id="fill"></i></div>
+        <p><span id="meter-l"></span><span id="meter-r"></span></p>
+      </div>
+      <p class="note" id="hero-note"></p>
+    </div>
+    <div class="stats">
+      <div class="stat"><small>Perlindungan berbanding gaji setahun</small><b id="st-cover"></b></div>
+      <div class="stat"><small>Lebihan sebulan</small><b id="st-left"></b></div>
+      <div class="stat"><small id="st-solo-l">Tanpa gaji, simpanan tahan</small><b id="st-solo"></b></div>
+    </div>
+
+    <div class="card" id="time-card">
+      <h3>Duit family dari tahun ke tahun</h3>
+      <p class="desc">Lepas hutang dan kos akhir dibayar, inilah baki yang family guna untuk hidup.</p>
+      <div class="chart" id="chart"></div>
+      <p class="story" id="story"></p>
+      <div class="sim">
+        <div class="sim-top"><p>Cuba tambah perlindungan<small>Gerakkan dan tengok apa berubah</small></p><b id="extra-out">RM0</b></div>
+        <input type="range" id="extra" min="0" max="1000000" step="10000" value="0" aria-label="Tambah perlindungan">
+        <div class="sim-out"><span id="sim-res"></span><button class="pill" id="fillgap">Tutup gap penuh</button></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Keperluan vs apa yang ada</h3>
+      <p class="desc">Kalau korang tiada esok, inilah duit yang family perlukan, dan apa yang dah tersedia.</p>
+      <div class="cbar"><span>Perlu</span><b id="need-t"></b></div>
+      <div class="stack" id="need-bar"></div>
+      <ul class="legend" id="need-leg"></ul>
+      <div class="cbar"><span>Ada</span><b id="have-t"></b></div>
+      <div class="stack" id="have-bar"></div>
+      <ul class="legend" id="have-leg"></ul>
+      <div class="gapbox" id="gapbox"><span id="gap-l"></span><b id="gap"></b></div>
+      <div class="years" id="years-row">
+        <p>Sokong family<small id="years-why2"></small></p>
+        <span class="stepper"><button id="yminus" aria-label="Kurang setahun">−</button><output id="yval" aria-live="polite"></output><button id="yplus" aria-label="Tambah setahun">+</button></span>
+      </div>
+      <details class="how"><summary>Macam mana kiraan ni dibuat?</summary>
+        <p>Keperluan = belanja family sebulan × 12 × tahun sokongan, campur hutang, dana pendidikan dan kos akhir. Yang ada = simpanan, pelaburan, KWSP dan perlindungan hayat. Gap = keperluan tolak yang ada.</p>
+        <p>Belanja family tak termasuk ansuran rumah dan kereta yang akan dilunaskan. Duit untuk ibu bapa hanya dikira kalau ibu bapa bergantung pada korang. Belum kira inflasi atau pulangan pelaburan.</p>
+      </details>
+    </div>
+
+    <div class="card">
+      <h3>Langkah seterusnya</h3>
+      <ol class="todo" id="todo"></ol>
+    </div>
+
+    <div class="art" id="art-dep"><!--scene:payung--><svg viewBox="0 0 600 520" role="img" aria-label="Lukisan: ayah dan anak kering di bawah satu payung ketika hujan" font-family="Plus Jakarta Sans" font-weight="800"><filter id="hand1"><feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="2" seed="4"/><feDisplacementMap in="SourceGraphic" scale="6"/></filter><g filter="url(#hand1)"><path d="M44 70 l-14 34 M76 168 l-14 34 M34 270 l-14 34 M74 372 l-14 34 M552 76 l-14 34 M582 178 l-14 34 M546 282 l-14 34 M580 384 l-14 34 M190 14 l-10 26 M420 14 l-10 26" fill="none" stroke="#141513" stroke-width="15" stroke-linecap="round" stroke-linejoin="round" stroke-width="9"/> <path d="M300 180 L300 404 Q300 434 274 434 Q250 434 250 410" fill="none" stroke="#141513" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/> <path d="M100 180 Q300 -10 500 180 Q450 150 400 180 Q350 150 300 180 Q250 150 200 180 Q150 150 100 180 Z" fill="#fff" stroke="#141513" stroke-width="15" stroke-linejoin="round" stroke-linecap="round"/> <path d="M300 86 L300 58" fill="none" stroke="#141513" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/> <path d="M204 390 L196 468 L170 468 M236 390 L244 468 L270 468" fill="none" stroke="#141513" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/> <path d="M248 300 L298 332 M192 300 L168 372" fill="none" stroke="#141513" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/> <path d="M184 288 Q220 276 256 288 L262 390 L178 390 Z" fill="#fff" stroke="#141513" stroke-width="15" stroke-linejoin="round" stroke-linecap="round"/> <circle cx="300" cy="332" r="15" fill="#fff" stroke="#141513" stroke-width="11"/><circle cx="166" cy="374" r="13" fill="#fff" stroke="#141513" stroke-width="11"/> <circle cx="220" cy="242" r="42" fill="#fff" stroke="#141513" stroke-width="15" stroke-linejoin="round" stroke-linecap="round"/><circle cx="207" cy="236" r="5" fill="#141513"/><circle cx="233" cy="236" r="5" fill="#141513"/><path d="M204 252 Q220 268 236 252" fill="none" stroke="#141513" stroke-width="15" stroke-linecap="round" stroke-linejoin="round" stroke-width="9"/><path d="M178 238 C178 183 262 183 262 238 C243 221 197 221 178 238 Z" fill="#141513"/> <path d="M380 414 L376 468 L356 468 M400 414 L404 468 L424 468" fill="none" stroke="#141513" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/> <path d="M368 356 L308 384 M412 356 L432 402" fill="none" stroke="#141513" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/> <path d="M366 348 Q390 336 414 348 L420 414 L360 414 Z" fill="#fff" stroke="#141513" stroke-width="15" stroke-linejoin="round" stroke-linecap="round"/> <circle cx="304" cy="384" r="12" fill="#fff" stroke="#141513" stroke-width="11"/><circle cx="432" cy="404" r="12" fill="#fff" stroke="#141513" stroke-width="11"/> <circle cx="390" cy="314" r="30" fill="#fff" stroke="#141513" stroke-width="15" stroke-linejoin="round" stroke-linecap="round"/><circle cx="381" cy="310" r="4" fill="#141513"/><circle cx="399" cy="310" r="4" fill="#141513"/><path d="M379 322 Q390 333 401 322" fill="none" stroke="#141513" stroke-width="15" stroke-linecap="round" stroke-linejoin="round" stroke-width="7"/><path d="M360 310 C360 272 420 272 420 310 C406 299 374 299 360 310 Z" fill="#141513"/></g></svg><!--/scene--></div>
+    <div class="art" id="art-solo" hidden><!--scene:payung_solo--><svg viewBox="0 0 600 520" role="img" aria-label="Lukisan: seorang lelaki kering di bawah payung ketika hujan" font-family="Plus Jakarta Sans" font-weight="800"><filter id="hand2"><feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="2" seed="5"/><feDisplacementMap in="SourceGraphic" scale="6"/></filter><g filter="url(#hand2)"><path d="M44 70 l-14 34 M76 168 l-14 34 M34 270 l-14 34 M74 372 l-14 34 M552 76 l-14 34 M582 178 l-14 34 M546 282 l-14 34 M580 384 l-14 34 M190 14 l-10 26 M420 14 l-10 26" fill="none" stroke="#141513" stroke-width="15" stroke-linecap="round" stroke-linejoin="round" stroke-width="9"/> <path d="M330 180 L330 404 Q330 434 356 434 Q380 434 380 410" fill="none" stroke="#141513" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/> <path d="M100 180 Q300 -10 500 180 Q450 150 400 180 Q350 150 300 180 Q250 150 200 180 Q150 150 100 180 Z" fill="#fff" stroke="#141513" stroke-width="15" stroke-linejoin="round" stroke-linecap="round"/> <path d="M300 86 L300 58" fill="none" stroke="#141513" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/> <path d="M264 390 L256 468 L230 468 M296 390 L304 468 L330 468" fill="none" stroke="#141513" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/> <path d="M308 300 L330 330 M252 300 L228 372" fill="none" stroke="#141513" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/> <path d="M244 288 Q280 276 316 288 L322 390 L238 390 Z" fill="#fff" stroke="#141513" stroke-width="15" stroke-linejoin="round" stroke-linecap="round"/> <circle cx="332" cy="332" r="15" fill="#fff" stroke="#141513" stroke-width="11"/><circle cx="226" cy="374" r="13" fill="#fff" stroke="#141513" stroke-width="11"/> <circle cx="280" cy="242" r="42" fill="#fff" stroke="#141513" stroke-width="15" stroke-linejoin="round" stroke-linecap="round"/><circle cx="267" cy="236" r="5" fill="#141513"/><circle cx="293" cy="236" r="5" fill="#141513"/><path d="M264 252 Q280 268 296 252" fill="none" stroke="#141513" stroke-width="15" stroke-linecap="round" stroke-linejoin="round" stroke-width="9"/><path d="M238 238 C238 183 322 183 322 238 C303 221 257 221 238 238 Z" fill="#141513"/></g></svg><!--/scene--></div>
+    <p class="cta">Nak tutup gap ni ikut bajet korang?</p>
+    <p class="cta-sub">WhatsApp keputusan ni. Saya semak dan terangkan pilihan, percuma.</p>
+    <button class="btn ghost" id="pdf">Simpan laporan (PDF)</button>
+    <button class="btn ghost" id="share">Share kalkulator ke pasangan</button>
+    <button class="link" id="again">Kira semula</button>
+    <p class="fine">Anggaran kasar untuk rujukan sahaja, bukan nasihat kewangan atau sebut harga takaful. Belum kira inflasi atau pulangan pelaburan. Jawapan korang kekal dalam phone korang dan hanya dihantar kalau korang tekan WhatsApp.</p>
+    <div class="dock"><div class="sum"><small id="dock-l"></small><b id="dock-v"></b></div>
+      <a class="btn" id="wa" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.6.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3a.5.5 0 0 0 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7a2.8 2.8 0 0 0 1.8-1.3 2.3 2.3 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg><span id="wa-label">WhatsApp saya</span></a></div>
+  </section>
+</main>
+
+<script>
+// ===== Tukar di sini =====
+// Nombor WhatsApp korang, format antarabangsa tanpa "+" atau "-" (contoh 60123456789). Kosong = butang WhatsApp tutup.
+const WHATSAPP = "60176190139";
+const NAME = "Sagan";
+// Link dengan ?dari=hibah (atau apa-apa nama post) supaya mesej WhatsApp tunjuk post mana lead tu datang.
+// =========================
+
+const $ = id => document.getElementById(id);
+const $$ = (sel, el = document) => [...el.querySelectorAll(sel)];
+const screens = $$(".screen");
+const steps = screens.filter(s => s.dataset.step);
+const source = new URLSearchParams(location.search).get("dari");
+const v = {nkids: 1};                       // every number the visitor types, by data-k
+const pick = {dep: new Set(), mrtt: null, med: null};
+let years = 0, yearsEdited = false, at = 0, extra = 0;   // extra: cover added in the simulator
+
+const SPEND = ["s_rumah", "s_kereta", "s_makan", "s_jalan", "s_anak", "s_bil", "s_ibubapa", "s_lain"];
+const DEBT = ["d_rumah", "d_kereta", "d_peribadi", "d_kad", "d_ptptn", "d_lain"];
+const DEP = {pasangan: "Pasangan", anak: "Anak", ibubapa: "Ibu bapa", tiada: "Tiada sesiapa"};
+const MED = {
+  sendiri: ["Ada, bayar sendiri", "Semak medical card korang", "Pastikan had tahunan, deductible dan had bilik masih cukup dengan kos hospital sekarang."],
+  syarikat: ["Syarikat sahaja", "Dapatkan medical card sendiri", "Kad syarikat ikut kerja. Bila berhenti atau tukar kerja, perlindungan tu biasanya tamat, dan masa tu umur korang dah naik."],
+  tiada: ["Tiada", "Dapatkan medical card", "Tanpa medical card, bil hospital swasta keluar dari simpanan korang."],
+  unsure: ["Tak pasti", "Semak polisi yang korang ada", "Hantar je apa yang korang ada, saya tolong baca dan terangkan."],
+};
+
+const rm = n => (n < 0 ? "−" : "") + "RM" + Math.round(Math.abs(n)).toLocaleString("en-MY");
+const num = k => +v[k] || 0;
+const kids = () => pick.dep.has("anak");
+const family = () => pick.dep.has("pasangan") || kids();
+const anyDep = () => family() || pick.dep.has("ibubapa");
+const spendKeys = () => SPEND.filter(k => k !== "s_anak" || kids());
+const sum = keys => keys.reduce((a, k) => a + num(k), 0);
+
+// [[number, unit], ...]: 46 months -> [["3", "tahun"], ["10", "bulan"]]
+function span(m) {
+  if (m <= 0) return [["0", "bulan"]];
+  if (m < 1) return [["<1", "bulan"]];
+  const t = Math.floor(m);
+  if (t < 24) return [[t, "bulan"]];
+  const y = Math.floor(t / 12), r = t % 12;
+  return r ? [[y, "tahun"], [r, "bulan"]] : [[y, "tahun"]];
+}
+const months = m => span(m).map(p => p.join(" ")).join(" ");
+const short = m => span(m).map(([n, u]) => n + " " + (u === "tahun" ? "thn" : "bln")).join(" ");
+const esc = s => String(s).replace(/</g, "&lt;");
+
+function defaultYears() {
+  if (kids()) return Math.max(23 - num("youngest"), 5);
+  return anyDep() ? 5 : 0;
+}
+
+// The whole model. Needs: living costs for the years of support, debts to clear, education, final costs.
+// Has: savings, investments, KWSP, life cover. A cleared house or car loan also stops its monthly instalment.
+function calc(add = extra) {
+  const spend = sum(spendKeys()), income = num("income");
+  const houseInst = num("d_rumah") > 0 ? num("s_rumah") : 0;
+  const carInst = num("d_kereta") > 0 ? num("s_kereta") : 0;
+  const household = Math.max(0, spend - num("s_ibubapa") - houseInst - carInst);
+  const support = (family() ? household : 0) + (pick.dep.has("ibubapa") ? num("s_ibubapa") : 0);
+  const y = support > 0 ? years : 0;
+  const covered = pick.mrtt === "ada" ? num("d_rumah") : 0;
+  const need = {
+    live: support * 12 * y,
+    debt: sum(DEBT) - covered,
+    edu: kids() ? num("e_anak") * v.nkids : 0,
+    fin: num("f_akhir"),
+  };
+  const have = {cash: num("a_tunai") + num("a_labur"), kwsp: num("a_kwsp"), cover: num("c_sendiri") + num("c_majikan"), extra: add};
+  const needT = need.live + need.debt + need.edu + need.fin, haveT = have.cash + have.kwsp + have.cover + add;
+  return {
+    spend, income, support, y, covered, need, have, needT, haveT,
+    gap: Math.max(0, needT - haveT),
+    gap0: Math.max(0, needT - haveT + add),                                // the real gap, before the simulator
+    trimmed: houseInst + carInst,
+    last: support > 0 ? (haveT - need.debt - need.fin) / support : null,  // months the family lasts
+    solo: spend > 0 ? have.cash / spend : 0,                              // months savings last without pay
+  };
+}
+
+/* ---------- inputs ---------- */
+$$("input[data-k]").forEach(inp => {
+  const money = inp.closest(".amt") && !inp.closest(".amt.short");
+  inp.addEventListener("input", () => {
+    const d = inp.value.replace(/[^\d]/g, "").slice(0, money ? 9 : 2);
+    v[inp.dataset.k] = d === "" ? null : +d;
+    inp.value = money && d ? (+d).toLocaleString("en-MY") : d;
+    update();
+  });
+  inp.addEventListener("keydown", e => {
+    if (e.key !== "Enter") return;
+    const all = $$("input[data-k]", inp.closest(".screen")).filter(x => x.offsetParent);
+    const nxt = all[all.indexOf(inp) + 1];
+    if (nxt) nxt.focus(); else inp.closest(".screen").querySelector("[data-next]").click();
+  });
+});
+
+$$(".chips[data-group]").forEach(g => {
+  const name = g.dataset.group, multi = "multi" in g.dataset;
+  $$(".chip", g).forEach(c => c.onclick = () => {
+    const val = c.dataset.value;
+    if (multi) {
+      if (val === "tiada") pick.dep = new Set(pick.dep.has("tiada") ? [] : ["tiada"]);
+      else { pick.dep.delete("tiada"); pick.dep.has(val) ? pick.dep.delete(val) : pick.dep.add(val); }
+      $$(".chip", g).forEach(x => x.setAttribute("aria-pressed", pick.dep.has(x.dataset.value)));
+    } else {
+      pick[name] = val;
+      $$(".chip", g).forEach(x => x.setAttribute("aria-pressed", x === c));
+    }
+    if (name === "dep" && !yearsEdited) years = defaultYears();
+    update();
+  });
+});
+
+$$(".stepper [data-step]", document.querySelector("[data-id=about]")).forEach(b => b.onclick = () => {
+  v.nkids = Math.max(1, Math.min(10, v.nkids + +b.dataset.step));
+  $("nkids").textContent = v.nkids;
+  update();
+});
+$("unsure").onchange = e => { pick.unsure = e.target.checked; update(); };
+$("years").oninput = e => { years = +e.target.value; yearsEdited = true; update(); };
+
+// What still stops each step: shown in its dock instead of a silently disabled button
+const missing = {
+  about: () => {
+    const m = [];
+    if (!(num("age") >= 18 && num("age") <= 75)) m.push("umur");
+    if (!(num("income") > 0)) m.push("gaji");
+    if (!pick.dep.size) m.push("siapa bergantung");
+    if (kids() && (v.youngest == null || num("youngest") > 30)) m.push("umur anak bongsu");
+    return m.length ? "Isi " + m.join(", ") : "";
+  },
+  spend: () => sum(spendKeys()) > 0 ? "" : "Isi sekurang-kurangnya satu belanja",
+  debt: () => num("d_rumah") > 0 && !pick.mrtt ? "Jawab soalan MRTT/MLTT" : "",
+  cover: () => pick.med ? "" : "Pilih medical card",
+};
+
+// Live totals in each step's dock; show and hide the follow-up fields.
+function update() {
+  $$("[data-kids]").forEach(el => el.hidden = !kids());
+  $$("[data-dep]").forEach(el => el.hidden = !anyDep());
+  $("mrtt").hidden = !(num("d_rumah") > 0);
+  if (!yearsEdited) years = defaultYears();
+  const c = calc();
+
+  $("spend-total").textContent = rm(c.spend);
+  const left = c.income - c.spend, ratio = c.income ? Math.min(1, c.spend / c.income) : 0;
+  $("spend-left").textContent = c.income ? (left >= 0 ? `Lebihan ${rm(left)}` : `Terlebih ${rm(-left)}`) : "";
+  $("spend-left").style.color = left >= 0 ? "#2F9E57" : "#C6385A";
+  $("spend-mini").style.width = (ratio * 100) + "%";
+  $("spend-mini").style.background = left >= 0 ? "var(--ink)" : "#C6385A";
+  $("debt-total").textContent = rm(sum(DEBT));
+  $("asset-total").textContent = rm(c.have.cash + c.have.kwsp);
+  $("cover-total").textContent = rm(c.have.cover);
+  $("need-total").textContent = rm(c.needT);
+  const r = $("years");
+  r.value = years || 1;
+  r.style.setProperty("--p", ((r.value - 1) / 29 * 100) + "%");
+  $("years-out").textContent = years;
+  const why = yearsEdited ? "Ikut keadaan korang" : kids() ? "Andaian: sampai anak bongsu umur 23" : "Andaian: 5 tahun";
+  $("years-why").textContent = why;
+
+  screens.forEach(s => {
+    const go = s.querySelector("[data-next]"), m = s.querySelector("[data-miss]");
+    if (!go || !missing[s.dataset.id]) return;
+    const msg = missing[s.dataset.id]();
+    go.disabled = !!msg;
+    m.textContent = msg;
+    m.hidden = !msg;
+    const box = m.closest(".sum");
+    if (!box.querySelector("b")) { box.hidden = !msg; go.classList.toggle("wide", !msg); }
+  });
+  if (screens[at] && screens[at].dataset.id === "result") render();
+}
+
+/* ---------- navigation ---------- */
+function show(i, push = true) {
+  at = Math.max(0, Math.min(i, screens.length - 1));
+  const s = screens[at], si = steps.indexOf(s);
+  screens.forEach(x => x.classList.toggle("on", x === s));
+  $("nav").classList.toggle("off", at === 0);
+  $("track").classList.toggle("off", si < 0);
+  $("count").textContent = si >= 0 ? `${si + 1} / ${steps.length}` : "";
+  $("bar").style.width = si >= 0 ? ((si + 1) / steps.length * 100) + "%" : "0";
+  update();
+  if (s.dataset.id === "result") render(true);
+  window.scrollTo(0, 0);
+  s.focus({preventScroll: true});
+  if (push) history.pushState({at}, "");
+}
+history.replaceState({at: 0}, "");
+addEventListener("popstate", e => show(e.state ? e.state.at : 0, false));
+$("back").onclick = () => history.back();
+$$("[data-next]").forEach(b => b.onclick = () => show(at + 1));
+
+/* ---------- result ---------- */
+function stack(bar, leg, parts, scale, gap) {
+  const w = n => scale ? (n / scale * 100) + "%" : "0";
+  $(bar).innerHTML = parts.filter(p => p[1] > 0).map(p => `<i style="width:${w(p[1])};background:var(${p[2]})"></i>`).join("")
+    + (gap ? `<i class="gapseg" style="width:${w(gap)}"></i>` : "");
+  $(leg).innerHTML = parts.filter(p => p[1] > 0).map(p =>
+    `<li><i style="background:var(${p[2]})"></i><span>${p[0]}${p[3] ? `<small>${p[3]}</small>` : ""}</span><b>${rm(p[1])}</b></li>`).join("")
+    || `<li><i style="background:var(--line)"></i><span>Tiada</span><b>RM0</b></li>`;
+}
+
+// Count a number up on first reveal; any later render cancels it
+let anim = 0;
+function countUp(paint) {
+  const id = ++anim, t0 = performance.now();
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) return paint(1);
+  const tick = now => {
+    if (id !== anim) return;
+    const t = Math.min(1, Math.max(0, (now - t0) / 900));   // a frame's timestamp can predate t0
+    paint(1 - Math.pow(1 - t, 3));
+    if (t < 1) requestAnimationFrame(tick);
+  };
+  requestAnimationFrame(tick);
+}
+
+// The family's money after debts and final costs, spent down year by year against the years they need
+function chart(c) {
+  const W = 320, H = 156, L = 4, R = 4, T = 22, B = 28, w = W - L - R, h = H - T - B, base = T + h;
+  const Y = c.y, start = c.haveT - c.need.debt - c.need.fin, yearly = c.support * 12;
+  const top = Math.max(start, 1), tz = start <= 0 ? 0 : Math.min(start / yearly, Y), end = start - yearly * tz;
+  const X = t => L + t / Y * w, P = b => base - Math.max(0, b) / top * h;
+  let g = `<line x1="${L}" y1="${base}" x2="${W - R}" y2="${base}" stroke="var(--line)" stroke-width="2"/>`;
+  if (start > 0) {
+    g += `<path d="M${X(0)} ${base} L${X(0)} ${P(start)} L${X(tz)} ${P(end)} L${X(tz)} ${base} Z" fill="var(--green)"/>`
+       + `<path d="M${X(0)} ${P(start)} L${X(tz)} ${P(end)}" fill="none" stroke="var(--ink)" stroke-width="2.5" stroke-linecap="round"/>`
+       + `<text class="ax" x="${L}" y="${T - 9}">${rm(start)} hari ini</text>`;
+  } else {
+    g += `<text class="ax bad" x="${W / 2}" y="${T + h / 2}" text-anchor="middle" style="font-size:13px">Tiada baki untuk family hidup</text>`;
+  }
+  if (tz < Y) {
+    const short = X(Y) - X(tz) < 110;   // too little room beside the line: leave the words to the story below
+    const mid = Math.min(Math.max((X(tz) + X(Y)) / 2, L + 70), W - R - 70);
+    g += `<rect x="${X(tz)}" y="${base - 5}" width="${X(Y) - X(tz)}" height="10" rx="5" fill="var(--c-debt)"/>`
+       + `<circle cx="${X(tz)}" cy="${base}" r="5.5" fill="#fff" stroke="var(--ink)" stroke-width="2.5"/>`
+       + (short ? "" : `<text class="ax bad" x="${mid}" y="${base - 13}" text-anchor="middle">Tak cukup ${months((Y - tz) * 12)}</text>`);
+  }
+  g += `<text class="ax" x="${L}" y="${H - 6}">Hari ini</text>`
+     + `<text class="ax" x="${W - R}" y="${H - 6}" text-anchor="end">${Y} tahun lagi${kids() ? ` (anak ${num("youngest") + Y} thn)` : ""}</text>`;
+  $("chart").innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Carta duit family: ${rm(Math.max(start, 0))} hari ini, cukup untuk ${months(tz * 12)} daripada ${Y} tahun">${g}</svg>`;
+}
+
+function render(reveal = false) {
+  const c = calc(), dep = c.support > 0;
+  if (!reveal) anim++;
+
+  $("kicker").textContent = !dep ? "Kalau korang tak boleh kerja esok, simpanan korang tahan"
+    : extra ? `Dengan tambahan ${rm(extra)}, family boleh bertahan` : "Kalau korang tiada esok, family boleh bertahan";
+  const heroV = dep ? c.last : c.solo;
+  const paint = k => {
+    $("big").innerHTML = span(heroV > 0 ? heroV * k : heroV).map(([n, u]) => `<b>${esc(n)}</b><small>${u}</small>`).join(" ");
+    $("gap").textContent = rm(c.gap * k);
+    $("dock-v").textContent = rm(c.gap0 * k);
+  };
+  reveal ? countUp(paint) : paint(1);
+  $("meter").hidden = !dep;
+  if (dep) {
+    const pct = Math.max(0, Math.min(1, c.last / (c.y * 12)));
+    $("fill").style.background = `var(--${pct < .25 ? "pink" : pct < .75 ? "yellow" : "green"})`;
+    $("fill").style.width = Math.max(pct * 100, 1.5) + "%";
+    $("meter-l").textContent = Math.round(pct * 100) + "% dilindungi";
+    $("meter-r").textContent = `Perlu ${c.y} tahun`;
+  }
+  $("hero-note").textContent = dep
+    ? (c.last < 0 ? `Lepas hutang dan kos akhir dibayar, family mula dengan kekurangan ${rm(-c.last * c.support)}.`
+                  : `Lepas hutang dan kos akhir dibayar, pada belanja family ${rm(c.support)} sebulan.`)
+    : `Tanpa gaji, pada belanja ${rm(c.spend)} sebulan. KWSP tak dikira sebab biasanya tak boleh dikeluarkan serta-merta.`;
+
+  $("st-cover").textContent = c.income ? (c.have.cover / (c.income * 12)).toFixed(1).replace(".0", "") + "×" : "-";
+  const left = c.income - c.spend;
+  $("st-left").textContent = rm(left);
+  $("st-left").className = left < 0 ? "bad" : "";
+  // The hero already shows the no-pay months for someone with no dependents, so show their debt instead
+  $("st-solo-l").textContent = dep ? "Tanpa gaji, simpanan tahan" : "Jumlah hutang";
+  $("st-solo").textContent = dep ? short(c.solo) : rm(sum(DEBT));
+
+  const scale = Math.max(c.needT, c.haveT);
+  stack("need-bar", "need-leg", [
+    ["Belanja family " + c.y + " tahun", c.need.live, "--c-live", c.trimmed ? "Tanpa ansuran rumah & kereta, sebab loan dilunaskan" : ""],
+    ["Hutang", c.need.debt, "--c-debt", c.covered ? `Loan rumah ${rm(c.covered)} ditanggung MRTT/MLTT` : ""],
+    ["Pendidikan anak", c.need.edu, "--c-edu", kids() ? `${v.nkids} anak × ${rm(num("e_anak"))}` : ""],
+    ["Kos akhir & pusaka", c.need.fin, "--c-final"],
+  ], scale);
+  stack("have-bar", "have-leg", [
+    ["Simpanan & pelaburan", c.have.cash, "--c-cash"],
+    ["KWSP", c.have.kwsp, "--c-kwsp"],
+    ["Perlindungan hayat" + (pick.unsure ? " (tak pasti)" : ""), c.have.cover, "--c-cover"],
+    ["Perlindungan tambahan", c.have.extra, "--c-extra", "Cubaan dari kalkulator"],
+  ], scale, c.gap);
+  $("need-t").textContent = rm(c.needT);
+  $("have-t").textContent = rm(c.haveT);
+  $("gapbox").className = "gapbox" + (c.gap ? "" : " ok");
+  $("gap-l").innerHTML = c.gap ? (extra ? "Baki gap<small>Selepas tambahan cubaan</small>" : "Gap perlindungan<small>Yang family masih kurang</small>")
+    : (extra ? "Gap tertutup<small>Dengan tambahan cubaan</small>" : "Tiada gap<small>Untuk andaian ni, family cukup</small>");
+  $("dock-l").textContent = c.gap0 ? "Gap perlindungan" : "Tiada gap";
+  $("years-row").hidden = !dep;
+
+  // Money over time, the story in one line, and the simulator
+  $("time-card").hidden = !dep;
+  if (dep) {
+    chart(c);
+    const yb = num("youngest"), start = c.haveT - c.need.debt - c.need.fin;
+    $("story").innerHTML = c.last <= 0 ? `Lepas hutang dibayar, family mula dengan <b>kekurangan ${rm(-start)}</b>.`
+      : c.last >= c.y * 12 ? `Duit cukup untuk <b>${c.y} tahun</b> yang diperlukan${kids() ? `, sampai anak bongsu umur ${yb + c.y}` : ""}.`
+      : `Duit family habis lepas <b>${months(c.last)}</b>.` + (kids()
+        ? ` Masa tu anak bongsu baru <b>umur ${yb + Math.floor(c.last / 12)}</b>.`
+        : ` Masih tinggal ${months(c.y * 12 - c.last)} tanpa sokongan.`);
+    const r = $("extra"), max = Math.max(100000, Math.ceil(c.gap0 * 1.25 / 50000) * 50000);
+    r.max = max;
+    if (+r.value !== extra) r.value = extra;
+    r.style.setProperty("--p", (extra / max * 100) + "%");
+    $("extra-out").textContent = "+" + rm(extra);
+    const pct = Math.max(0, Math.min(1, c.last / (c.y * 12)));
+    $("sim-res").innerHTML = `Bertahan <b>${short(Math.max(c.last, 0))}</b> · <b>${Math.round(pct * 100)}%</b> dilindungi`;
+    $("fillgap").hidden = !c.gap0 || extra >= c.gap0;
+  }
+  $("print-meta").textContent = "Laporan Cek Perlindungan · " + new Date().toLocaleDateString("ms-MY", {day: "numeric", month: "long", year: "numeric"});
+  $("yval").textContent = years;
+  $("years-why2").textContent = $("years-why").textContent;
+
+  // Next steps, from the visitor's own numbers
+  const todo = [];
+  if (c.gap0) todo.push([`Tutup gap ${rm(c.gap0)}`, left > 0 ? `Lebihan korang ${rm(left)} sebulan. Ada cara tutup gap ni ikut bajet tu.` : "Ada cara tutup gap ni walaupun bajet ketat."]);
+  if (num("d_rumah") > 0 && pick.mrtt !== "ada") todo.push([pick.mrtt === "unsure" ? "Semak MRTT/MLTT loan rumah" : `Loan rumah ${rm(num("d_rumah"))} tanpa MRTT/MLTT`, "Kalau apa-apa jadi, baki ni perlu dilunaskan dari harta korang."]);
+  if (pick.med) todo.push(MED[pick.med].slice(1));
+  if (num("c_majikan") > 0) todo.push([`Perlindungan majikan ${rm(num("c_majikan"))} ikut kerja`, "Bila tukar kerja, jumlah ni biasanya hilang. Jangan bergantung pada ni sahaja."]);
+  if (c.solo < 3) todo.push([`Simpanan tahan ${months(c.solo)} je tanpa gaji`, "Kalau sakit dan tak boleh kerja, ini yang korang ada untuk hidup."]);
+  $("todo").innerHTML = todo.slice(0, 4).map(([t, d], i) => `<li><i>${i + 1}</i><div><b>${t}</b><span>${d}</span></div></li>`).join("");
+
+  $("art-dep").hidden = !anyDep();
+  $("art-solo").hidden = anyDep();
+
+  const b = extra ? calc(0) : c;   // the message reports their real numbers, not the simulator's
+  const lines = [
+    `Hi ${NAME}, saya dah buat Cek Perlindungan.`, "",
+    `Umur ${num("age")} · Gaji bersih ${rm(c.income)}`,
+    `Bergantung: ${[...pick.dep].map(d => DEP[d]).join(", ")}${kids() ? ` (${v.nkids} anak, bongsu ${num("youngest")} thn)` : ""}`,
+    `Belanja sebulan: ${rm(c.spend)}`,
+    `Hutang: ${rm(sum(DEBT))}${num("d_rumah") ? ` (rumah ${rm(num("d_rumah"))}, MRTT/MLTT: ${{ada: "Ada", tiada: "Tiada", unsure: "Tak pasti"}[pick.mrtt]})` : ""}`,
+    `Simpanan & aset: ${rm(c.have.cash + c.have.kwsp)} (KWSP ${rm(c.have.kwsp)})`,
+    `Perlindungan hayat: ${rm(c.have.cover)}${num("c_majikan") ? ` (majikan ${rm(num("c_majikan"))})` : ""}${pick.unsure ? " - tak pasti" : ""}`,
+    `Medical card: ${MED[pick.med][0]}`, "",
+    dep ? `Keputusan: family boleh bertahan ${months(b.last)}. Gap ${rm(b.gap)} (sokong ${c.y} tahun).`
+        : `Keputusan: simpanan tahan ${months(c.solo)} tanpa gaji. Gap ${rm(b.gap)}.`,
+    extra ? `Saya nak tahu pasal tambah perlindungan ${rm(extra)}.` : null,
+    "Boleh tolong semak untuk saya?",
+    source ? `(dari: ${source})` : null,
+  ];
+  const wa = $("wa");
+  if (WHATSAPP) {
+    wa.href = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(lines.filter(l => l !== null).join("\n"))}`;
+    wa.removeAttribute("aria-disabled");
+  } else {
+    wa.removeAttribute("href");
+    wa.setAttribute("aria-disabled", "true");
+    $("wa-label").textContent = "Nombor belum diletak";
+  }
+}
+
+const stepYears = d => { years = Math.max(1, Math.min(30, years + d)); yearsEdited = true; update(); };
+$("yminus").onclick = () => stepYears(-1);
+$("yplus").onclick = () => stepYears(1);
+$("extra").oninput = e => { extra = +e.target.value; update(); };
+$("fillgap").onclick = () => { extra = Math.ceil(calc(0).gap / 10000) * 10000; update(); };
+$("pdf").onclick = () => window.print();
+$("again").onclick = () => location.replace(location.pathname + location.search);
+$("share").onclick = async () => {
+  const url = location.origin + location.pathname, b = $("share");
+  const text = "Cuba kira ni: kalau apa-apa jadi, family kita boleh bertahan berapa lama?";
+  try {
+    if (navigator.share) await navigator.share({title: document.title, text, url});
+    else { await navigator.clipboard.writeText(text + " " + url); b.textContent = "Link disalin"; }
+  } catch (e) { /* cancelled */ }
+};
+update();
+</script>
+</body>
+</html>
