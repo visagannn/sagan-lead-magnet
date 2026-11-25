@@ -197,7 +197,16 @@ Only share the sheet with people who should see leads. The Web app link is visib
 
 **Not live yet.** The SME page is kept on the local branch `sme-page` and left out of `main`, so publishing the checklist doesn't publish it. To publish it later, bring `sme/` into `main` as a new commit (don't push the `sme-page` branch itself: its history has private notes).
 
-Built 25 Nov 2026 from the Instagram page, then translated and given its own content. Link to use on LinkedIn: `https://check.saganproductions.com/sme/?from=linkedin` (`?from=` or `?dari=` both work; name other tags after the post).
+Built 25 Nov 2026 from the Instagram page, then translated and given its own content. Live since 25 Nov 2026. LinkedIn links (`?from=` or `?dari=` both work):
+
+| Where | Link |
+| --- | --- |
+| Profile intro link | `https://check.saganproductions.com/sme/?from=linkedin-bio` |
+| Featured section | `https://check.saganproductions.com/sme/?from=linkedin-featured` |
+| First comment on a post | `https://check.saganproductions.com/sme/?from=linkedin-post` (or `?from=li-<post-name>`) |
+| DM reply | `https://check.saganproductions.com/sme/?from=linkedin-dm` |
+
+Ready-to-paste profile text is in `../linkedin-sme-links.md`.
 
 - **Hero:** "If a key employee is out tomorrow, / What does your company actually cover?" with a drawing of a team holding up a "YOUR COMPANY" beam; one place is empty and circled as the GAP.
 - **2 quick questions:** business type (Sdn Bhd / Partnership / Sole proprietor) and number of employees (1–5, 6–20, 21–50, 51+). The business type shows the one owner-succession point that fits (shareholders' agreement, partnership agreement, or personal liability). Before they choose, all three show (18 points; 16 after).
