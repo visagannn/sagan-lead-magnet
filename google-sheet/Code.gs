@@ -14,7 +14,8 @@
 const TAB = "Leads";
 const HEAD = ["ID", "Mula", "Kemas kini", "Nama", "No. telefon", "WhatsApp", "Umur", "Jantina", "Dari",
   "Status", "Kerja", "Loan rumah", "Settle", "Jurang", "Tak pasti", "Senarai jurang"];
-const RANK = {"Mula": 1, "Siap": 2, "Hantar WA": 3};
+// Contacted / Replied / Closed are set by Sagan from the leads dashboard; a visitor coming back never moves a lead back down
+const RANK = {"Mula": 1, "Siap": 2, "Hantar WA": 3, "Contacted": 4, "Replied": 5, "Closed": 6};
 const SME_TAB = "SME Leads";
 const SME_HEAD = ["ID", "Mula", "Kemas kini", "Name", "Mobile", "WhatsApp", "Company", "Role", "From",
   "Status", "Business type", "Employees", "In place", "Gaps", "Not sure", "Gap list"];
