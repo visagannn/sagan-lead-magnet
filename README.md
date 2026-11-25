@@ -127,7 +127,7 @@ Both are on, under **Meta Business Suite → Inbox → Automations**, for Instag
 
 | Automation | Trigger | Link it sends |
 | --- | --- | --- |
-| Comment to message – Checklist Ganti Gaji (SEMAK) | A comment containing SEMAK / semak / Semak | `https://check.saganproductions.com/?dari=dm` |
+| Comment to message – Checklist Ganti Gaji (SEMAK) | A comment containing SEMAK / semak / Semak / check / Check / gaji / Gaji / INCOME PROTECTION / Income protection / income protection (Meta's limit is 10) | `https://check.saganproductions.com/?dari=dm` |
 | Custom keywords – DM SEMAK (Stories) | A DM or Story reply containing SEMAK / semak / Semak | `https://check.saganproductions.com/?dari=story` |
 
 The comment version also replies publicly: "Dah hantar DM! Tak nampak? Tengok dalam Message Requests."
