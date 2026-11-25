@@ -3,820 +3,1304 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Cek Perlindungan · SAGAN</title>
-<meta name="description" content="Kalau esok jadi apa-apa, family korang boleh bertahan berapa lama? Kalkulator belanja, hutang, simpanan dan perlindungan. Percuma, tak perlu daftar.">
-<meta property="og:title" content="Family korang boleh bertahan berapa lama?">
-<meta property="og:description" content="Cek Perlindungan: kira dalam 3 minit. Percuma, tak perlu daftar.">
-<meta name="theme-color" content="#ffffff">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23141414'/%3E%3Ctext x='32' y='44' font-family='Arial' font-weight='700' font-size='34' text-anchor='middle' fill='white'%3ES%3C/text%3E%3C/svg%3E">
+<title>Checklist Ganti Gaji · SAGAN</title>
+<meta name="description" content="Kalau esok korang tak boleh kerja, apa yang ganti gaji korang? 16 perkara untuk tick: cuti sakit, PERKESO, KWSP, medical card, penyakit kritikal, hibah. Percuma.">
+<link rel="canonical" href="https://cek.saganproductions.com/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://cek.saganproductions.com/">
+<meta property="og:title" content="Kalau esok tak boleh kerja, berapa lama duit korang bertahan?">
+<meta property="og:description" content="Audit Ganti Gaji percuma: semak 16 perkara dalam 2 minit, nampak terus mana jurang korang.">
+<meta property="og:image" content="https://cek.saganproductions.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23D31145'/%3E%3Ctext x='32' y='44' font-family='Arial' font-weight='700' font-size='34' text-anchor='middle' fill='white'%3ES%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..800&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+<!-- the handwriting font is only used for three short notes, so only their letters are downloaded -->
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap&text=%20%212abcdegijklmnopruwAGJNRU" rel="stylesheet">
 <style>
-:root{--bg:#fff;--ink:#141414;--muted:#6B6860;--soft:#A29E94;--line:#ECEAE4;--fill:#F6F5F1;
-  --pink:#FCD7E0;--green:#CFF0CD;--blue:#CDEBF6;--purple:#E7DBFF;--yellow:#FDE7A6;
-  --c-live:#141414;--c-debt:#E4637F;--c-edu:#4FA3D1;--c-final:#B9B4A8;--c-cash:#2F9E57;--c-kwsp:#8DD3A2;--c-cover:#14532D;--c-extra:#7B61D9;
-  --shadow:0 1px 2px rgba(20,20,20,.04),0 12px 32px -16px rgba(20,20,20,.18);color-scheme:light}
+/* Same brand as Sagan's red explainer reels: Inter, crimson #D31145, ink #18181B, paper #F4F3F5.
+   Paper-checklist feel on purpose: lines instead of boxes, square pen-tick boxes, one hand-drawn underline; frosted glass for the bars and the fact pop-up. */
+:root{
+  --paper:#FBF4EA; --white:#FFFFFF; --card:#FFFFFF; --cream:#FBF4EA; --hl:#EDE5DA; --hl-red:#D31145; --olive:#66654A; --maroon:#5C0A1C; --wine:#4A0816; --ink:#18181B; --body:#3F3F46; --muted:#71717A; --faint:#A1A1AA;
+  --line:#DEDCE2; --line-strong:#C9C6CF;
+  --red:#D31145; --red-dark:#A80D37; --red-tint:#FBE9ED; --btn:#D31145; --btn-dark:#A80D37;
+  --glass:rgba(255,255,255,.55); --glass-line:rgba(255,255,255,.7); --glass-hi:rgba(255,255,255,.6); --modal:rgba(255,255,255,.72);
+  --bar:rgba(251,244,234,.72); --hair:rgba(24,24,27,.08); --surface:rgba(255,255,255,.85); --dots:rgba(24,24,27,.085);
+  --glow1:rgba(211,17,69,.12); --glow2:rgba(211,17,69,.06); --grain:1;
+  --font:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  color-scheme:dark}
+/* One look for everyone (v3, 25 Nov 2026): white page, heavy black headlines, crimson accent, black marker drawings */
+@media all{
+  :root{--paper:#FFFFFF; --white:#FFFFFF; --card:#FFFFFF; --cream:#FFFFFF; --ink:#14121F; --body:#45434F; --muted:#6F6D7A; --faint:#9D9BA8;
+    --line:#ECEAF1; --line-strong:#D9D6E1; --red:#D31145; --red-dark:#A80D37; --red-tint:#FDECEF; --btn:#D31145; --btn-dark:#A80D37;
+    --glass:rgba(255,255,255,.86); --glass-line:rgba(20,18,31,.1); --glass-hi:rgba(255,255,255,.6); --modal:rgba(255,255,255,.92);
+    --bar:rgba(255,255,255,.88); --hair:rgba(20,18,31,.08); --surface:#FFFFFF; --dots:transparent;
+    --glow1:transparent; --glow2:transparent; --grain:0; --accent:#D31145; --hl-red:#D31145; --hl:#14121F; --soft:#F7F6FA;
+    --head:"Poppins","Inter",system-ui,-apple-system,"Segoe UI",sans-serif; color-scheme:light}
+}
 *{box-sizing:border-box;margin:0;padding:0}
 [hidden]{display:none !important}
 html{-webkit-text-size-adjust:100%}
-body{background:var(--bg);color:var(--ink);font-family:"Plus Jakarta Sans",system-ui,sans-serif;font-weight:500;
+body{background:var(--paper);color:var(--ink);font-family:var(--font);font-size:16px;line-height:1.55;font-feature-settings:"cv11","ss01";
   min-height:100vh;min-height:100dvh;-webkit-font-smoothing:antialiased}
-main{width:100%;max-width:460px;margin:0 auto;padding:0 22px}
+body::before{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;
+  background:url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%27360%27%20height%3D%27360%27%3E%3Cg%20fill%3D%27none%27%20stroke%3D%27%23fff%27%20stroke-opacity%3D%27.10%27%20stroke-width%3D%272%27%20stroke-linecap%3D%27round%27%20stroke-linejoin%3D%27round%27%3E%3Cpath%20d%3D%27M40%2022%20L45%2035%20L59%2035%20L48%2043%20L52%2057%20L40%2049%20L28%2057%20L32%2043%20L21%2035%20L35%2035%20Z%27/%3E%3Cpath%20d%3D%27M300%2060%20c4%200%206%204%204%208%20c-3%206%20-12%204%20-13%20-3%20c-2%20-10%2010%20-16%2019%20-10%20c11%207%206%2024%20-7%2025%27/%3E%3Cpath%20d%3D%27M150%20122%20C170%20100%20200%20100%20215%20118%20M215%20118%20l-11%20-1%20M215%20118%20l-2%20-11%27/%3E%3Cpath%20d%3D%27M70%20214%20c-14%20-10%20-16%20-24%20-6%20-26%20c4%20-1%206%202%206%205%20c0%20-3%202%20-6%206%20-5%20c10%202%208%2016%20-6%2026%20z%27/%3E%3Cpath%20d%3D%27M245%20240%20Q270%20210%20295%20240%20Q288%20234%20282%20240%20Q276%20234%20270%20240%20Q264%20234%20258%20240%20Q252%20234%20245%20240%20Z%20M270%20240%20L270%20262%20Q270%20268%20264%20266%27/%3E%3Cpath%20d%3D%27M135%20305%20L150%20292%20L165%20305%20M139%20302%20L139%20320%20L161%20320%20L161%20302%20M147%20320%20L147%20311%20L153%20311%20L153%20320%27/%3E%3Cpath%20d%3D%27M285%20330%20q-10%200%20-10%20-8%20q0%20-9%2010%20-8%20q2%20-10%2013%20-8%20q9%201%209%2010%20q8%200%208%207%20q0%207%20-8%207%20z%27/%3E%3Cpath%20d%3D%27M200%2022%20v16%20M192%2030%20h16%20M100%20125%20v12%20M94%20131%20h12%20M330%20150%20v14%20M323%20157%20h14%27/%3E%3Cpath%20d%3D%27M10%20110%20l8%20-8%20l8%208%20l8%20-8%20l8%208%27/%3E%3Cpath%20d%3D%27M210%20182%20q14%20-14%2028%200%20q14%2014%2028%200%27/%3E%3Ccircle%20cx%3D%2796%27%20cy%3D%27272%27%20r%3D%279%27/%3E%3Cpath%20d%3D%27M92%20272%20h8%27/%3E%3C/g%3E%3Ctext%20x%3D%2726%27%20y%3D%27344%27%20font-family%3D%27Caveat%2C%20cursive%27%20font-size%3D%2720%27%20font-weight%3D%27700%27%20fill%3D%27%23fff%27%20fill-opacity%3D%27.10%27%3ERM%3C/text%3E%3C/svg%3E") 0 0/360px 360px,radial-gradient(60% 30% at 80% 10%,var(--glow1),transparent 70%),radial-gradient(70% 35% at 10% 60%,var(--glow2),transparent 70%),radial-gradient(50% 25% at 90% 90%,var(--glow1),transparent 70%),
+  radial-gradient(var(--dots) 1px,transparent 1.4px) 0 0/22px 22px}
+body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:var(--grain);
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+main{width:100%;max-width:560px;margin:0 auto;padding:0 20px}
+html{overflow-x:clip}
+.glass{background:var(--glass);-webkit-backdrop-filter:saturate(180%) blur(18px);backdrop-filter:saturate(180%) blur(18px);
+  border:1px solid var(--glass-line);box-shadow:0 1px 0 var(--glass-hi) inset,0 10px 30px -12px rgba(0,0,0,.22)}
 button{font:inherit;color:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}
+a{color:inherit;-webkit-tap-highlight-color:transparent}
 .nw{white-space:nowrap}
-.mark{background:linear-gradient(transparent 56%,var(--hl) 56%,var(--hl) 94%,transparent 94%);border-radius:.12em;
-  padding:0 .08em;margin:0 -.08em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
-.yellow{--hl:var(--yellow)}.pink{--hl:var(--pink)}.green{--hl:var(--green)}
 
-/* Header: back + step on the left, the brand small on the right */
-.top{position:sticky;top:0;z-index:5;background:var(--bg);margin:0 -22px;padding:calc(8px + env(safe-area-inset-top)) 22px 0}
-.row{display:flex;align-items:center;justify-content:space-between;height:44px}
-.nav{display:flex;align-items:center;gap:4px;transition:opacity .2s}
-.nav.off{opacity:0;pointer-events:none}
-.back{width:40px;height:40px;margin-left:-10px;border:0;background:none;display:grid;place-items:center;border-radius:50%}
-.back:active{background:var(--fill)}
-.back svg{width:22px;height:22px}
-.count{font-size:13px;font-weight:700;color:var(--muted);font-variant-numeric:tabular-nums}
-.brand{display:flex;align-items:center;gap:8px;font-size:10.5px;letter-spacing:.26em;white-space:nowrap}
-.brand b{font-weight:800}
-.brand span{font-weight:600;color:var(--muted)}
-.brand i{width:1px;height:11px;background:var(--soft)}
-.track{height:3px;border-radius:2px;background:var(--line);overflow:hidden;margin-top:6px;transition:opacity .2s}
-.track.off{opacity:0}
-.track i{display:block;height:100%;width:0;background:var(--ink);border-radius:2px;transition:width .45s cubic-bezier(.2,.7,.2,1)}
+/* Top bar */
+.top{position:sticky;top:0;z-index:30;margin:0 -20px;padding:env(safe-area-inset-top) 20px 0;background:var(--bar);
+  -webkit-backdrop-filter:saturate(180%) blur(18px);backdrop-filter:saturate(180%) blur(18px);border-bottom:1px solid var(--hair)}
+.row{display:flex;align-items:center;justify-content:space-between;height:46px}
+.count{font-size:14px;color:var(--muted);font-variant-numeric:tabular-nums}
+.count b{color:var(--ink);font-weight:700}
+.brand{font-size:11px;letter-spacing:.18em;white-space:nowrap;font-weight:700}
+.brand span{color:var(--red)}
+.track{height:3px;margin:0 -20px -1px;background:transparent}
+.track i{display:block;height:100%;width:0;background:var(--accent);transition:width .3s ease}
 
-.screen{display:none;padding-top:10px}
-.screen.on{display:flex;flex-direction:column;min-height:calc(100vh - 62px);min-height:calc(100dvh - 62px - env(safe-area-inset-top));animation:in .4s cubic-bezier(.2,.7,.2,1)}
-@keyframes in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-.screen:focus{outline:none}
+/* Section shortcuts in the top bar: fill in when a section is settled, underline where you are */
+.secnav{display:flex;gap:6px;padding:0 0 8px}
+.secnav button{flex:1;min-height:32px;border-radius:8px;border:1px solid var(--line-strong);background:var(--surface);font-size:12.5px;font-weight:700;
+  color:var(--muted);font-variant-numeric:tabular-nums;position:relative;transition:background .15s,color .15s,border-color .15s}
+.secnav button.full{background:var(--red);border-color:var(--red);color:#fff}
+.secnav button.cur{border-color:var(--ink);color:var(--ink)}
+.secnav button.full.cur{border-color:var(--ink);color:#fff}
+.secnav button.cur::after{content:"";position:absolute;left:30%;right:30%;bottom:-6px;height:2px;border-radius:2px;background:var(--ink)}
+/* Welcome back */
+.resume{display:flex;align-items:center;gap:12px;margin-top:16px;padding:12px 12px 12px 16px;border-radius:14px;font-size:14.5px}
+.resume p{flex:1}
+.resume b{font-weight:700}
+.resume button{flex:none;min-height:40px;padding:0 14px;border-radius:10px;border:0;background:var(--ink);color:var(--paper);font-size:14px;font-weight:700}
+/* One-line hint before the first item */
+.hint{display:flex;gap:10px;align-items:flex-start;margin-top:28px;padding:12px 14px;border-radius:12px;border:1px dashed var(--line-strong);font-size:14px;line-height:1.5;color:var(--body)}
+.hint b{color:var(--red-dark);font-weight:700}
+.hint .box{margin-top:1px;width:18px;height:18px}
+/* "Tengok keputusan" nudge above the bottom bar once they reach the last section */
+.jump{position:fixed;left:50%;bottom:calc(86px + env(safe-area-inset-bottom));z-index:41;transform:translateX(-50%);display:inline-flex;align-items:center;gap:8px;
+  padding:10px 16px;border-radius:999px;font-size:14px;font-weight:700;color:var(--ink);text-decoration:none;white-space:nowrap;transition:opacity .2s,transform .2s}
+.jump[hidden]{display:inline-flex !important;opacity:0;transform:translate(-50%,10px);pointer-events:none}
+.jump b{color:var(--red)}
+/* Red pen tick over a section's drawing once the whole section is settled */
+.sec-art{position:relative}
+.sec-art .pic{display:block;width:100%;height:100%}
+.done-tick{position:absolute;right:-6px;bottom:-4px;width:22px;height:21px;overflow:visible}
+.done-tick path{fill:none;stroke:var(--red);stroke-width:3.6;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:40;stroke-dashoffset:40;transition:stroke-dashoffset .3s ease-out}
+.sec.done .done-tick path{stroke-dashoffset:0}
+.sec{scroll-margin-top:96px}
+.item{scroll-margin-top:110px}
 
-/* Intro, centred like a landing page */
-.intro{text-align:center}
-.eyebrow{display:inline-flex;align-items:center;gap:8px;height:30px;padding:0 13px;border-radius:999px;border:1px solid var(--line);
-  font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-top:14px}
-.eyebrow::before{content:"";width:7px;height:7px;border-radius:50%;background:#3DBE6B}
-.pre{font-weight:700;font-size:17px;line-height:1.4;color:var(--muted);margin-top:20px}
-h1{font-weight:800;font-size:clamp(34px,10vw,44px);line-height:1.05;letter-spacing:-.035em;margin-top:6px;text-wrap:balance}
-.lede{font-size:16px;line-height:1.55;color:var(--muted);margin:14px auto 0;max-width:340px;text-wrap:balance}
-.art{margin:8px auto 0;max-width:250px}
-.art svg{display:block;width:100%;height:auto}
-.gets{list-style:none;text-align:left;margin-top:8px;border:1px solid var(--line);border-radius:20px;padding:4px 18px}
-.gets li{display:flex;gap:14px;align-items:center;padding:14px 0;border-top:1px solid var(--line);font-size:15px;line-height:1.4;font-weight:700}
-.gets li:first-child{border-top:0}
-.gets li span{width:26px;height:26px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-size:12.5px;font-weight:800;flex:none}
-.gets li small{display:block;font-weight:500;font-size:13px;color:var(--muted);margin-top:1px}
-.trust{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 16px;margin-top:14px;font-size:13px;font-weight:600;color:var(--muted)}
-.trust span{display:inline-flex;align-items:center;gap:6px}
-.trust svg{width:14px;height:14px;color:var(--ink)}
-.by{display:flex;align-items:center;justify-content:center;gap:10px;margin:26px 0 30px;font-size:13.5px;font-weight:600;color:var(--muted)}
-.avatar{width:32px;height:32px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-weight:800;font-size:13px;overflow:hidden}
-.avatar img{width:100%;height:100%;object-fit:cover}
-.by b{color:var(--ink);font-weight:700}
+/* Opening */
+.intro{padding-top:22px}
+.label{font-size:12.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--red)}
+.pre{font-size:18px;font-weight:600;line-height:1.3;letter-spacing:-.015em;color:var(--muted);margin-top:12px}
+h1{font-size:clamp(34px,10vw,52px);font-weight:800;line-height:1.08;letter-spacing:-.04em;margin-top:4px;text-wrap:balance}
+/* one hand-drawn marker stroke, like the underline on the key phrase in the reels */
+.u{position:relative;white-space:nowrap}
+/* Marker underline that can wrap onto two lines (the hero phrase is long on phones) */
+.mk{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 20' preserveAspectRatio='none'%3E%3Cpath d='M3 13 C 52 6, 104 5, 158 8 S 254 15, 297 6' fill='none' stroke='%23D31145' stroke-width='7' stroke-linecap='round' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E") 0 100%/100% .3em no-repeat;
+  -webkit-box-decoration-break:clone;box-decoration-break:clone;padding-bottom:.08em}
+.u svg{position:absolute;left:-2%;bottom:-.08em;width:104%;height:.32em;overflow:visible;pointer-events:none}
+.u path{fill:none;stroke:var(--red);stroke-width:7;stroke-linecap:round;vector-effect:non-scaling-stroke}
+.lede{font-size:16.5px;line-height:1.55;color:var(--body);margin-top:14px;max-width:440px}
+.plain{font-size:13.5px;color:var(--muted);margin-top:8px}
+/* Start form: name, number, age, gender before the checklist opens */
+#result{scroll-margin-top:120px}
+.start{margin-top:40px;padding:18px 16px 16px;scroll-margin-top:110px}
+.start .fields{margin-top:12px}
+.start > .field + .field,.start > .fields + .field{margin-top:10px}
+.field.bad .seg button{border-color:var(--red)}
+.start .seg{margin-top:4px}
+.agree{display:flex;gap:10px;align-items:flex-start;margin-top:14px;font-size:13.5px;line-height:1.5;color:var(--body);cursor:pointer}
+.agree input{width:20px;height:20px;flex:none;margin-top:1px;accent-color:var(--red)}
+.agree.bad{color:var(--red)}
+.start .btn{margin-top:14px}
+.start .why{font-size:12.5px;line-height:1.5;color:var(--muted);margin-top:10px}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+/* Until the form is done, the result and the offer stay hidden */
+.gated .result > :not(.fine){display:none !important}
+body:not(.gated) .start{display:none}
+/* Two quick questions that hide items that don't apply */
+.ask{margin-top:20px;padding:16px 16px 14px;border-radius:16px}
+.ask-h{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--red)}
+.q{font-size:15px;font-weight:650;margin-top:10px}
+.seg{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.seg button{min-height:38px;padding:0 14px;border-radius:999px;border:1px solid var(--line-strong);background:var(--surface);font-size:14px;font-weight:600;color:var(--body);transition:background .15s,color .15s,border-color .15s}
+.seg button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.ask-n{font-size:13px;color:var(--muted);margin-top:10px}
+.ask-sub{font-size:14px;line-height:1.5;color:var(--body);margin-top:4px}
+.ask-n b{color:var(--ink)}
+/* Marker drawings (same kit as the reels); they change with what the visitor chooses */
+.art svg{display:block;width:100%;height:100%;overflow:visible}
+.art{transition:opacity .2s ease}
+.art.fade{opacity:0}
+.art-q{height:176px;margin:0 0 8px}
+.res-top{display:flex;align-items:flex-end;gap:10px}
+.res-top > div:first-child{flex:1;min-width:0}
+.art-r{width:132px;height:116px;flex:none;margin-bottom:6px}
 
-/* Step headers, centred */
-.head{text-align:center;padding-top:8px}
-.tag{font-size:11.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
-.head h2{font-weight:800;font-size:clamp(25px,7.2vw,30px);line-height:1.14;letter-spacing:-.025em;margin-top:8px;text-wrap:balance}
-.head p{font-size:15px;line-height:1.5;color:var(--muted);margin:8px auto 0;max-width:330px;text-wrap:balance}
-
-/* Itemised rows, like a budget sheet */
-.block{margin-top:22px}
-.screen > .block:nth-last-child(2){margin-bottom:22px}
-.block h3{font-size:11.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin:0 2px 8px}
-.lines{border:1px solid var(--line);border-radius:20px;padding:2px 16px;background:#fff;box-shadow:0 1px 2px rgba(20,20,20,.03)}
-.line{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:66px;padding:10px 0;border-top:1px solid var(--line)}
-.line:first-child{border-top:0}
-.l{font-weight:700;font-size:15px;line-height:1.3}
-.l small{display:block;font-weight:500;font-size:12.5px;line-height:1.35;color:var(--muted);margin-top:2px}
-.amt{display:flex;align-items:center;gap:6px;width:134px;height:46px;padding:0 12px;border-radius:12px;background:var(--fill);
-  flex:none;border:1.5px solid transparent;transition:border-color .15s,background .15s}
-.amt:focus-within{border-color:var(--ink);background:#fff}
-.amt i{font-style:normal;font-size:12.5px;font-weight:700;color:var(--soft)}
-.amt input{width:100%;min-width:0;border:0;outline:0;background:transparent;font:inherit;font-weight:800;font-size:17px;
-  text-align:right;color:var(--ink);font-variant-numeric:tabular-nums}
-.amt input::placeholder{color:#C9C5BB}
-.amt.short{width:112px}
-.sub-line{padding:0 0 14px}
-.chips{display:flex;flex-wrap:wrap;gap:8px}
-.chip{min-height:42px;padding:0 16px;border-radius:999px;border:1.5px solid var(--line);background:#fff;font-weight:700;font-size:14.5px;transition:all .15s}
-.chip:active{transform:scale(.97)}
-.chip[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
-.stepper{display:flex;align-items:center;background:var(--fill);border-radius:999px;flex:none}
-.stepper button{width:42px;height:42px;border:0;background:none;font-size:20px;font-weight:700;line-height:1}
-.stepper output{min-width:26px;text-align:center;font-weight:800;font-size:16px;font-variant-numeric:tabular-nums}
-.check{display:flex;align-items:center;gap:10px;margin:12px 2px 0;font-size:14px;font-weight:600;color:var(--muted)}
-.check input{width:20px;height:20px;accent-color:var(--ink)}
-.range{padding:14px 0 16px}
-.range-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
-.range-top b{font-size:20px;font-weight:800;font-variant-numeric:tabular-nums;white-space:nowrap}
-input[type=range]{width:100%;margin-top:14px;-webkit-appearance:none;appearance:none;height:6px;border-radius:3px;
-  background:linear-gradient(var(--ink),var(--ink)) 0/var(--p,50%) 100% no-repeat,var(--line)}
-input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:26px;height:26px;border-radius:50%;background:#fff;border:2px solid var(--ink);box-shadow:0 2px 6px rgba(0,0,0,.15)}
-input[type=range]::-moz-range-thumb{width:24px;height:24px;border-radius:50%;background:#fff;border:2px solid var(--ink)}
-
-/* Bottom dock: the live total and the next button */
-.dock{position:sticky;bottom:0;z-index:4;display:flex;align-items:center;gap:14px;margin:auto -22px 0;
-  padding:14px 22px calc(14px + env(safe-area-inset-bottom));background:rgba(255,255,255,.96);border-top:1px solid var(--line);
-  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
-.sum{flex:1;min-width:0}
-.sum small{display:block;font-size:12px;font-weight:600;color:var(--muted)}
-.sum b{display:block;font-size:19px;font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
-.sum em{font-style:normal;font-size:12px;font-weight:700}
-.mini{height:5px;border-radius:3px;background:var(--line);overflow:hidden;margin-top:6px}
-.mini i{display:block;height:100%;width:0;border-radius:3px;transition:width .3s,background .3s}
-.btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:56px;padding:0 24px;
-  border:0;border-radius:999px;background:var(--ink);color:#fff;font-weight:700;font-size:16px;text-decoration:none;
-  text-align:center;transition:transform .12s,opacity .2s}
-.btn:active{transform:scale(.985)}
-.btn[disabled],.btn[aria-disabled="true"]{opacity:.22;pointer-events:none}
-.btn svg{width:20px;height:20px;flex:none}
-.dock .btn{width:auto;flex:none}
-.dock .btn.wide{flex:1}
-.btn.ghost{background:#fff;color:var(--ink);border:1.5px solid var(--line);margin-top:10px}
-.link{display:block;margin:14px auto 0;padding:8px 12px;border:0;background:none;font-weight:700;font-size:15px;color:var(--muted);
-  text-decoration:underline;text-underline-offset:4px;text-decoration-color:var(--soft)}
+/* Checklist sections */
+.sec{margin-top:40px}
+.sec-head{display:grid;grid-template-columns:58px 1fr auto;gap:0 12px;align-items:end;padding-bottom:10px;border-bottom:2px solid var(--ink)}
+.sec-art{width:58px;height:50px;align-self:center}
+.sec-art svg{display:block;width:100%;height:100%;overflow:visible}
+.num{display:block;font-size:12.5px;font-weight:700;color:var(--red);font-variant-numeric:tabular-nums;margin-bottom:1px}
+.sec-head h2{font-size:19px;font-weight:750;letter-spacing:-.02em;line-height:1.25}
+.sec-head p{font-size:14px;color:var(--muted)}
+.sec-head b{font-size:13.5px;font-weight:600;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.sec-head b.full{color:var(--red)}
+.items{list-style:none}
+.item{border-bottom:1px solid var(--line);transition:background .15s}
+.item label{display:flex;align-items:flex-start;gap:14px;padding:16px 2px 4px;cursor:pointer}
+.item input{position:absolute;opacity:0;width:1px;height:1px}
+/* a square box with a pen tick, like ticking a paper form */
+.box{position:relative;width:22px;height:22px;margin-top:2px;border:1.6px solid var(--ink);border-radius:4px;background:var(--white);flex:none}
+.box svg{position:absolute;left:-3px;top:-7px;width:30px;height:28px;overflow:visible}
+.box path{fill:none;stroke:var(--red);stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:40;stroke-dashoffset:40;transition:stroke-dashoffset .22s ease-out}
+.item input:checked + .box path{stroke-dashoffset:0}
+.item input:focus-visible + .box{outline:2px solid var(--red);outline-offset:3px}
+.item .t{display:block;font-size:16px;font-weight:600;line-height:1.4;letter-spacing:-.01em}
+.item .p{display:block;font-size:14.5px;line-height:1.5;color:var(--muted);margin-top:2px}
+.item.on .t{color:var(--muted)}
+.item.on .p{color:var(--faint)}
+/* "Tak pasti": a question mark in the box instead of a tick */
+.box .qm{position:absolute;inset:0;display:grid;place-items:center;font-size:15px;font-weight:800;color:var(--red);opacity:0;transition:opacity .15s}
+.item.maybe .box{border-color:var(--red);border-style:dashed}
+.item.maybe .box .qm{opacity:1}
+.acts{display:flex;align-items:center;gap:18px;margin:0 0 10px 38px}
+.unsure{min-height:36px;padding:0 12px;border-radius:999px;border:1px solid var(--line-strong);background:transparent;font-size:13px;font-weight:600;color:var(--muted)}
+.unsure[aria-pressed="true"]{border-color:var(--red);background:var(--red-tint);color:var(--red-dark)}
+.more{display:inline-flex;align-items:center;gap:4px;margin:0;padding:6px 0;min-height:36px;border:0;background:none;
+  font-size:14px;font-weight:600;color:var(--red);text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+.more svg{width:13px;height:13px}
+.fact{display:none}
+/* Facts open in a centred glass pop-up over the blurred page */
+.modal-bg{position:fixed;inset:0;z-index:60;display:grid;place-items:center;padding:24px 18px;
+  background:rgba(24,24,27,.18);-webkit-backdrop-filter:blur(14px) saturate(140%);backdrop-filter:blur(14px) saturate(140%);opacity:0;transition:opacity .2s ease}
+.modal-bg.show{opacity:1}
+.modal{position:relative;display:flex;flex-direction:column;width:100%;max-width:400px;max-height:min(80vh,640px);overflow:hidden;border-radius:22px;
+  background:var(--modal);-webkit-backdrop-filter:saturate(180%) blur(24px);backdrop-filter:saturate(180%) blur(24px);
+  border:1px solid var(--glass-line);box-shadow:0 1px 0 var(--glass-hi) inset,0 30px 70px -20px rgba(0,0,0,.5);
+  transform:scale(.96);transition:transform .2s ease}
+.modal-bg.show .modal{transform:none}
+.modal .scroll{overflow:auto;-webkit-overflow-scrolling:touch;padding:22px 20px 6px}
+.modal .k{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--red);padding-right:40px}
+.modal h3{font-size:19px;font-weight:750;line-height:1.3;letter-spacing:-.02em;margin-top:6px;padding-right:30px}
+.modal .body{font-size:15.5px;line-height:1.65;color:var(--body);margin-top:12px;padding-left:14px;border-left:2px solid var(--red)}
+.modal .body b{color:var(--ink);font-weight:700}
+.modal .body p + p,.modal .body ul + p,.modal .body p + ul{margin-top:10px}
+.modal .body ul{list-style:none}
+.modal .body li{position:relative;padding-left:16px;margin-top:8px}
+.modal .body li::before{content:"";position:absolute;left:0;top:.72em;width:7px;height:2px;background:var(--red)}
+.modal .srcs{margin:16px 0 14px;font-size:13px;line-height:1.5;color:var(--muted)}
+.modal .srcs a{display:block;color:var(--ink);text-decoration:underline;text-underline-offset:2px;margin-top:6px}
+.modal .x{position:absolute;top:14px;right:14px;width:32px;height:32px;border-radius:50%;border:0;background:var(--hair);display:grid;place-items:center;color:var(--ink)}
+.modal .x svg{width:12px;height:12px}
+.modal .foot{padding:12px 20px 18px;border-top:1px solid var(--hair)}
+.modal .btn{min-height:50px}
+body.lock{overflow:hidden}
 
 /* Result */
-.hero{background:var(--ink);color:#fff;border-radius:24px;padding:24px 22px 22px;margin-top:18px;box-shadow:0 24px 50px -26px rgba(20,20,20,.7)}
-.hero .kicker{font-weight:600;font-size:15.5px;line-height:1.4;color:#CFCBC2;text-wrap:balance}
-.big{line-height:1;margin:14px 0 2px;font-variant-numeric:tabular-nums}
-.big b{font-weight:800;font-size:clamp(56px,17vw,72px);letter-spacing:-.045em}
-.big small{font-weight:700;font-size:clamp(20px,6vw,26px);letter-spacing:-.02em;margin:0 4px 0 6px;color:#CFCBC2}
-.meter{margin-top:18px}
-.meter .bar{height:8px;border-radius:4px;background:rgba(255,255,255,.14);overflow:hidden}
-.meter .bar i{display:block;height:100%;width:0;border-radius:4px;transition:width .9s cubic-bezier(.2,.7,.2,1)}
-.meter p{display:flex;justify-content:space-between;gap:10px;font-size:12.5px;font-weight:600;color:#A9A59B;margin-top:8px}
-.hero .note{font-size:14px;line-height:1.5;color:#CFCBC2;margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,.12);text-wrap:pretty}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
-.stat{background:var(--fill);border-radius:16px;padding:13px 12px}
-.stat small{display:block;font-size:11.5px;line-height:1.3;font-weight:600;color:var(--muted)}
-.stat b{display:block;font-size:16px;font-weight:800;margin-top:6px;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
-.stat b.bad{color:#C6385A}
-.card{border:1px solid var(--line);border-radius:22px;padding:20px 18px 18px;margin-top:14px;background:#fff;box-shadow:var(--shadow)}
-.card > h3{font-size:16px;font-weight:800;letter-spacing:-.01em}
-.card > p.desc{font-size:13.5px;line-height:1.5;color:var(--muted);margin-top:4px}
-.cbar{display:flex;justify-content:space-between;align-items:baseline;margin-top:18px;font-size:13px;font-weight:700;color:var(--muted)}
-.cbar b{font-size:16px;color:var(--ink);font-variant-numeric:tabular-nums}
-.stack{display:flex;height:16px;border-radius:8px;overflow:hidden;background:var(--fill);margin:8px 0 10px}
-.stack i{height:100%;transition:width .8s cubic-bezier(.2,.7,.2,1)}
-.stack i + i{box-shadow:inset 2px 0 0 #fff}
-.stack i.gapseg{background:repeating-linear-gradient(-45deg,#F4B6C5 0 5px,#FDE8EE 5px 10px)}
-.legend{list-style:none}
-.legend li{display:flex;align-items:center;gap:10px;padding:6px 0;font-size:13.5px;line-height:1.35}
-.legend li i{width:10px;height:10px;border-radius:3px;flex:none}
-.legend li span{flex:1;color:var(--muted)}
-.legend li span small{display:block;font-size:11.5px;color:var(--soft)}
-.legend li b{font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
-.gapbox{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:14px;padding:16px;border-radius:16px;background:#FFF1F4}
-.gapbox span{font-size:14px;font-weight:700;line-height:1.3}
-.gapbox span small{display:block;font-size:12px;font-weight:500;color:var(--muted)}
-.gapbox b{font-size:clamp(24px,7vw,30px);font-weight:800;letter-spacing:-.03em;font-variant-numeric:tabular-nums;white-space:nowrap}
-.gapbox.ok{background:#EDF8EF}
-.years{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:14px}
-.years p{font-size:14px;line-height:1.35;font-weight:700}
-.years p small{display:block;font-weight:500;color:var(--muted);font-size:12.5px;margin-top:2px}
-.todo{list-style:none;margin-top:6px}
-.todo li{display:flex;gap:12px;padding:13px 0;border-top:1px solid var(--line)}
-.todo li:first-child{border-top:0}
-.todo li i{width:24px;height:24px;border-radius:50%;flex:none;display:grid;place-items:center;font-style:normal;font-size:12px;font-weight:800;color:#fff;background:var(--ink);margin-top:1px}
-.todo li b{display:block;font-size:15px;line-height:1.35;font-weight:700}
-.todo li span{display:block;font-size:13.5px;line-height:1.45;color:var(--muted);margin-top:2px}
-.cta{font-weight:800;font-size:24px;line-height:1.2;letter-spacing:-.025em;margin-top:6px;text-align:center;text-wrap:balance}
-.cta-sub{font-size:15px;line-height:1.5;color:var(--muted);margin:8px auto 20px;text-align:center;max-width:320px;text-wrap:balance}
-.fine{font-size:12px;line-height:1.55;color:var(--soft);margin:24px 0 8px;text-align:center;text-wrap:pretty}
-.sum small.miss{color:#C6385A;margin-top:4px}
-/* Money over time + the cover simulator */
-.chart{margin-top:16px}
-.chart svg{display:block;width:100%;height:auto;overflow:visible}
-.chart .ax{font-size:11px;font-weight:600;fill:var(--muted)}
-.chart .ax.bad{fill:#C6385A;font-weight:700}
-.story{font-size:15px;line-height:1.5;font-weight:500;margin-top:14px;padding:14px 16px;border-radius:14px;background:var(--fill);text-wrap:pretty}
-.story b{font-weight:800}
-.sim{margin-top:18px;padding-top:16px;border-top:1px solid var(--line)}
-.sim-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
-.sim-top p{font-size:14.5px;font-weight:700;line-height:1.35}
-.sim-top p small{display:block;font-size:12.5px;font-weight:500;color:var(--muted);margin-top:2px}
-.sim-top b{font-size:20px;font-weight:800;white-space:nowrap;font-variant-numeric:tabular-nums;color:var(--c-extra)}
-#extra{background:linear-gradient(var(--c-extra),var(--c-extra)) 0/var(--p,0%) 100% no-repeat,var(--line)}
-#extra::-webkit-slider-thumb{border-color:var(--c-extra)}
-.sim-out{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:12px;font-size:13.5px;line-height:1.4;color:var(--muted)}
-.sim-out b{color:var(--ink);font-weight:800}
-.pill{border:1.5px solid var(--ink);border-radius:999px;background:#fff;font-weight:700;font-size:13px;padding:8px 13px;white-space:nowrap}
-details.how{margin-top:16px;border-top:1px solid var(--line);padding-top:12px}
-details.how summary{cursor:pointer;font-size:13.5px;font-weight:700;list-style:none;display:flex;justify-content:space-between}
-details.how summary::-webkit-details-marker{display:none}
-details.how summary::after{content:"+";font-weight:800}
-details.how[open] summary::after{content:"−"}
-details.how p{font-size:13px;line-height:1.6;color:var(--muted);margin-top:8px}
+.result{margin-top:56px;padding-top:22px;border-top:2px solid var(--ink)}
+.k{font-size:12.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--red)}
+.big{font-size:20px;font-weight:600;line-height:1.3;letter-spacing:-.015em;margin-top:10px;color:var(--body)}
+.ringed{position:relative;display:inline-block;padding:0 .14em}
+.ringed svg{position:absolute;left:-14%;top:-12%;width:128%;height:126%;overflow:visible;pointer-events:none}
+.ringed path{fill:none;stroke:var(--red);stroke-width:4;stroke-linecap:round;vector-effect:non-scaling-stroke}
+.big b{display:block;font-size:76px;font-weight:800;line-height:1;letter-spacing:-.05em;color:var(--ink);font-variant-numeric:tabular-nums}
+.sub{font-size:15px;color:var(--muted);margin-top:8px}
+.sub b{color:var(--ink);font-weight:700}
+.rows{list-style:none;margin-top:22px}
+.rows li{display:grid;grid-template-columns:1fr 72px 34px;gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line);font-size:15px}
+.rows li:first-child{border-top:1px solid var(--line)}
+.rows li i{height:4px;background:var(--line);display:block}
+.rows li i u{display:block;height:100%;background:var(--red);transition:width .3s ease}
+.rows li b{font-weight:600;color:var(--muted);text-align:right;font-variant-numeric:tabular-nums}
+/* Gap cards: one per section that still has gaps, below the WhatsApp box */
+.gaps-h{font-size:22px;font-weight:800;letter-spacing:-.03em;margin-top:44px}
+.gaps-h + p{font-size:14px;line-height:1.5;color:var(--muted);margin-top:4px}
+.filt{display:flex;gap:6px;margin-top:14px;flex-wrap:wrap}
+.filt button{min-height:36px;padding:0 14px;border-radius:999px;border:1px solid var(--line-strong);background:var(--surface);font-size:13.5px;font-weight:650;color:var(--body)}
+.filt button b{font-weight:800;margin-left:4px;color:var(--muted)}
+.filt button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.filt button[aria-pressed="true"] b{color:var(--paper)}
+.filt button:disabled{opacity:.4}
+.gaps{display:grid;gap:12px;margin-top:16px}
+.gap{display:grid;grid-template-columns:76px 1fr;gap:14px;align-items:start;padding:14px 16px 16px 12px;border-radius:16px}
+.gap .art{width:76px;height:66px;margin-top:2px}
+.gap h3{display:flex;align-items:baseline;justify-content:space-between;gap:10px;font-size:16px;font-weight:750;letter-spacing:-.015em;line-height:1.3}
+.gap h3 b{flex:none;font-size:13px;font-weight:700;color:var(--red);white-space:nowrap}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.chips span{display:inline-flex;align-items:center;gap:5px;min-height:30px;padding:4px 11px;border-radius:999px;background:var(--surface);
+  border:1px solid var(--line-strong);font-size:13px;font-weight:600;line-height:1.3;color:var(--body)}
+.chips span.maybe{border:1.5px dashed var(--accent);color:var(--red-dark);background:var(--red-tint)}
+.chips span.maybe::before{content:"?";font-weight:800}
+.gaps-note{font-size:13px;color:var(--muted);margin-top:12px}
+.gaps-note b{color:var(--red-dark)}
+
+/* Offer: a note from Sagan, not a sales card */
+.offer{margin-top:40px;padding:24px 20px 20px;border-radius:18px}
+.cta-sub{font-size:16px;line-height:1.55;margin-top:10px;color:rgba(255,255,255,.88)}
+.cta{font-size:clamp(28px,8vw,34px);font-weight:800;line-height:1.12;letter-spacing:-.035em;margin-top:0;text-wrap:balance}
+.get{list-style:none;counter-reset:g;margin-top:18px}
+.get li{counter-increment:g;display:grid;grid-template-columns:28px 1fr;padding:12px 0;border-top:1px solid var(--line);font-size:15.5px;line-height:1.55;color:var(--body)}
+.get li:last-child{border-bottom:1px solid var(--line)}
+.get li::before{content:counter(g);font-weight:800;color:var(--red);font-variant-numeric:tabular-nums}
+.get li b{display:block;color:var(--ink);font-weight:700}
+/* Name, age, gender: optional, only sent inside their WhatsApp message */
+.me{margin-top:16px;padding-top:14px;border-top:1px solid var(--line);scroll-margin-top:70px}
+.me-h{font-size:14px;font-weight:650;color:var(--ink)}
+.me-h span{font-weight:400;color:var(--muted)}
+.fields{display:grid;grid-template-columns:1fr 92px;gap:10px;margin-top:10px}
+.me .fields + .field{margin-top:10px}
+.field label{display:block;font-size:12.5px;font-weight:600;color:var(--muted);margin-bottom:4px}
+.field input{width:100%;height:46px;padding:0 12px;border:1px solid var(--line-strong);border-radius:10px;background:var(--surface);
+  font:inherit;font-size:16px;color:var(--ink);-webkit-appearance:none;appearance:none}
+.field input:focus{outline:2px solid var(--red);outline-offset:1px;border-color:transparent}
+.me .seg{margin-top:4px}
+.field label i{font-style:normal;font-weight:400;color:var(--faint)}
+.field.bad input{border-color:var(--red);outline:2px solid var(--red);outline-offset:1px}
+.need{font-size:13.5px;font-weight:600;color:var(--accent);margin-top:10px}
+.when{font-size:15px;font-weight:600;color:var(--ink);margin:16px 0}
+.when span{color:var(--muted);font-weight:400}
+.btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:56px;padding:0 22px;border:0;border-radius:10px;
+  background:var(--btn);color:#fff;font-size:17px;font-weight:700;letter-spacing:-.01em;text-decoration:none;text-align:center;transition:background .12s}
+.btn:active{background:var(--btn-dark)}
+.btn svg{width:20px;height:20px;flex:none}
+.how{font-size:14px;line-height:1.55;color:var(--muted);margin-top:12px}
+.reason{font-size:15px;line-height:1.5;font-weight:700;margin-top:14px}
+.priv{font-size:13px;line-height:1.55;color:var(--muted);margin-top:10px}
+.fallback{margin-top:14px;padding:14px 0;border-top:1px solid var(--line);font-size:15px;line-height:1.5}
+.fallback b{font-weight:700;white-space:nowrap}
+.fallback textarea{display:block;width:100%;height:150px;margin-top:10px;padding:10px;border:1px solid var(--line-strong);border-radius:6px;font:inherit;font-size:14px;line-height:1.45;resize:none;background:var(--surface);color:var(--ink)}
+.pill{border:1.5px solid var(--ink);border-radius:8px;background:var(--surface);font-weight:600;font-size:14px;padding:0 16px;min-height:40px;margin-top:10px;white-space:nowrap}
+.fine{font-size:12.5px;line-height:1.6;color:var(--muted);margin-top:32px;padding-top:14px;border-top:1px solid var(--line)}
+
+/* Bottom bar, edge to edge like a phone app's own bar; hides at the result */
+.dock{position:fixed;left:0;right:0;bottom:calc(12px + env(safe-area-inset-bottom));z-index:40;width:calc(100% - 24px);max-width:520px;margin:0 auto;
+  border-radius:18px;padding:8px 8px 8px 16px;transition:transform .25s ease,opacity .2s ease}
+.dock.away{transform:translateY(calc(100% + 24px));opacity:0;pointer-events:none}
+.dock-in{display:flex;align-items:center;gap:12px}
+.sum{flex:1;min-width:0;line-height:1.25}
+.sum b{display:block;font-size:17px;font-weight:800;letter-spacing:-.02em;font-variant-numeric:tabular-nums;white-space:nowrap}
+.sum b em{font-style:normal;color:var(--red)}
+.sum small{display:block;font-size:13px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.go{display:inline-flex;align-items:center;gap:8px;flex:none;min-height:46px;padding:0 16px;border-radius:10px;background:var(--btn);color:#fff;
+  font-size:15px;font-weight:700;text-decoration:none;white-space:nowrap}
+.go:active{background:var(--btn-dark)}
+.go svg{width:18px;height:18px;flex:none}
+
+/* Colour-blocked layout: full-width bands like the reels (crimson, yellow, cream, ink), cards on top for depth */
+.band{margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);padding-left:calc(50vw - 50%);padding-right:calc(50vw - 50%)}
+.band-red{background:transparent;color:#fff}
+.band-ink{background:transparent;color:#fff}
+/* Opening band: near-black instead of wine */
+.band-dark{background:transparent}
+.band-dark .ask{box-shadow:0 24px 48px -22px rgba(0,0,0,.7)}
+/* Opening band */
+.intro.band{padding-top:30px;padding-bottom:30px}
+.band-red .label{color:var(--hl)}
+.band-red .pre{color:rgba(255,255,255,.78)}
+.band-red h1{color:#fff}
+.band-red .u path{stroke:var(--hl-red)}
+.band-red .lede{color:rgba(255,255,255,.92)}
+.band-red .plain{color:rgba(255,255,255,.72)}
+.band-red .ask{background:var(--card);border:0;-webkit-backdrop-filter:none;backdrop-filter:none;color:var(--ink);box-shadow:0 24px 48px -22px rgba(60,0,12,.6)}
+.band-red .resume{color:var(--ink)}
+/* Sections: white cards with a coloured header strip and the drawing as a white sticker */
+.hint{background:var(--card);border-style:solid;border-color:var(--line)}
+.sec{margin-top:26px;background:var(--card);border-radius:22px;overflow:hidden;box-shadow:0 1px 0 rgba(0,0,0,.03),0 22px 44px -28px rgba(70,10,24,.45)}
+.sec-head{padding:16px 16px 14px;border-bottom:0;color:#fff;align-items:center}
+.sec-head h2{color:inherit}
+.sec-head p{color:inherit;opacity:.78}
+.sec-head .num{color:var(--hl);opacity:.75}
+.sec-head b{color:inherit;opacity:.85}
+.sec-head b.full{color:#fff;opacity:1}
+.sec.t0 .sec-head{background:linear-gradient(135deg,#D31145,#8E0B2F)}
+.sec.t1 .sec-head{background:#232326}
+.sec.t2 .sec-head{background:linear-gradient(135deg,#75734F,#5A5940)}
+.sec.t3 .sec-head{background:linear-gradient(135deg,#6A0C22,#45071A)}
+.sec.t4 .sec-head{background:linear-gradient(135deg,#46464C,#2C2C31)}
+.sec-art{background:#fff;border-radius:14px;padding:5px;transform:rotate(-4deg);box-shadow:0 8px 16px -8px rgba(0,0,0,.45);height:54px;width:60px}
+.sec.t2 .sec-art{transform:rotate(3deg)}
+.items{padding:0 14px 4px}
+.item:last-child{border-bottom:0}
+/* Result: dark band */
+.result{margin-top:34px;padding-top:0;border-top:0}
+.res-band{padding-top:34px;padding-bottom:30px}
+.res-band .k{color:var(--hl);opacity:.8}
+.res-band .big{color:rgba(255,255,255,.82)}
+.res-band .big b{color:#fff}
+.res-band .ringed path{stroke:var(--hl-red)}
+.res-band .sub{color:rgba(255,255,255,.72)}
+.res-band .sub b{color:#fff}
+.res-band .art svg{filter:invert(1) hue-rotate(180deg)}
+.res-band .rows li{border-color:rgba(255,255,255,.12);color:#fff}
+.res-band .rows li:first-child{border-top-color:rgba(255,255,255,.12)}
+.res-band .rows li i{background:rgba(255,255,255,.14)}
+.res-band .rows li i u{background:var(--hl-red)}
+.res-band .rows li b{color:rgba(255,255,255,.72)}
+/* Gap cards: coloured top edge per section */
+.gap{background:var(--card);border:0;-webkit-backdrop-filter:none;backdrop-filter:none;box-shadow:0 18px 36px -24px rgba(70,10,24,.4);border-top:6px solid #D31145}
+.gap{border-top-color:#A80D37}.gap.t1{border-top-color:#232326}.gap.t2{border-top-color:var(--olive)}.gap.t3{border-top-color:var(--maroon)}.gap.t4{border-top-color:#46464C}
+/* WhatsApp: red band, white form card, yellow button */
+.offer.band{margin-top:40px;border-radius:0;padding-top:36px;padding-bottom:36px;border:0;box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none}
+.band-red .cta{color:#fff}
+.band-red .get li{color:rgba(255,255,255,.88);border-color:rgba(255,255,255,.22)}
+.band-red .get li:last-child{border-bottom-color:rgba(255,255,255,.22)}
+.band-red .get li::before{color:#fff}
+.band-red .get li b{color:#fff}
+.band-red .me{background:var(--card);color:var(--ink);border-radius:18px;padding:16px;border-top:0;box-shadow:0 20px 40px -22px rgba(60,0,12,.6)}
+.band-red .when{color:#fff}
+.band-red .when span{color:rgba(255,255,255,.75)}
+.band-red .btn{background:#fff;color:#A80D37;box-shadow:0 14px 28px -12px rgba(20,0,6,.7)}
+.band-red .btn:active{background:#F6E8EB}
+.band-red .how,.band-red .priv{color:rgba(255,255,255,.78)}
+.band-red .fallback{border-top-color:rgba(255,255,255,.22);color:#fff}
+/* Footer band */
+.fine.band{margin-top:0;padding-top:22px;padding-bottom:calc(28px + env(safe-area-inset-bottom));border-top:1px solid var(--line);color:rgba(255,255,255,.55);background:transparent}
+main{position:relative}
+/* Sections are separated by space, not by coloured bands */
+.band-red .ask{margin-bottom:0}
+.hint{margin-top:24px}
+.res-band{padding-top:10px}
+.offer.band{margin-top:20px;padding-top:10px}
+/* the last two scenes lead into text, not into a card, so they don't overlap downwards */
+/* Drawings draw themselves, stroke by stroke, the first time they come on screen */
+.anim svg [pathLength]{stroke-dasharray:1 1;stroke-dashoffset:1}
+.anim svg *{transition:stroke-dashoffset 1s cubic-bezier(.45,.05,.25,1),fill-opacity .45s ease}
+.anim:not(.drawn) svg *{fill-opacity:0}
+.anim.drawn svg [pathLength]{stroke-dashoffset:0}
+/* Doodle style: sketchy double outlines and short handwritten notes with drawn arrows (headings stay in the clean bold font so they read easily) */
+:root{--hand:"Caveat","Segoe Print","Bradley Hand",cursive}
+.sec,.gap,.band-red .ask,.band-red .me{position:relative;overflow:visible}
+.sec-head{border-radius:22px 22px 0 0}
+.sec::after,.gap::after,.band-red .ask::after,.band-red .me::after{content:"";position:absolute;inset:-6px -5px -5px -6px;pointer-events:none;
+  border:1.7px solid rgba(255,255,255,.42);border-radius:26px 19px 25px 18px / 19px 26px 18px 25px;transform:rotate(-.7deg)}
+.sec:nth-of-type(even)::after,.gap:nth-child(even)::after{transform:rotate(.6deg);border-radius:19px 26px 18px 25px / 25px 18px 26px 19px}
+.note{position:absolute;z-index:4;font-family:var(--hand);font-weight:700;font-size:25px;line-height:1;color:var(--hl);white-space:nowrap;pointer-events:none;
+  transform:rotate(-5deg);opacity:0;transition:opacity .4s ease .2s}
+.note.drawn{opacity:1}
+.note svg{position:absolute;overflow:visible}
+.note path{fill:none;stroke:var(--hl);stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.note-ask{right:6px;top:-30px}
+.note-ask svg{width:46px;height:40px;left:-44px;top:10px}
+.note-res{left:132px;top:4px;transform:rotate(-7deg)}
+.note-res svg{width:40px;height:34px;left:-38px;top:16px}
+.note-wa{right:8px;top:-34px}
+.note-wa svg{width:40px;height:38px;left:-40px;top:8px}
+.ask-wrap,.res-top,.wa-wrap{position:relative}
+.ask-wrap{margin-top:46px;scroll-margin-top:150px}
+.wa-wrap{margin-top:40px}
+/* A tiny chalk stickman walks along the progress line towards the flag as they tick things off */
+.lane{position:relative;height:30px;margin:0 -20px;padding:0 20px;color:var(--ink)}
+.lane svg{overflow:visible}
+.lane path,.lane circle{fill:none;stroke:currentColor;stroke-width:2.1;stroke-linecap:round;stroke-linejoin:round}
+.flag{position:absolute;right:16px;bottom:0;width:18px;height:26px;color:var(--red)}
+.flag path{stroke:var(--red)}
+.walker{position:absolute;bottom:-1px;left:calc(20px + (100% - 40px - 46px) * var(--p, 0));width:22px;height:28px;transition:left .9s cubic-bezier(.45,.05,.3,1)}
+.walker svg{width:100%;height:100%}
+.walker .wq{position:absolute;left:100%;top:-6px;font:800 13px/1 var(--font);font-style:normal;color:var(--accent);opacity:0;pointer-events:none}
+.walker.yay svg{animation:hop .45s ease-out}
+.walker.hmm svg{animation:tilt .7s ease-in-out}
+.walker.hmm .wq{animation:qpop .7s ease-out}
+@keyframes tilt{0%,100%{transform:none}30%,70%{transform:rotate(-12deg)}}
+@keyframes qpop{0%{opacity:0;transform:translateY(4px)}25%,75%{opacity:1;transform:none}100%{opacity:0}}
+.walker .leg{transform-box:fill-box;transform-origin:50% 0}
+.walker.walking .leg1{animation:step .22s ease-in-out infinite alternate}
+.walker.walking .leg2{animation:step .22s ease-in-out infinite alternate-reverse}
+.walker .arms-up{display:none}
+.walker.done .arms-up{display:inline}
+.walker.done .arms-down{display:none}
+.walker.done{animation:hop .5s ease-out 2}
+@keyframes step{from{transform:rotate(-22deg)}to{transform:rotate(22deg)}}
+@keyframes hop{50%{transform:translateY(-5px)}}
+@media (prefers-reduced-motion:reduce){.walker{transition:none}.walker.walking .leg,.walker.done,.walker.yay svg,.walker.hmm svg,.walker.hmm .wq{animation:none}}
+/* Pop-ups: the stickman says it, in a comic speech bubble (white, thick ink outline, tail pointing at him) */
+.modal{background:none;border:0;border-radius:0;box-shadow:none;max-width:370px;overflow:visible;display:flex;flex-direction:column;
+  -webkit-backdrop-filter:none;backdrop-filter:none;transform:translateY(14px) scale(.94);transform-origin:80% 100%;max-height:none}
+.modal-bg.show .modal{transform:none}
+.bubble{position:relative;display:flex;flex-direction:column;max-height:min(68vh,540px);background:#fff;color:#1d1d1f;
+  border:2.6px solid #1d1d1f;border-radius:24px 22px 26px 20px;box-shadow:5px 6px 0 rgba(0,0,0,.45)}
+.bubble::after{content:"";position:absolute;right:38px;bottom:-15px;width:24px;height:24px;background:#fff;
+  border-right:2.6px solid #1d1d1f;border-bottom:2.6px solid #1d1d1f;transform:rotate(45deg) skew(8deg,8deg);border-bottom-right-radius:4px}
+.speaker{width:58px;height:78px;margin:30px 22px 0 0;align-self:flex-end;transform:scaleX(-1);color:#F4F4F5;flex:none}
+.modal .scroll{overflow:auto;min-height:0;padding:22px 20px 4px}
+.modal .k{color:#B80E3C;font-size:11.5px}
+.modal h3{color:#1d1d1f;font-size:19px;padding-bottom:10px;padding-right:26px;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='8'%3E%3Cpath d='M2 5 Q16 1 30 5 T58 5 T86 5 T114 5' fill='none' stroke='%23D31145' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E") 0 100%/120px 8px no-repeat}
+.modal .body{border-left:0;padding-left:0;color:#38383c;font-size:16px;line-height:1.6;margin-top:12px}
+.modal .body b{color:#111}
+.modal .srcs{margin:14px 0 6px;font-size:12.5px;color:#7a746a;font-style:italic}
+.modal .srcs:empty{display:none}
+.modal .x{background:none;color:#1d1d1f;top:10px;right:8px;width:36px;height:36px}
+.modal .x svg{width:20px;height:20px}
+.modal .foot{border-top:0;padding:6px 20px 18px;display:flex;align-items:center;gap:16px}
+.ok-btn{min-height:44px;padding:0 22px;border-radius:999px;border:0;background:var(--btn);color:#fff;font-size:15px;font-weight:700}
+.ok-btn:active{transform:scale(.97)}
+.leave-btn{border:0;background:none;color:#6b6b73;font-size:14px;font-weight:600;text-decoration:underline;text-underline-offset:3px;min-height:44px}
+/* ===== v3 look: white page, centred hero, heavy headlines, clean bordered cards ===== */
+body::before,body::after{display:none}
+h1,.cta,.gaps-h,.sec-head h2,.big b,.modal h3,.steps b,.btn,.go,.ok-btn,.q{font-family:var(--head)}
+/* Hero */
+.intro.band{text-align:center;padding-top:26px;padding-bottom:8px}
+.intro.band .label{display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border-radius:999px;background:var(--red-tint);color:var(--red-dark);
+  font-family:var(--head);font-size:11.5px;font-weight:700;letter-spacing:.06em}
+.intro.band .label::before{content:"";width:8px;height:8px;border-radius:50%;background:#1DB954;flex:none}
+.intro.band .pre{color:var(--muted);font-size:17px;margin-top:16px}
+.intro.band h1{color:var(--ink);font-size:clamp(34px,9.6vw,64px);font-weight:800;line-height:1.08;letter-spacing:-.035em;margin-top:6px}
+.intro.band .lede{color:var(--body);font-size:17px;line-height:1.55;max-width:640px;margin:14px auto 0}
+.art-hero{width:100%;max-width:620px;aspect-ratio:900/440;margin:22px auto 0}
+.intro.band .plain{display:inline-flex;align-items:center;gap:8px;color:var(--ink);font-size:13.5px;font-weight:600;margin-top:14px;text-align:left}
+.plain i{width:9px;height:9px;border-radius:50%;background:#1DB954;flex:none}
+.steps{list-style:none;display:grid;gap:0;margin:20px auto 0;max-width:720px;text-align:left;border:1.5px solid #F3C4CE;border-radius:18px;background:#FFF7F8;overflow:hidden}
+.steps li{display:flex;align-items:center;gap:12px;padding:12px 16px}
+.steps li + li{border-top:1px solid #F7DCE2}
+.steps li > i{flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font:700 14px/1 var(--head);font-style:normal;
+  color:var(--red);background:#fff;border:1.5px solid #F3C4CE}
+.steps li.on > i{background:var(--red);border-color:var(--red);color:#fff}
+.steps b{display:block;font-size:15px;font-weight:700;line-height:1.25;color:var(--ink)}
+.steps span{display:block;font-size:13px;color:var(--muted)}
+.steps li:not(.on) b{color:#5B5968}
+.intro.band .resume,.intro.band .ask-wrap{max-width:520px;margin-left:auto;margin-right:auto;text-align:left}
+.intro.band .resume{border:1.5px solid var(--line-strong);background:#fff}
+@media (min-width:760px){
+  .intro.band{padding-left:max(20px,calc(50vw - 480px));padding-right:max(20px,calc(50vw - 480px));padding-top:44px}
+  .intro.band .pre{font-size:20px}
+  .intro.band .lede{font-size:20px}
+  .top{margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);padding-left:calc(50vw - 50%);padding-right:calc(50vw - 50%)}
+  .steps{grid-template-columns:1fr 1fr 1.25fr}
+  .steps li + li{border-top:0;border-left:1px solid #F7DCE2}
+}
+/* Cards */
+.band-ink{color:var(--ink)}
+.band-red .ask,.start{background:#fff;border:1.5px solid var(--line-strong);box-shadow:0 22px 44px -30px rgba(20,18,31,.35);-webkit-backdrop-filter:none;backdrop-filter:none}
+.band-dark .ask{box-shadow:0 22px 44px -30px rgba(20,18,31,.35)}
+.sec::after,.gap::after,.band-red .ask::after,.band-red .me::after{display:none}
+.sec{background:#fff;border:1.5px solid var(--line-strong);border-radius:20px;box-shadow:0 22px 44px -32px rgba(20,18,31,.35)}
+.sec .sec-head{background:var(--soft) !important;color:var(--ink);border-bottom:1.5px solid var(--line);border-radius:18.5px 18.5px 0 0}
+.sec-head h2{font-weight:700;letter-spacing:-.02em}
+.sec-head p{opacity:1;color:var(--muted)}
+.sec-head .num{color:var(--red);opacity:1}
+.sec-head b{color:var(--muted);opacity:1}
+.sec-head b.full{color:var(--red)}
+.sec-art{box-shadow:none;border:1.5px solid var(--line-strong)}
+.hint{border:1.5px dashed var(--line-strong);background:var(--soft)}
+.gaps .gap{border:1.5px solid var(--line-strong);box-shadow:0 18px 36px -28px rgba(20,18,31,.3)}
+.dock{border:1.5px solid var(--line-strong);box-shadow:0 18px 40px -16px rgba(20,18,31,.35)}
+.btn,.go{border-radius:12px}
+/* Result */
+.res-band .k{color:var(--red);opacity:1}
+.res-band .big{color:var(--body)}
+.res-band .big b{color:var(--ink)}
+.res-band .sub{color:var(--muted)}
+.res-band .sub b{color:var(--ink)}
+.res-band .art svg{filter:none}
+.res-band .rows li,.res-band .rows li:first-child{border-color:var(--line);color:var(--ink)}
+.res-band .rows li i{background:var(--line)}
+.res-band .rows li b{color:var(--muted)}
+/* Offer: one dark card, white text, white button */
+.offer.band{background:#14121F;border-radius:24px;margin:36px 0 0;padding:28px 20px 24px}
+.offer .note{color:#fff}
+.offer .note path{stroke:#fff}
+.band-red .me{border:0}
+.fine.band{color:var(--muted)}
+.band-red .btn{font-size:16px;padding:0 12px;gap:8px}
+/* Pop-ups */
+.modal-bg{background:rgba(20,18,31,.32)}
+.speaker{color:#14121F}
+.bubble{box-shadow:5px 6px 0 rgba(20,18,31,.22)}
 .print-only{display:none}
-@media (prefers-reduced-motion:reduce){.screen.on{animation:none}.track i,.meter .bar i,.stack i,.mini i{transition:none}}
+@media (prefers-reduced-motion:reduce){*{transition:none !important}.anim svg [pathLength]{stroke-dashoffset:0 !important}.anim svg *{fill-opacity:1 !important}}
+.hint .box{background:transparent}
 @media print{
-  @page{margin:14mm}
-  .top,.dock,.btn,.link,.art,.cta,.cta-sub,.sim,.stepper,#years-row,details.how summary::after{display:none !important}
-  .screen{display:none !important}
-  .screen[data-id=result]{display:block !important;min-height:0;animation:none;padding:0}
-  .print-only{display:block;font-size:12px;color:var(--muted);text-align:center;margin-top:6px}
-  .hero,.card,.stat,.stats,.story,.gapbox{break-inside:avoid;box-shadow:none !important}
+  @page{margin:12mm}
+  :root{color-scheme:light}
+  body{background:#fff;color:#18181B;font-size:12px}
+  .top,.dock,.result,.offer,.acts,.ask,.fallback,.priv,.modal-bg,.jump,.resume,.hint,.done-tick,.note,.lane{display:none !important}
+  .sec::after{display:none}
+  .band{margin:0;padding:0;background:none !important;color:#18181B !important;box-shadow:none !important}
+  .sec{box-shadow:none;border:1px solid #ccc}
+  .sec-head{background:none !important;color:#18181B !important}
+  body::before,body::after{display:none}
+  main{max-width:none;padding:0}
+  .intro{padding:0}
+  h1{font-size:26px}
+  .sec{margin-top:16px;break-inside:avoid-page}
+  .item{break-inside:avoid}
+  .fact{display:block !important;margin:0 0 8px 36px;font-size:10px;color:var(--body)}
+  .print-only{display:block;font-size:11px;color:var(--muted);margin-top:4px}
   *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
 }
 </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="hand"><feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="2" seed="7"/><feDisplacementMap in="SourceGraphic" scale="5"/></filter></svg>
 <main>
   <header class="top">
     <div class="row">
-      <div class="nav off" id="nav">
-        <button class="back" id="back" aria-label="Kembali"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
-        <span class="count" id="count"></span>
-      </div>
-      <div class="brand" aria-label="SAGAN, AIA Takaful"><b>SAGAN</b><i></i><span>AIA TAKAFUL</span></div>
+      <span class="count" id="count"></span>
+      <span class="brand">SAGAN · <span>AIA TAKAFUL</span></span>
     </div>
-    <div class="track off" id="track" aria-hidden="true"><i id="bar"></i></div>
+    <nav class="secnav" id="secnav" aria-label="Bahagian checklist"></nav>
+    <div class="lane" aria-hidden="true">
+      <svg class="flag" viewBox="0 0 20 28"><path d="M4 27 V3 M4 4 C9 1 12 7 18 4 V13 C12 16 9 10 4 13"/></svg>
+      <span class="walker" id="walker"><svg viewBox="0 0 24 30">
+        <circle cx="12" cy="6" r="4.4"/><path d="M12 10.5 V20"/>
+        <g class="arms-down"><path d="M12 13 L7 18 M12 13 L17 17"/></g>
+        <g class="arms-up"><path d="M12 13 L6 7 M12 13 L18 7"/></g>
+        <path class="leg leg1" d="M12 20 L9 29"/><path class="leg leg2" d="M12 20 L15 29"/>
+      </svg><i class="wq" aria-hidden="true">?</i></span>
+    </div>
+    <div class="track" aria-hidden="true"><i id="bar"></i></div>
   </header>
 
-  <!-- ===== Intro ===== -->
-  <section class="screen intro on" data-id="intro" tabindex="-1">
-    <span class="eyebrow">Cek Perlindungan · 3 minit</span>
-    <p class="pre">Kalau esok jadi <span class="nw">apa-apa</span> pada korang,</p>
-    <h1>Family korang boleh bertahan <span class="mark yellow">berapa lama?</span></h1>
-    <p class="lede">Masukkan belanja, hutang, simpanan dan perlindungan korang. Dapat gambaran penuh dalam satu skrin.</p>
-    <div class="art"><!--scene:kira--><svg viewBox="0 0 600 520" role="img" aria-label="Lukisan: seorang lelaki menunjuk kalkulator besar yang tertulis RM ?" font-family="Plus Jakarta Sans" font-weight="800"><filter id="hand0"><feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="2" seed="3"/><feDisplacementMap in="SourceGraphic" scale="6"/></filter><g filter="url(#hand0)"><rect x="96" y="56" width="256" height="420" rx="30" fill="#fff" stroke="#141513" stroke-width="15" stroke-linejoin="round" stroke-linecap="round"/><rect x="124" y="88" width="200" height="104" rx="14" fill="#fff" stroke="#141513" stroke-width="15" stroke-linejoin="round" stroke-linecap="round" stroke-width="11"/><text x="224" y="160" font-size="56" text-anchor="middle" fill="#141513">RM ?</text><rect x="128" y="228" width="46" height="40" rx="12" fill="#141513"/><rect x="192" y="228" width="46" height="40" rx="12" fill="#141513"/><rect x="256" y="228" width="46" height="40" rx="12" fill="#141513"/><rect x="128" y="290" width="46" height="40" rx="12" fill="#141513"/><rect x="192" y="290" width="46" height="40" rx="12" fill="#141513"/><rect x="256" y="290" width="46" height="40" rx="12" fill="#141513"/><rect x="128" y="352" width="46" height="40" rx="12" fill="#141513"/><rect x="192" y="352" width="46" height="40" rx="12" fill="#141513"/><rect x="256" y="352" width="46" height="40" rx="12" fill="#141513"/><rect x="128" y="414" width="174" height="40" rx="12" fill="#141513"/> <path d="M434 358 L422 466 L394 466 M466 358 L478 466 L506 466" fill="none" stroke="#141513" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/> <path d="M418 250 L362 224 M482 250 L520 304 L488 340" fill="none" stroke="#141513" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/> <path d="M414 238 Q450 226 486 238 L492 358 L408 358 Z" fill="#fff" stroke="#141513" stroke-width="15" stroke-linejoin="round" stroke-linecap="round"/> <circle cx="356" cy="222" r="15" fill="#fff" stroke="#141513" stroke-width="11"/><circle cx="486" cy="338" r="15" fill="#fff" stroke="#141513" stroke-width="11"/> <circle cx="450" cy="192" r="42" fill="#fff" stroke="#141513" stroke-width="15" stroke-linejoin="round" stroke-linecap="round"/><circle cx="437" cy="186" r="5" fill="#141513"/><circle cx="463" cy="186" r="5" fill="#141513"/><path d="M434 202 Q450 218 466 202" fill="none" stroke="#141513" stroke-width="15" stroke-linecap="round" stroke-linejoin="round" stroke-width="9"/><path d="M408 188 C408 133 492 133 492 188 C473 171 427 171 408 188 Z" fill="#141513"/> <path d="M548 112 l22 -14 M556 150 l26 2 M540 76 l8 -24" fill="none" stroke="#141513" stroke-width="15" stroke-linecap="round" stroke-linejoin="round" stroke-width="11"/></g></svg><!--/scene--></div>
-    <ul class="gets">
-      <li><span>1</span><div>Berapa lama family boleh bertahan<small>Kalau gaji korang berhenti esok</small></div></li>
-      <li><span>2</span><div>Gap perlindungan, dipecahkan satu-satu<small>Belanja, hutang, pendidikan anak, kos akhir</small></div></li>
-      <li><span>3</span><div>Langkah seterusnya ikut keadaan korang<small>Termasuk semakan medical card</small></div></li>
-    </ul>
-    <div class="dock"><button class="btn wide" data-next>Mula kira
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
-    <div class="trust">
-      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Percuma</span>
-      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Tak perlu daftar</span>
-      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Jawapan tak disimpan</span>
+  <section class="intro band band-red band-dark">
+    <p class="label" id="label">Checklist Ganti Gaji</p>
+    <p class="pre">Kalau esok korang tak boleh kerja,</p>
+    <h1>Berapa lama duit korang bertahan?</h1>
+    <p class="lede">Ramai ingat kad medical company + PERKESO dah cukup. Semak 16 perkara ni dalam 2 minit — nampak terus mana lubang dalam gaji korang.</p>
+    <div class="art art-hero" id="art-hero" aria-hidden="true"></div>
+    <p class="plain"><i aria-hidden="true"></i>100% Percuma · Tak perlu call · Setiap fakta ada sumber rasmi</p>
+    <ol class="steps" aria-label="Macam mana ia berjalan">
+      <li class="on"><i>1</i><div><b>Tick 16 perkara</b><span>Ambil masa 2 minit</span></div></li>
+      <li><i>2</i><div><b>Nampak jurang korang</b><span>Terus di laman ni</span></div></li>
+      <li><i>3</i><div><b>Semakan percuma dengan Sagan</b><span>Di WhatsApp, kalau korang nak</span></div></li>
+    </ol>
+    <p class="print-only" id="print-meta"></p>
+    <div class="resume glass" id="resume" hidden><p>Korang dah settle <b id="resume-n"></b> sebelum ni.</p><button type="button" id="resume-go">Sambung ↓</button></div>
+    <div class="ask-wrap"><p class="note note-ask" aria-hidden="true"><svg viewBox="0 0 46 40" aria-hidden="true"><path d="M44 6 C30 2 14 10 8 32 M8 32 l-4 -11 M8 32 l10 -6"/></svg>jawab 2 ni dulu!</p>
+    <div class="ask glass">
+      <div class="art art-q" id="art-q" aria-hidden="true"></div>
+      <p class="ask-h">Langkah 1 · 10 saat</p>
+      <p class="ask-sub">Bagi tahu sikit situasi korang — biar checklist ni tapis yang berkaitan je.</p>
+      <p class="q">Korang kerja macam mana?</p>
+      <div class="seg" data-q="kerja"><button type="button" data-v="gaji" aria-pressed="false">Kerja dengan majikan</button><button type="button" data-v="sendiri" aria-pressed="false">Kerja sendiri</button><button type="button" data-v="gig" aria-pressed="false">Gig / p-hailing</button></div>
+      <p class="q">Ada loan rumah?</p>
+      <div class="seg" data-q="loan"><button type="button" data-v="ya" aria-pressed="false">Ada</button><button type="button" data-v="tidak" aria-pressed="false">Tiada</button></div>
+      <p class="ask-n" id="ask-n"></p>
     </div>
-    <p class="by"><span class="avatar">S</span><span>Disediakan oleh <b>Sagan</b></span></p>
+    </div>
   </section>
 
-  <!-- ===== 1. About ===== -->
-  <section class="screen" data-id="about" data-step="Tentang korang" tabindex="-1">
-    <div class="head"><p class="tag">Langkah 1 · Tentang korang</p><h2>Mula dengan diri korang</h2>
-      <p>Umur dan gaji tentukan berapa banyak perlindungan yang masuk akal.</p></div>
-    <div class="block"><div class="lines">
-      <label class="line"><span class="l">Umur</span><span class="amt short"><input data-k="age" inputmode="numeric" maxlength="2" placeholder="29" autocomplete="off"><i>tahun</i></span></label>
-      <label class="line"><span class="l">Gaji bersih sebulan<small>Lepas KWSP &amp; cukai</small></span><span class="amt"><i>RM</i><input data-k="income" inputmode="numeric" placeholder="0" autocomplete="off"></span></label>
-    </div></div>
-    <div class="block"><h3>Siapa bergantung pada gaji korang?</h3>
-      <div class="chips" data-group="dep" data-multi>
-        <button class="chip" data-value="pasangan">Pasangan</button>
-        <button class="chip" data-value="anak">Anak</button>
-        <button class="chip" data-value="ibubapa">Ibu bapa</button>
-        <button class="chip" data-value="tiada">Tiada sesiapa</button>
+  <p class="hint"><span class="box" aria-hidden="true"></span><span>Tick kalau dah ada. Tak sure? Tekan <b>Tak pasti</b>. Nak tahu lebih, tekan <b>Lihat fakta</b>.</span></p>
+  <div id="list"></div>
+
+  <form class="ask glass start" id="start" novalidate>
+    <p class="ask-h">Langkah terakhir</p>
+    <p class="q">Nak tengok keputusan? Isi ni dulu.</p>
+    <div class="field" id="gd-nama"><label for="g-nama">Nama</label><input id="g-nama" data-f="nama" type="text" required autocomplete="given-name" maxlength="40" placeholder="Contoh: Aina"></div>
+    <div class="fields">
+      <div class="field" id="gd-tel"><label for="g-tel">No. telefon (WhatsApp)</label><input id="g-tel" data-f="tel" type="tel" required autocomplete="tel" inputmode="tel" maxlength="16" placeholder="012-345 6789"></div>
+      <div class="field" id="gd-umur"><label for="g-umur">Umur</label><input id="g-umur" data-f="umur" type="text" required inputmode="numeric" pattern="[0-9]*" maxlength="2" placeholder="30"></div>
+    </div>
+    <div class="field" id="gd-jantina"><label>Jantina</label>
+      <div class="seg" data-q="jantina" role="group" aria-label="Jantina"><button type="button" data-v="Lelaki" aria-pressed="false">Lelaki</button><button type="button" data-v="Perempuan" aria-pressed="false">Perempuan</button></div></div>
+    <div class="hp" aria-hidden="true"><label for="g-web">Jangan isi</label><input id="g-web" type="text" tabindex="-1" autocomplete="off"></div>
+    <label class="agree" id="gd-ok"><input id="g-ok" type="checkbox"><span>Saya setuju <span class="who-name">Sagan</span> WhatsApp saya untuk semakan jurang ni (tiada spam).</span></label>
+    <p class="need" id="g-need" role="alert" hidden></p>
+    <button class="btn" type="submit">Tengok keputusan →</button>
+    <p class="why">Maklumat dan jawapan korang dihantar kepada <span class="who-name">Sagan</span> sahaja, supaya saya boleh semak jurang korang. Tak dijual kepada sesiapa.</p>
+  </form>
+
+  <section class="result" id="result">
+    <div class="band band-ink res-band">
+    <div class="res-top">
+      <div><p class="k">Keputusan korang</p><p class="big" id="big"></p></div>
+      <p class="note note-res" aria-hidden="true"><svg viewBox="0 0 40 34" aria-hidden="true"><path d="M38 4 C26 2 12 8 6 26 M6 26 l-2 -11 M6 26 l10 -5"/></svg>ni jurang korang</p>
+      <div class="art art-r" id="art-r" aria-hidden="true"></div>
+    </div>
+    <p class="sub" id="meter-l"></p>
+    <ul class="rows" id="rows"></ul>
+    </div>
+
+
+    <div id="open-card">
+      <h2 class="gaps-h">Ni peta jurang gaji korang.</h2>
+      <p id="gaps-sub"></p>
+      <div class="filt" id="filt" role="group" aria-label="Tapis jurang"><button type="button" data-f="all" aria-pressed="true">Semua</button><button type="button" data-f="no" aria-pressed="false">Belum ada</button><button type="button" data-f="u" aria-pressed="false">Tak pasti</button></div>
+      <div class="gaps" id="open"></div>
+      <p class="gaps-note" id="gaps-note"></p>
+    </div>
+
+    <div class="offer band band-red">
+      <h2 class="cta" id="cta"></h2>
+      <p class="cta-sub" id="cta-sub"></p>
+      <ol class="get">
+        <li><div><b>Saya semak polisi yang korang dah ada.</b>Hantar gambar sijil takaful atau insurans korang. Saya bagitahu apa yang dilindungi, dan apa yang tak.</div></li>
+        <li><div><b>Saya cadangkan cara tutup jurang.</b>Untuk setiap jurang dalam senarai korang, ikut bajet korang. Korang yang buat keputusan.</div></li>
+      </ol>
+      <div class="me" id="details">
+        <p class="me-h">Maklumat korang <span>(dari atas, boleh tukar)</span></p>
+        <div class="fields">
+          <div class="field" id="fd-nama"><label for="f-nama">Nama</label><input id="f-nama" data-f="nama" type="text" required aria-required="true" autocomplete="given-name" maxlength="40" placeholder="Contoh: Aina"></div>
+          <div class="field" id="fd-umur"><label for="f-umur">Umur</label><input id="f-umur" data-f="umur" type="text" required aria-required="true" inputmode="numeric" pattern="[0-9]*" maxlength="2" placeholder="30"></div>
+        </div>
+        <div class="field" id="fd-tel"><label for="f-tel">No. telefon (WhatsApp)</label><input id="f-tel" data-f="tel" type="tel" autocomplete="tel" inputmode="tel" maxlength="16" placeholder="012-345 6789"></div>
+        <div class="field" style="margin-top:10px"><label>Jantina</label>
+          <div class="seg" data-q="jantina" role="group" aria-label="Jantina"><button type="button" data-v="Lelaki" aria-pressed="false">Lelaki</button><button type="button" data-v="Perempuan" aria-pressed="false">Perempuan</button></div></div>
+        <p class="need" id="need" role="alert" hidden></p>
       </div>
-    </div>
-    <div class="block" data-kids hidden><div class="lines">
-      <div class="line"><span class="l">Bilangan anak</span><span class="stepper"><button data-step="-1" aria-label="Kurang seorang">−</button><output id="nkids">1</output><button data-step="1" aria-label="Tambah seorang">+</button></span></div>
-      <label class="line"><span class="l">Umur anak bongsu</span><span class="amt short"><input data-k="youngest" inputmode="numeric" maxlength="2" placeholder="3" autocomplete="off"><i>tahun</i></span></label>
-    </div></div>
-    <div class="dock"><div class="sum"><small class="miss" data-miss></small></div><button class="btn" data-next disabled>Seterusnya</button></div>
-  </section>
-
-  <!-- ===== 2. Spending ===== -->
-  <section class="screen" data-id="spend" data-step="Belanja" tabindex="-1">
-    <div class="head"><p class="tag">Langkah 2 · Belanja bulanan</p><h2>Ke mana gaji korang pergi?</h2>
-      <p>Anggaran pun boleh. Biar kosong kalau tiada.</p></div>
-    <div class="block"><div class="lines">
-      <label class="line"><span class="l">Ansuran / sewa rumah</span><span class="amt"><i>RM</i><input data-k="s_rumah" inputmode="numeric" placeholder="0" autocomplete="off"></span></label>
-      <label class="line"><span class="l">Ansuran kereta</span><span class="amt"><i>RM</i><input data-k="s_kereta" inputmode="numeric" placeholder="0" autocomplete="off"></span></label>
-      <label class="line"><span class="l">Makan &amp; barang dapur</span><span class="amt"><i>RM</i><input data-k="s_makan" inputmode="numeric" placeholder="0" autocomplete="off"></span></label>
-      <label class="line"><span class="l">Minyak, tol &amp; transport</span><span class="amt"><i>RM</i><input data-k="s_jalan" inputmode="numeric" placeholder="0" autocomplete="off"></span></label>
-      <label class="line" data-kids hidden><span class="l">Anak<small>Sekolah, pengasuh, susu</small></span><span class="amt"><i>RM</i><input data-k="s_anak" inputmode="numeric" placeholder="0" autocomplete="off"></span></label>
-      <label class="line"><span class="l">Bil &amp; utiliti<small>Elektrik, air, internet, telefon</small></span><span class="amt"><i>RM</i><input data-k="s_bil" inputmode="numeric" placeholder="0" autocomplete="off"></span></label>
-      <label class="line"><span class="l">Duit untuk ibu bapa</span><span class="amt"><i>RM</i><input data-k="s_ibubapa" inputmode="numeric" placeholder="0" autocomplete="off"></span></label>
-      <label class="line"><span class="l">Lain-lain<small>Hiburan, shopping, komitmen lain</small></span><span class="amt"><i>RM</i><input data-k="s_lain" inputmode="numeric" placeholder="0" autocomplete="off"></span></label>
-    </div></div>
-    <div class="dock"><div class="sum"><small>Jumlah belanja · <em id="spend-left"></em></small><b id="spend-total">RM0</b><div class="mini"><i id="spend-mini"></i></div><small class="miss" data-miss hidden></small></div>
-      <button class="btn" data-next disabled>Seterusnya</button></div>
-  </section>
-
-  <!-- ===== 3. Debt ===== -->
-  <section class="screen" data-id="debt" data-step="Hutang" tabindex="-1">
-    <div class="head"><p class="tag">Langkah 3 · Hutang</p><h2>Berapa baki hutang korang?</h2>
-      <p>Baki yang tinggal, bukan bayaran bulanan. Biar kosong kalau tiada.</p></div>
-    <div class="block"><div class="lines">
-      <label class="line"><span class="l">Loan rumah</span><span class="amt"><i>RM</i><input data-k="d_rumah" inputmode="numeric" placeholder="0" autocomplete="off"></span></label>
-      <div class="sub-line" id="mrtt" hidden><p class="l" style="font-size:13.5px;margin-bottom:8px">Loan rumah ada MRTT / MLTT?<small>Takaful yang lunaskan loan rumah kalau apa-apa jadi</small></p>
-        <div class="chips" data-group="mrtt">
-          <button class="chip" data-value="ada">Ada</button>
-          <button class="chip" data-value="tiada">Tiada</button>
-          <button class="chip" data-value="unsure">Tak pasti</button>
-        </div></div>
-      <label class="line"><span class="l">Loan kereta</span><span class="amt"><i>RM</i><input data-k="d_kereta" inputmode="numeric" placeholder="0" autocomplete="off"></span></label>
-      <label class="line"><span class="l">Pinjaman peribadi</span><span class="amt"><i>RM</i><input data-k="d_peribadi" inputmode="numeric" placeholder="0" autocomplete="off"></span></label>
-      <label class="line"><span class="l">Kad kredit</span><span class="amt"><i>RM</i><input data-k="d_kad" inputmode="numeric" placeholder="0" autocomplete="off"></span></label>
-      <label class="line"><span class="l">PTPTN / pinjaman belajar</span><span class="amt"><i>RM</i><input data-k="d_ptptn" inputmode="numeric" placeholder="0" autocomplete="off"></span></label>
-      <label class="line"><span class="l">Lain-lain<small>BNPL, pinjaman keluarga</small></span><span class="amt"><i>RM</i><input data-k="d_lain" inputmode="numeric" placeholder="0" autocomplete="off"></span></label>
-    </div></div>
-    <div class="dock"><div class="sum"><small>Jumlah hutang</small><b id="debt-total">RM0</b><small class="miss" data-miss hidden></small></div>
-      <button class="btn" data-next>Seterusnya</button></div>
-  </section>
-
-  <!-- ===== 4. Savings ===== -->
-  <section class="screen" data-id="assets" data-step="Simpanan" tabindex="-1">
-    <div class="head"><p class="tag">Langkah 4 · Simpanan &amp; aset</p><h2>Apa yang family boleh guna?</h2>
-      <p>Duit yang boleh dikeluarkan bila perlu. Tak termasuk rumah dan kereta.</p></div>
-    <div class="block"><div class="lines">
-      <label class="line"><span class="l">Tunai &amp; simpanan bank</span><span class="amt"><i>RM</i><input data-k="a_tunai" inputmode="numeric" placeholder="0" autocomplete="off"></span></label>
-      <label class="line"><span class="l">Pelaburan<small>ASB, Tabung Haji, unit trust, saham</small></span><span class="amt"><i>RM</i><input data-k="a_labur" inputmode="numeric" placeholder="0" autocomplete="off"></span></label>
-      <label class="line"><span class="l">KWSP<small>Semua akaun</small></span><span class="amt"><i>RM</i><input data-k="a_kwsp" inputmode="numeric" placeholder="0" autocomplete="off"></span></label>
-    </div></div>
-    <div class="dock"><div class="sum"><small>Jumlah simpanan &amp; aset</small><b id="asset-total">RM0</b></div>
-      <button class="btn" data-next>Seterusnya</button></div>
-  </section>
-
-  <!-- ===== 5. Cover ===== -->
-  <section class="screen" data-id="cover" data-step="Perlindungan" tabindex="-1">
-    <div class="head"><p class="tag">Langkah 5 · Perlindungan</p><h2>Perlindungan yang korang dah ada</h2>
-      <p>Jumlah yang dibayar kalau korang meninggal dunia.</p></div>
-    <div class="block"><div class="lines">
-      <label class="line"><span class="l">Takaful / insurans sendiri</span><span class="amt"><i>RM</i><input data-k="c_sendiri" inputmode="numeric" placeholder="0" autocomplete="off"></span></label>
-      <label class="line"><span class="l">Dari majikan<small>Group term / group life</small></span><span class="amt"><i>RM</i><input data-k="c_majikan" inputmode="numeric" placeholder="0" autocomplete="off"></span></label>
-    </div>
-    <label class="check"><input type="checkbox" id="unsure"> Tak pasti jumlah sebenar</label></div>
-    <div class="block"><h3>Medical card</h3>
-      <div class="chips" data-group="med">
-        <button class="chip" data-value="sendiri">Ada, bayar sendiri</button>
-        <button class="chip" data-value="syarikat">Syarikat sahaja</button>
-        <button class="chip" data-value="tiada">Tiada</button>
-        <button class="chip" data-value="unsure">Tak pasti</button>
-      </div>
-    </div>
-    <div class="dock"><div class="sum"><small>Jumlah perlindungan hayat</small><b id="cover-total">RM0</b><small class="miss" data-miss hidden></small></div>
-      <button class="btn" data-next disabled>Seterusnya</button></div>
-  </section>
-
-  <!-- ===== 6. Future ===== -->
-  <section class="screen" data-id="future" data-step="Masa depan" tabindex="-1">
-    <div class="head"><p class="tag">Langkah 6 · Masa depan</p><h2>Satu lagi: apa yang family perlukan</h2>
-      <p>Andaian ni boleh diubah lagi lepas nampak keputusan.</p></div>
-    <div class="block" data-dep><div class="lines">
-      <div class="range"><div class="range-top"><span class="l">Sokong family selama<small id="years-why"></small></span><b><output id="years-out"></output> tahun</b></div>
-        <input type="range" id="years" min="1" max="30" step="1" aria-label="Tahun sokongan"></div>
-    </div></div>
-    <div class="block"><div class="lines">
-      <label class="line" data-kids hidden><span class="l">Dana pendidikan<small>Anggaran setiap anak</small></span><span class="amt"><i>RM</i><input data-k="e_anak" inputmode="numeric" placeholder="0" autocomplete="off"></span></label>
-      <label class="line"><span class="l">Kos akhir &amp; urusan pusaka<small>Pengebumian, guaman, urusan harta</small></span><span class="amt"><i>RM</i><input data-k="f_akhir" inputmode="numeric" placeholder="0" autocomplete="off"></span></label>
-    </div></div>
-    <div class="dock"><div class="sum"><small>Jumlah keperluan family</small><b id="need-total">RM0</b></div>
-      <button class="btn" data-next>Lihat keputusan</button></div>
-  </section>
-
-  <!-- ===== Result ===== -->
-  <section class="screen" data-id="result" tabindex="-1">
-    <div class="head"><p class="tag">Keputusan korang</p><h2>Gambaran perlindungan korang</h2><p class="print-only" id="print-meta"></p></div>
-    <div class="hero">
-      <p class="kicker" id="kicker"></p>
-      <p class="big" id="big"></p>
-      <div class="meter" id="meter">
-        <div class="bar"><i id="fill"></i></div>
-        <p><span id="meter-l"></span><span id="meter-r"></span></p>
-      </div>
-      <p class="note" id="hero-note"></p>
-    </div>
-    <div class="stats">
-      <div class="stat"><small>Perlindungan berbanding gaji setahun</small><b id="st-cover"></b></div>
-      <div class="stat"><small>Lebihan sebulan</small><b id="st-left"></b></div>
-      <div class="stat"><small id="st-solo-l">Tanpa gaji, simpanan tahan</small><b id="st-solo"></b></div>
-    </div>
-
-    <div class="card" id="time-card">
-      <h3>Duit family dari tahun ke tahun</h3>
-      <p class="desc">Lepas hutang dan kos akhir dibayar, inilah baki yang family guna untuk hidup.</p>
-      <div class="chart" id="chart"></div>
-      <p class="story" id="story"></p>
-      <div class="sim">
-        <div class="sim-top"><p>Cuba tambah perlindungan<small>Gerakkan dan tengok apa berubah</small></p><b id="extra-out">RM0</b></div>
-        <input type="range" id="extra" min="0" max="1000000" step="10000" value="0" aria-label="Tambah perlindungan">
-        <div class="sim-out"><span id="sim-res"></span><button class="pill" id="fillgap">Tutup gap penuh</button></div>
+      <p class="when">Saya balas hari yang sama. <span>Percuma.</span></p>
+      <div class="wa-wrap"><p class="note note-wa" aria-hidden="true"><svg viewBox="0 0 46 40" aria-hidden="true"><path d="M44 6 C30 2 14 10 8 32 M8 32 l-4 -11 M8 32 l10 -6"/></svg>percuma je!</p>
+      <a class="btn" id="wa2" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.6.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3a.5.5 0 0 0 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7a2.8 2.8 0 0 0 1.8-1.3 2.3 2.3 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg><span id="wa2-l"></span></a></div>
+      <p class="how">WhatsApp terbuka dengan senarai jurang korang dah siap ditaip. Tekan hantar je.</p>
+      <p class="reason" id="reason" hidden></p>
+      <div class="fallback" id="fallback" hidden>
+        <p>WhatsApp tak terbuka? Salin mesej ni dan hantar ke <b id="wa-num"></b>.</p>
+        <button class="pill" id="copy" type="button">Salin mesej</button>
+        <textarea id="msg" readonly hidden aria-label="Mesej untuk disalin"></textarea>
       </div>
     </div>
 
-    <div class="card">
-      <h3>Keperluan vs apa yang ada</h3>
-      <p class="desc">Kalau korang tiada esok, inilah duit yang family perlukan, dan apa yang dah tersedia.</p>
-      <div class="cbar"><span>Perlu</span><b id="need-t"></b></div>
-      <div class="stack" id="need-bar"></div>
-      <ul class="legend" id="need-leg"></ul>
-      <div class="cbar"><span>Ada</span><b id="have-t"></b></div>
-      <div class="stack" id="have-bar"></div>
-      <ul class="legend" id="have-leg"></ul>
-      <div class="gapbox" id="gapbox"><span id="gap-l"></span><b id="gap"></b></div>
-      <div class="years" id="years-row">
-        <p>Sokong family<small id="years-why2"></small></p>
-        <span class="stepper"><button id="yminus" aria-label="Kurang setahun">−</button><output id="yval" aria-live="polite"></output><button id="yplus" aria-label="Tambah setahun">+</button></span>
-      </div>
-      <details class="how"><summary>Macam mana kiraan ni dibuat?</summary>
-        <p>Keperluan = belanja family sebulan × 12 × tahun sokongan, campur hutang, dana pendidikan dan kos akhir. Yang ada = simpanan, pelaburan, KWSP dan perlindungan hayat. Gap = keperluan tolak yang ada.</p>
-        <p>Belanja family tak termasuk ansuran rumah dan kereta yang akan dilunaskan. Duit untuk ibu bapa hanya dikira kalau ibu bapa bergantung pada korang. Belum kira inflasi atau pulangan pelaburan.</p>
-      </details>
-    </div>
-
-    <div class="card">
-      <h3>Langkah seterusnya</h3>
-      <ol class="todo" id="todo"></ol>
-    </div>
-
-    <div class="art" id="art-dep"><!--scene:payung--><svg viewBox="0 0 600 520" role="img" aria-label="Lukisan: ayah dan anak kering di bawah satu payung ketika hujan" font-family="Plus Jakarta Sans" font-weight="800"><filter id="hand1"><feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="2" seed="4"/><feDisplacementMap in="SourceGraphic" scale="6"/></filter><g filter="url(#hand1)"><path d="M44 70 l-14 34 M76 168 l-14 34 M34 270 l-14 34 M74 372 l-14 34 M552 76 l-14 34 M582 178 l-14 34 M546 282 l-14 34 M580 384 l-14 34 M190 14 l-10 26 M420 14 l-10 26" fill="none" stroke="#141513" stroke-width="15" stroke-linecap="round" stroke-linejoin="round" stroke-width="9"/> <path d="M300 180 L300 404 Q300 434 274 434 Q250 434 250 410" fill="none" stroke="#141513" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/> <path d="M100 180 Q300 -10 500 180 Q450 150 400 180 Q350 150 300 180 Q250 150 200 180 Q150 150 100 180 Z" fill="#fff" stroke="#141513" stroke-width="15" stroke-linejoin="round" stroke-linecap="round"/> <path d="M300 86 L300 58" fill="none" stroke="#141513" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/> <path d="M204 390 L196 468 L170 468 M236 390 L244 468 L270 468" fill="none" stroke="#141513" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/> <path d="M248 300 L298 332 M192 300 L168 372" fill="none" stroke="#141513" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/> <path d="M184 288 Q220 276 256 288 L262 390 L178 390 Z" fill="#fff" stroke="#141513" stroke-width="15" stroke-linejoin="round" stroke-linecap="round"/> <circle cx="300" cy="332" r="15" fill="#fff" stroke="#141513" stroke-width="11"/><circle cx="166" cy="374" r="13" fill="#fff" stroke="#141513" stroke-width="11"/> <circle cx="220" cy="242" r="42" fill="#fff" stroke="#141513" stroke-width="15" stroke-linejoin="round" stroke-linecap="round"/><circle cx="207" cy="236" r="5" fill="#141513"/><circle cx="233" cy="236" r="5" fill="#141513"/><path d="M204 252 Q220 268 236 252" fill="none" stroke="#141513" stroke-width="15" stroke-linecap="round" stroke-linejoin="round" stroke-width="9"/><path d="M178 238 C178 183 262 183 262 238 C243 221 197 221 178 238 Z" fill="#141513"/> <path d="M380 414 L376 468 L356 468 M400 414 L404 468 L424 468" fill="none" stroke="#141513" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/> <path d="M368 356 L308 384 M412 356 L432 402" fill="none" stroke="#141513" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/> <path d="M366 348 Q390 336 414 348 L420 414 L360 414 Z" fill="#fff" stroke="#141513" stroke-width="15" stroke-linejoin="round" stroke-linecap="round"/> <circle cx="304" cy="384" r="12" fill="#fff" stroke="#141513" stroke-width="11"/><circle cx="432" cy="404" r="12" fill="#fff" stroke="#141513" stroke-width="11"/> <circle cx="390" cy="314" r="30" fill="#fff" stroke="#141513" stroke-width="15" stroke-linejoin="round" stroke-linecap="round"/><circle cx="381" cy="310" r="4" fill="#141513"/><circle cx="399" cy="310" r="4" fill="#141513"/><path d="M379 322 Q390 333 401 322" fill="none" stroke="#141513" stroke-width="15" stroke-linecap="round" stroke-linejoin="round" stroke-width="7"/><path d="M360 310 C360 272 420 272 420 310 C406 299 374 299 360 310 Z" fill="#141513"/></g></svg><!--/scene--></div>
-    <div class="art" id="art-solo" hidden><!--scene:payung_solo--><svg viewBox="0 0 600 520" role="img" aria-label="Lukisan: seorang lelaki kering di bawah payung ketika hujan" font-family="Plus Jakarta Sans" font-weight="800"><filter id="hand2"><feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="2" seed="5"/><feDisplacementMap in="SourceGraphic" scale="6"/></filter><g filter="url(#hand2)"><path d="M44 70 l-14 34 M76 168 l-14 34 M34 270 l-14 34 M74 372 l-14 34 M552 76 l-14 34 M582 178 l-14 34 M546 282 l-14 34 M580 384 l-14 34 M190 14 l-10 26 M420 14 l-10 26" fill="none" stroke="#141513" stroke-width="15" stroke-linecap="round" stroke-linejoin="round" stroke-width="9"/> <path d="M330 180 L330 404 Q330 434 356 434 Q380 434 380 410" fill="none" stroke="#141513" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/> <path d="M100 180 Q300 -10 500 180 Q450 150 400 180 Q350 150 300 180 Q250 150 200 180 Q150 150 100 180 Z" fill="#fff" stroke="#141513" stroke-width="15" stroke-linejoin="round" stroke-linecap="round"/> <path d="M300 86 L300 58" fill="none" stroke="#141513" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/> <path d="M264 390 L256 468 L230 468 M296 390 L304 468 L330 468" fill="none" stroke="#141513" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/> <path d="M308 300 L330 330 M252 300 L228 372" fill="none" stroke="#141513" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/> <path d="M244 288 Q280 276 316 288 L322 390 L238 390 Z" fill="#fff" stroke="#141513" stroke-width="15" stroke-linejoin="round" stroke-linecap="round"/> <circle cx="332" cy="332" r="15" fill="#fff" stroke="#141513" stroke-width="11"/><circle cx="226" cy="374" r="13" fill="#fff" stroke="#141513" stroke-width="11"/> <circle cx="280" cy="242" r="42" fill="#fff" stroke="#141513" stroke-width="15" stroke-linejoin="round" stroke-linecap="round"/><circle cx="267" cy="236" r="5" fill="#141513"/><circle cx="293" cy="236" r="5" fill="#141513"/><path d="M264 252 Q280 268 296 252" fill="none" stroke="#141513" stroke-width="15" stroke-linecap="round" stroke-linejoin="round" stroke-width="9"/><path d="M238 238 C238 183 322 183 322 238 C303 221 257 221 238 238 Z" fill="#141513"/></g></svg><!--/scene--></div>
-    <p class="cta">Nak tutup gap ni ikut bajet korang?</p>
-    <p class="cta-sub">WhatsApp keputusan ni. Saya semak dan terangkan pilihan, percuma.</p>
-    <button class="btn ghost" id="pdf">Simpan laporan (PDF)</button>
-    <button class="btn ghost" id="share">Share kalkulator ke pasangan</button>
-    <button class="link" id="again">Kira semula</button>
-    <p class="fine">Anggaran kasar untuk rujukan sahaja, bukan nasihat kewangan atau sebut harga takaful. Belum kira inflasi atau pulangan pelaburan. Jawapan korang kekal dalam phone korang dan hanya dihantar kalau korang tekan WhatsApp.</p>
-    <div class="dock"><div class="sum"><small id="dock-l"></small><b id="dock-v"></b></div>
-      <a class="btn" id="wa" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.6.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3a.5.5 0 0 0 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7a2.8 2.8 0 0 0 1.8-1.3 2.3 2.3 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg><span id="wa-label">WhatsApp saya</span></a></div>
+    <p class="fine band">Checklist ni panduan umum sahaja, bukan nasihat kewangan, undang-undang atau cukai, dan bukan sebut harga takaful. Contoh dari satu pelan AIA PUBLIC Takaful ialah untuk pelan itu sahaja; pelan lain mungkin berbeza. Laman ini bahan promosi yang disediakan oleh <span id="fine-name">Sagan</span>, <span id="fine-title">Corporate Wealth &amp; Takaful Consultant</span>, AIA PUBLIC Takaful Bhd. (Kod Ejen <span id="fine-code">1353Z</span>).</p>
   </section>
 </main>
 
+<div class="modal-bg" id="modal" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-t">
+    <div class="bubble">
+    <button class="x" id="modal-x" type="button" aria-label="Tutup"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M5 6 C10 10 14 13 19 19 M18 5 C13 10 10 14 6 18"/></svg></button>
+    <div class="scroll">
+      <p class="k" id="modal-k"></p>
+      <h3 id="modal-t"></h3>
+      <div class="body" id="modal-b"></div>
+      <div class="srcs" id="modal-s"></div>
+    </div>
+    <div class="foot"><button class="ok-btn" id="modal-ok" type="button">Faham</button><button class="leave-btn" id="modal-leave" type="button" hidden>Keluar</button></div>
+    </div>
+    <svg class="speaker" viewBox="0 0 60 80" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="30" cy="15" r="11"/><path d="M25 13 v1 M35 13 v1" stroke-width="3.6"/><path d="M25 20 Q30 24 35 20" stroke-width="2.4"/>
+      <path d="M30 26 V52 M30 33 L17 44 M30 33 L44 20 M30 52 L20 76 M30 52 L40 76"/></g></svg>
+  </div>
+</div>
+
+<a class="jump glass" id="jump" href="#result" hidden>Hampir siap. <b>Tengok keputusan ↓</b></a>
+
+<div class="dock glass" id="dock" role="region" aria-label="Ringkasan dan WhatsApp">
+  <div class="dock-in">
+    <div class="sum"><b id="dock-v"></b><small id="dock-l"></small></div>
+    <a class="go" id="wa" href="#details"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.6.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3a.5.5 0 0 0 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7a2.8 2.8 0 0 0 1.8-1.3 2.3 2.3 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg><span>Hantar ke Sagan</span></a>
+  </div>
+</div>
+
 <script>
 // ===== Tukar di sini =====
-// Nombor WhatsApp korang, format antarabangsa tanpa "+" atau "-" (contoh 60123456789). Kosong = butang WhatsApp tutup.
-const WHATSAPP = "60176190139";
+const WHATSAPP = "60176190139";   // format antarabangsa tanpa "+" atau "-"
 const NAME = "Sagan";
-// Link dengan ?dari=hibah (atau apa-apa nama post) supaya mesej WhatsApp tunjuk post mana lead tu datang.
+// Nama berdaftar penuh korang sebagai ejen (BNM minta iklan ejen tunjuk nama berdaftar). Kosong = papar NAME sahaja.
+const AGENT = "";
+// Jawatan dan kod ejen, dipapar dalam nota kecil di bawah
+const TITLE = "Corporate Wealth & Takaful Consultant";
+const CODE = "1353Z";
+// Link "Web app" dari Google Apps Script (lihat google-sheet/Code.gs). Kosong = tiada apa dihantar ke Google Sheet.
+const SHEET = "";
+// Satu sebab JUJUR untuk bertindak sekarang, contoh "Saya semak 10 senarai seminggu." Kosong = tak dipapar. Jangan reka.
+const REASON = "";
 // =========================
 
+// [title, url, short name shown under each fact]. Change a figure only together with its source.
+const SOURCES = [
+  /* 1 */ ["Akta Kerja 1955 (Akta 265), seksyen 60F", "https://jtksm.gov.my/sites/default/files/2023-11/Akta%20Kerja%201955%20(Akta%20265).pdf", "Akta Kerja 1955"],
+  /* 2 */ ["Bank Negara Malaysia, Laporan Tahunan 2024: Tinjauan Keupayaan dan Rangkuman Kewangan 2024", "https://www.bnm.gov.my/documents/20124/17493532/ar2024_en_box4.pdf", "Bank Negara 2024"],
+  /* 3 */ ["KWSP, panduan penstrukturan semula akaun", "https://www.kwsp.gov.my/en/w/article/account-restructuring-guide", "KWSP (Akaun Fleksibel)"],
+  /* 4 */ ["PERKESO, Skim Bencana Pekerjaan", "https://perkeso.gov.my/en/our-services/protection/employment-injury-scheme.html", "PERKESO (kemalangan kerja)"],
+  /* 5 */ ["PERKESO, Soalan lazim LINDUNG 24 Jam (13 Ogos 2026)", "https://www.perkeso.gov.my/images/lindung/lindung-24-jam/130826-FAQ%20_LINDUNG24Jam_EN_version.pdf", "LINDUNG 24 Jam"],
+  /* 6 */ ["PERKESO, skim untuk orang bekerja sendiri", "https://perkeso.gov.my/en/our-services/protection/self-employed.html", "PERKESO (kerja sendiri)"],
+  /* 7 */ ["PERKESO, Skim Keilatan", "https://perkeso.gov.my/en/our-services/protection/invalidity-scheme.html", "PERKESO (Pencen Ilat)"],
+  /* 8 */ ["KWSP, Pengeluaran Hilang Upaya", "https://www.kwsp.gov.my/en/member/healthcare/incapacitation", "KWSP (hilang upaya)"],
+  /* 9 */ ["AIA Malaysia, glosari istilah", "https://www.aia.com.my/en/help-support/glossary-of-terms.html", "Glosari AIA"],
+  /* 10 */ ["AIA Malaysia, laman A-Life Legasi Beyond", "https://www.aia.com.my/en/our-products/wealth-protection/wealth-legacy-planning/a-life-legasi-beyond.html", "Laman pelan AIA"],
+  /* 11 */ ["AIA Malaysia, soalan lazim pelan insurans dan takaful", "https://www.aia.com.my/en/help-support/faq/insurance-takaful-plans.html", "Soalan lazim AIA"],
+  /* 12 */ ["AIA PUBLIC Takaful, helaian pendedahan produk A-Life Idaman (29 Disember 2025)", "https://www.aia.com.my/content/dam/my-wise/document/health-protection-conventional/A-Life_Idaman_PDS_ENG.pdf", "Helaian produk AIA PUBLIC Takaful"],
+  /* 13 */ ["KWSP, penamaan", "https://www.kwsp.gov.my/en/w/article/epf-nomination", "KWSP (penamaan)"],
+  /* 14 */ ["KWSP, Pengeluaran Kematian", "https://www.kwsp.gov.my/en/member/account-centre/death", "KWSP (kematian)"],
+  /* 15 */ ["Akta Perkhidmatan Kewangan Islam 2013, Jadual 10", "https://www.bnm.gov.my/documents/20124/820862/Islamic+Financial+Services+Act+2013.pdf", "Akta Perkhidmatan Kewangan Islam 2013"],
+  /* 16 */ ["Bank Negara Malaysia, soalan lazim insurans hayat dan takaful keluarga", "https://www.bnm.gov.my/faqs/ins-tkf/life-family", "Bank Negara"],
+  /* 17 */ ["Bank Negara Malaysia, Resolusi Syariah dalam Kewangan Islam, edisi ke-2 (2010), keputusan Majlis Penasihat Syariah tentang hibah takaful", "https://www.bnm.gov.my/documents/20124/9198675/shariah_resolutions_2nd_edition_EN.pdf", "Majlis Penasihat Syariah BNM"],
+  /* 18 */ ["Pejabat Mufti Wilayah Persekutuan, Al-Kafi: kadar wasiat yang dibenarkan (23 Februari 2016)", "https://www.muftiwp.gov.my/ms/artikel/al-kafi-li-al-fatawi/1779-berapa-kadar-wasiat-yang-dibenarkan", "Mufti Wilayah Persekutuan"],
+  /* 19 */ ["Bank Negara Malaysia, kenyataan media tentang langkah insurans dan takaful perubatan (20 Disember 2024)", "https://www.bnm.gov.my/-/mhit-pr-bm", "Bank Negara (Dis 2024)"],
+  /* 20 */ ["Bank Negara Malaysia, Dokumen Polisi Insurans dan Takaful Perubatan dan Kesihatan (BNM/RH/PD 029-66)", "https://www.bnm.gov.my/documents/20124/938039/pd_mhit_dec25.pdf", "Dokumen polisi BNM"],
+  /* 21 */ ["AIA PUBLIC Takaful, brosur A-Plus Health360-i (setakat 1 Jun 2026)", "https://www.aia.com.my/content/dam/my-wise/document/health-protection-takaful/A-Plus%20Health%20360-i_Brochure_Final.pdf", "Brosur pelan AIA PUBLIC Takaful"],
+  /* 22 */ ["AIA PUBLIC Takaful, soalan lazim A-Plus Health360-i (28 Mei 2026)", "https://www.aia.com.my/content/dam/my-wise/document/health-protection-takaful/APH360i_Brochure_FAQ_ENG_28052026.pdf", "Soalan lazim pelan AIA PUBLIC Takaful"],
+  /* 23 */ ["AIA Malaysia, mendapatkan pelan perubatan", "https://www.aia.com.my/en/your-medical-coverage/getting-a-medical-plan.html", "AIA"],
+  /* 24 */ ["LHDN, pelepasan cukai individu (tahun taksiran 2025)", "https://www.hasil.gov.my/individu/pelepasan-cukai/", "LHDN"],
+];
+
+// k: saved key · w: short label for WhatsApp · t: the line they tick · p: one-line summary · f: the facts (**bold** = key figure) · s: sources
+const LIST = [
+  {t: "Kalau MC lama", d: "Minggu-minggu pertama", items: [
+    {k: "cuti", w: "Cuti sakit bergaji", t: "Tahu berapa hari cuti sakit bergaji korang setahun",
+      p: "Lepas cuti sakit bergaji habis, gaji tak semestinya jalan.",
+      f: "Akta Kerja 1955 (Semenanjung): **14 hingga 22 hari** setahun ikut tempoh kerja, atau **sampai 60 hari** kalau masuk hospital.", s: [1]},
+    {k: "simpan", w: "Simpanan kecemasan 3 bulan", t: "Ada simpanan untuk lebih 3 bulan belanja kalau gaji berhenti",
+      p: "Ni duit pertama yang korang guna bila gaji terhenti.",
+      f: "Tinjauan Bank Negara 2024: cuma **37%** yang ditinjau mampu tanggung kos hidup **lebih 3 bulan** kalau gaji terhenti.", s: [2]},
+    {k: "fleksibel", w: "Akaun Fleksibel KWSP", t: "Tahu berapa duit dalam Akaun Fleksibel KWSP korang",
+      p: "Ni bahagian KWSP yang boleh dikeluarkan bila-bila masa.",
+      f: "Ahli **bawah umur 55** boleh keluarkan duit dari Akaun Fleksibel **bila-bila masa**, minimum **RM50**.", s: [3]},
+  ]},
+  {t: "Kalau kemalangan atau hilang upaya", d: "Apa PERKESO dan KWSP bayar", items: [
+    {k: "perkeso", w: "PERKESO kalau kemalangan", t: "Tahu apa PERKESO bayar kalau korang kemalangan",
+      p: "PERKESO cover kemalangan, tapi bukan semua jenis sakit.",
+      f: "Kemalangan kerja: PERKESO bayar **80% gaji harian** (maksimum **RM158.67/hari**, MC **4 hari** ke atas). Kemalangan luar waktu kerja dalam Malaysia dilindungi sejak **1 Jun 2026** (LINDUNG 24 Jam), tapi pekerja tempatan **boleh pilih keluar**, dan sakit biasa **tak termasuk**. Semak status korang.", s: [4, 5]},
+    {k: "kwsphu", w: "PERKESO dan KWSP kalau hilang upaya kekal", t: "Tahu apa PERKESO dan KWSP bayar kalau korang hilang upaya kekal",
+      p: "Ada pencen bulanan dan duit KWSP, tapi ada syarat.",
+      f: "PERKESO bayar Pencen Ilat **50%–65% gaji bulanan** (minimum **RM550**). KWSP pula boleh keluar **semua simpanan** kalau disahkan hilang upaya. Kedua-duanya **tertakluk syarat**.", s: [7, 8]},
+    {k: "tpd", w: "TPD dalam pelan takaful", t: "Pelan takaful korang ada TPD (hilang upaya kekal), dan korang tahu sampai umur berapa",
+      p: "Ni untuk bila korang tak boleh bekerja lagi. Semak had umurnya.",
+      f: "TPD maksudnya tak boleh bekerja lagi akibat sakit atau cedera. Semak sijil, sebab ada pelan yang cover **sampai umur 70 sahaja**.", s: [9, 10]},
+  ]},
+  {t: "Kalau sakit kritikal", d: "Bila rawatan jadi panjang", items: [
+    {k: "medcard", w: "Medical card sendiri", t: "Ada medical card sendiri, bukan kad syarikat sahaja",
+      p: "Kad syarikat ikut kerja. Kalau berhenti kerja, kad tu mungkin hilang sekali.",
+      alt: {t: "Ada medical card sendiri", p: "Ni yang bayar bil hospital bila korang sakit.",
+        f: "Kad sendiri ada **had tahunan**, **deductible** dan **tempoh menunggu** (had Bank Negara: tak lebih **30 hari**, atau **120 hari** untuk penyakit tertentu)."},
+      f: "Kad syarikat **tamat bila korang berhenti kerja**. Kad sendiri ada **had tahunan**, **deductible** dan **tempoh menunggu** (had Bank Negara: tak lebih **30 hari**, atau **120 hari** untuk penyakit tertentu).", s: [23, 20]},
+    {k: "ci", w: "Penyakit kritikal bayar tunai", t: "Ada pelan penyakit kritikal yang bayar tunai bila disahkan sakit",
+      p: "Medical card bayar bil hospital, bukan gaji.",
+      f: "Medical card cuma bayar **bil hospital**. Pelan penyakit kritikal bayar **tunai** bila disahkan sakit, boleh bantu ganti gaji masa berehat.", s: [11]},
+    {k: "waiver", w: "Rider tak perlu bayar caruman", t: "Pelan korang ada rider supaya korang tak perlu bayar caruman bila tak boleh kerja",
+      p: "Tanpa rider ni, caruman tetap kena bayar walaupun gaji dah berhenti.",
+      f: "Tanpa rider ni, caruman tetap kena bayar walaupun gaji berhenti. Contoh satu pelan AIA PUBLIC Takaful: caruman **terus dibayar** kalau hilang upaya kekal **sebelum umur 70** atau sakit kritikal yang dilindungi.", s: [12]},
+  ]},
+  {t: "Kalau korang tiada", d: "Untuk family yang tinggal", items: [
+    {k: "majikan", w: "Perlindungan hayat sendiri", t: "Ada perlindungan hayat sendiri, bukan dari majikan sahaja",
+      p: "Perlindungan dari majikan ikut kerja.",
+      alt: {t: "Ada perlindungan hayat sendiri", p: "Supaya family ada duit kalau korang tiada.",
+        f: "Semak sijil korang: berapa **jumlah perlindungan hayat** sekarang, dan cukup atau tak untuk family."},
+      f: "Perlindungan majikan **ikut kerja**. Semak dengan HR berapa jumlahnya dan sama ada ia **tamat bila korang berhenti**."},
+    {k: "penama", w: "Penama KWSP", t: "Dah letak penama KWSP",
+      p: "Tanpa penama, family kena urus dokumen tambahan untuk tuntut baki.",
+      f: "Tanpa penama, family cuma boleh tuntut **sehingga RM25,000** dulu. Bakinya perlukan **surat mahkamah atau Amanah Raya**, ikut syarat.", s: [13, 14]},
+    {k: "hibah", w: "Penerima hibah takaful", t: "Dah namakan penerima hibah dalam sijil takaful",
+      p: "Duit hibah tak masuk harta pusaka.",
+      f: "Duit hibah pergi kepada penerima yang dinamakan, **bukan harta pusaka** dan **tak diagih ikut faraid**. Tanpa penamaan, hanya **sehingga RM100,000** boleh dibayar tanpa surat kuasa mentadbir.", s: [15, 17]},
+    {k: "mrtt", w: "MRTT/MLTT loan rumah", t: "Loan rumah ada MRTT atau MLTT (takaful loan rumah)",
+      p: "Supaya baki loan rumah tak jadi beban family.",
+      f: "Semak dengan bank sama ada jumlah perlindungan **masih cukup** untuk langsaikan baki loan rumah korang sekarang."},
+    {k: "dokumen", w: "Pasangan tahu di mana dokumen", t: "Pasangan tahu di mana semua dokumen dan siapa nak dihubungi",
+      p: "Kalau family tak tahu ada polisi, macam mana nak tuntut?",
+      f: "Simpan senarai semua sijil, penama KWSP dan nombor ejen **di satu tempat** yang pasangan korang tahu."},
+  ]},
+  {t: "Supaya pelan tak lupus", d: "Perlindungan hanya berguna kalau masih aktif", items: [
+    {k: "naik", w: "Caruman naik ikut umur", t: "Tahu caruman takaful korang boleh naik bila umur meningkat",
+      p: "Tanya ejen berapa caruman korang nanti bila umur 60 dan 70.",
+      f: "Dalam sesetengah pelan, tabarru' **naik bila umur meningkat**. Minta ejen tunjuk **unjuran caruman** sampai umur 60 dan 70.", s: [12]},
+    {k: "jujur", w: "Beritahu sejarah kesihatan", t: "Dah beritahu semua sejarah kesihatan masa ambil pelan",
+      p: "Kalau ada yang tak diberitahu, perlindungan boleh dibatalkan.",
+      f: "Bank Negara: kalau maklumat kesihatan tak dinyatakan dengan betul masa mohon, perlindungan **boleh dibatalkan**.", s: [16]},
+  ]},
+];
+
+/*art*/const ART = {"hero": "<path d=\"M124 284 L106 410 L78 410 M156 284 L174 410 L202 410\" fill=\"none\" stroke=\"#141513\" stroke-width=\"15\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M174 182 L262 268 M106 182 L44 262\" fill=\"none\" stroke=\"#141513\" stroke-width=\"15\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"262\" cy=\"268\" r=\"15\" fill=\"#fff\" stroke=\"#141513\" stroke-width=\"11\"/><circle cx=\"44\" cy=\"262\" r=\"15\" fill=\"#fff\" stroke=\"#141513\" stroke-width=\"11\"/><path d=\"M104 168 Q140 156 176 168 L182 288 L98 288 Z\" fill=\"#fff\" stroke=\"#141513\" stroke-width=\"15\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><circle cx=\"140\" cy=\"122\" r=\"42\" fill=\"#fff\" stroke=\"#141513\" stroke-width=\"15\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><circle cx=\"127\" cy=\"116\" r=\"5\" fill=\"#141513\"/><circle cx=\"153\" cy=\"116\" r=\"5\" fill=\"#141513\"/><path d=\"M124 143 Q140 131 156 143\" fill=\"none\" stroke=\"#141513\" stroke-width=\"15\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"9\"/><path d=\"M98 118 C98 63 182 63 182 118 C163 101 117 101 98 118 Z\" fill=\"#141513\"/> <circle cx=\"430\" cy=\"62\" r=\"30\" fill=\"#fff\" stroke=\"#141513\" stroke-width=\"15\" stroke-linejoin=\"round\" stroke-linecap=\"round\" stroke-width=\"11\"/><text x=\"430\" y=\"72\" font-size=\"24\" font-weight=\"800\" text-anchor=\"middle\" fill=\"#141513\">RM</text> <circle cx=\"548\" cy=\"92\" r=\"30\" fill=\"#fff\" stroke=\"#141513\" stroke-width=\"15\" stroke-linejoin=\"round\" stroke-linecap=\"round\" stroke-width=\"11\"/><text x=\"548\" y=\"102\" font-size=\"24\" font-weight=\"800\" text-anchor=\"middle\" fill=\"#141513\">RM</text> <path d=\"M430 12 L430 22 M548 40 L548 52 M490 30 L490 46\" fill=\"none\" stroke=\"#141513\" stroke-width=\"15\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"8\"/> <path d=\"M330 170 Q490 60 650 170\" fill=\"none\" stroke=\"#141513\" stroke-width=\"15\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/> <path d=\"M318 170 L662 170 L622 404 L358 404 Z\" fill=\"#fff\" stroke=\"#141513\" stroke-width=\"15\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/> <text x=\"490\" y=\"290\" font-size=\"78\" font-weight=\"800\" text-anchor=\"middle\" fill=\"#141513\">GAJI</text> <circle cx=\"420\" cy=\"372\" r=\"13\" fill=\"#141513\"/><circle cx=\"548\" cy=\"372\" r=\"13\" fill=\"#141513\"/><circle cx=\"640\" cy=\"300\" r=\"13\" fill=\"#141513\"/> <path d=\"M416 392 Q400 404 398 420 M546 392 Q556 408 558 420\" fill=\"none\" stroke=\"#141513\" stroke-width=\"15\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"9\"/> <path d=\"M396 384 q-13 20 0 28 q13 -8 0 -28z\" fill=\"#141513\"/><path d=\"M560 386 q-13 20 0 28 q13 -8 0 -28z\" fill=\"#141513\"/> <path d=\"M652 302 Q700 308 708 362\" fill=\"none\" stroke=\"#141513\" stroke-width=\"15\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"9\"/> <path d=\"M710 372 q-13 20 0 28 q13 -8 0 -28z\" fill=\"#141513\"/><path d=\"M700 402 q-13 20 0 28 q13 -8 0 -28z\" fill=\"#141513\"/> <path d=\"M690 262 C622 258 604 316 618 372 C634 428 734 434 760 378 C782 326 760 264 678 268\" fill=\"none\" stroke=\"#D31145\" stroke-width=\"9\" stroke-linecap=\"round\"/> <path d=\"M800 196 Q790 232 752 256 M752 256 l6 -24 M752 256 l24 -2\" fill=\"none\" stroke=\"#141513\" stroke-width=\"15\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"7\"/> <text x=\"800\" y=\"172\" font-family=\"Caveat, cursive\" font-size=\"62\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#141513\" transform=\"rotate(-6 800 172)\">JURANG</text>", "work": {"mula": "<path d=\"M278 50 Q278 18 302 18 Q326 18 326 44 Q326 62 302 70 L302 94\" fill=\"none\" stroke=\"#141513\" stroke-width=\"15\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"12\"/><circle cx=\"302\" cy=\"122\" r=\"9\" fill=\"#141513\"/> <path d=\"M284 376 L266 502 L238 502 M316 376 L334 502 L362 502\" fill=\"none\" stroke=\"#141513\" stroke-width=\"15\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M266 274 L222 352 M334 274 L378 352\" fill=\"none\" stroke=\"#141513\" stroke-width=\"15\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"222\" cy=\"352\" r=\"15\" fill=\"#fff\" stroke=\"#141513\" stroke-width=\"11\"/><circle cx=\"378\" cy=\"352\" r=\"15\" fill=\"#fff\" stroke=\"#141513\" stroke-width=\"11\"/><path d=\"M264 260 Q300 248 336 260 L342 380 L258 380 Z\" fill=\"#fff\" stroke=\"#141513\" stroke-width=\"15\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><circle cx=\"300\" cy=\"214\" r=\"42\" fill=\"#fff\" stroke=\"#141513\" stroke-width=\"15\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><circle cx=\"287\" cy=\"208\" r=\"5\" fill=\"#141513\"/><circle cx=\"313\" cy=\"208\" r=\"5\" fill=\"#141513\"/><path d=\"M284 235 Q300 223 316 235\" fill=\"none\" stroke=\"#141513\" stroke-width=\"15\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"9\"/><path d=\"M258 210 C258 155 342 155 342 210 C323 193 277 193 258 210 Z\" fill=\"#141513\"/>", "gaji": "<rect x=\"30\" y=\"140\" width=\"150\" height=\"340\" rx=\"6\" fill=\"#fff\" stroke=\"#141513\" stroke-width=\"15\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/> <rect x=\"56\" y=\"170\" width=\"36\" height=\"38\" rx=\"4\" fill=\"#fff\" stroke=\"#141513\" stroke-width=\"15\" stroke-linejoin=\"round\" stroke-linecap=\"round\" stroke-width=\"10\"/><rect x=\"118\" y=\"170\" width=\"36\" height=\"38\" rx=\"4\" fill=\"#fff\" stroke=\"#141513\" stroke-width=\"15\" stroke-linejoin=\"round\" stroke-linecap=\"round\" stroke-width=\"10\"/><rect x=\"56\" y=\"236\" width=\"36\" height=\"38\" rx=\"4\" fill=\"#fff\" stroke=\"#141513\" stroke-width=\"15\" stroke-linejoin=\"round\" stroke-linecap=\"round\" stroke-width=\"10\"/><rect x=\"118\" y=\"236\" width=\"36\" height=\"38\" rx=\"4\" fill=\"#fff\" stroke=\"#141513\" stroke-width=\"15\" stroke-linejoin=\"round\" stroke-linecap=\"round\" stroke-width=\"10\"/><rect x=\"56\" y=\"302\" width=\"36\" height=\"38\" rx=\"4\" fill=\"#fff\" stroke=\"#141513\" stroke-width=\"15\" stroke-linejoin=\"round\" stroke-linecap=\"round\" stroke-width=\"10\"/><rect x=\"118\" y=\"302\" width=\"36\" height=\"38\" rx=\"4\" fill=\"#fff\" stroke=\"#141513\" stroke-width=\"15\" stroke-linejoin=\"round\" stroke-linecap=\"round\" stroke-width=\"10\"/> <path d=\"M88 480 L88 428 L122 428 L122 480\" fill=\"none\" stroke=\"#141513\" stroke-width=\"15\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"12\"/> <g transform=\"rotate(-4 320 121)\"><rect x=\"232\" y=\"62\" width=\"176\" height=\"118\" rx=\"12\" fill=\"#fff\" stroke=\"#141513\" stroke-width=\"15\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><path d=\"M242 74 L320 116 L398 74\" fill=\"none\" stroke=\"#141513\" stroke-width=\"15\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"11\"/><text x=\"320\" y=\"158\" font-size=\"40\" text-anchor=\"middle\" fill=\"#141513\">GAJI</text></g> <path d=\"M306 386 L288 512 L260 512 M338 386 L356 512 L384 512\" fill=\"none\" stroke=\"#141513\" stroke-width=\"15\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M288 284 L262 196 M356 284 L384 190\" fill=\"none\" stroke=\"#141513\" stroke-width=\"15\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"262\" cy=\"196\" r=\"15\" fill=\"#fff\" stroke=\"#141513\" stroke-width=\"11\"/><circle cx=\"384\" cy=\"190\" r=\"15\" fill=\"#fff\" stroke=\"#141513\" stroke-width=\"11\"/><path d=\"M286 270 Q322 258 358 270 L364 390 L280 390 Z\" fill=\"#fff\" stroke=\"#141513\" stroke-width=\"15\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><circle cx=\"322\" cy=\"224\" r=\"42\" fill=\"#fff\" stroke=\"#141513\" stroke-width=\"15\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><circle cx=\"309\" cy=\"218\" r=\"5\" fill=\"#141513\"/><circle cx=\"335\" cy=\"218\" r=\"5\" fill=\"#141513\"/><path d=\"M306 234 Q322 250 338 234\" fill=\"none\" stroke=\"#141513\" stroke-width=\"15\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"9\"/><path d=\"M280 220 C280 165 364 165 364 220 C345 203 299 203 280 220 Z\" fill=\"#141513\"/>", "sendiri": "<path d=\"M62 150 L62 482 M378 150 L378 482\" fill=\"none\" stroke=\"#141513\" stroke-width=\"15\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/> <path d=\"M204 338 L186 464 L158 464 M236 338 L254 464 L282 464\" fill=\"none\" stroke=\"#141513\" stroke-width=\"15\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M186 236 L150 322 M254 236 L290 322\" fill=\"none\" stroke=\"#141513\" stroke-width=\"15\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"150\" cy=\"322\" r=\"15\" fill=\"#fff\" stroke=\"#141513\" stroke-width=\"11\"/><circle cx=\"290\" cy=\"322\" r=\"15\" fill=\"#fff\" stroke=\"#141513\" stroke-width=\"11\"/><path d=\"M184 222 Q220 210 256 222 L262 342 L178 342 Z\" fill=\"#fff\" stroke=\"#141513\" stroke-width=\"15\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><circle cx=\"220\" cy=\"176\" r=\"42\" fill=\"#fff\" stroke=\"#141513\" stroke-width=\"15\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><circle cx=\"207\" cy=\"170\" r=\"5\" fill=\"#141513\"/><circle cx=\"233\" cy=\"170\" r=\"5\" fill=\"#141513\"/><path d=\"M204 186 Q220 202 236 186\" fill=\"none\" stroke=\"#141513\" stroke-width=\"15\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"9\"/><path d=\"M178 172 C178 117 262 117 262 172 C243 155 197 155 178 172 Z\" fill=\"#141513\"/> <rect x=\"290\" y=\"268\" width=\"70\" height=\"56\" rx=\"6\" fill=\"#fff\" stroke=\"#141513\" stroke-width=\"15\" stroke-linejoin=\"round\" stroke-linecap=\"round\" stroke-width=\"12\"/> <rect x=\"34\" y=\"326\" width=\"372\" height=\"66\" rx=\"8\" fill=\"#fff\" stroke=\"#141513\" stroke-width=\"15\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/> <text x=\"220\" y=\"374\" font-size=\"40\" font-weight=\"800\" text-anchor=\"middle\" fill=\"#141513\">KEDAI</text> <path d=\"M40 110 L400 110 L400 160 Q382 186 364 160 Q346 186 328 160 Q310 186 292 160 Q274 186 256 160 Q238 186 220 160 Q202 186 184 160 Q166 186 148 160 Q130 186 112 160 Q94 186 76 160 Q58 186 40 160 Z\" fill=\"#fff\" stroke=\"#141513\" stroke-width=\"15\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>", "gig": "<path d=\"M8 392 L58 392 M20 432 L64 432\" fill=\"none\" stroke=\"#141513\" stroke-width=\"15\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"11\"/> <rect x=\"40\" y=\"226\" width=\"116\" height=\"104\" rx=\"8\" fill=\"#fff\" stroke=\"#141513\" stroke-width=\"15\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/> <path d=\"M40 262 L156 262\" fill=\"none\" stroke=\"#141513\" stroke-width=\"15\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"11\"/> <circle cx=\"126\" cy=\"430\" r=\"48\" fill=\"#fff\" stroke=\"#141513\" stroke-width=\"15\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><circle cx=\"342\" cy=\"430\" r=\"48\" fill=\"#fff\" stroke=\"#141513\" stroke-width=\"15\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/> <path d=\"M126 430 L196 360 L306 360 L342 430 M306 360 L292 296 M276 290 L322 284\" fill=\"none\" stroke=\"#141513\" stroke-width=\"15\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/> <path d=\"M150 350 L262 350\" fill=\"none\" stroke=\"#141513\" stroke-width=\"15\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"22\"/> <path d=\"M212 332 L268 372 L250 428\" fill=\"none\" stroke=\"#141513\" stroke-width=\"15\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/> <path d=\"M244 254 L292 294\" fill=\"none\" stroke=\"#141513\" stroke-width=\"15\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/> <path d=\"M192 240 Q222 228 252 240 L258 332 L186 332 Z\" fill=\"#fff\" stroke=\"#141513\" stroke-width=\"15\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/> <circle cx=\"296\" cy=\"296\" r=\"15\" fill=\"#fff\" stroke=\"#141513\" stroke-width=\"11\"/> <circle cx=\"222\" cy=\"198\" r=\"38\" fill=\"#fff\" stroke=\"#141513\" stroke-width=\"15\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><circle cx=\"211\" cy=\"192\" r=\"5\" fill=\"#141513\"/><circle cx=\"233\" cy=\"192\" r=\"5\" fill=\"#141513\"/><path d=\"M208 208 Q222 222 236 208\" fill=\"none\" stroke=\"#141513\" stroke-width=\"15\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"7\"/><path d=\"M184 194 C184 145 260 145 260 194 C243 179 201 179 184 194 Z\" fill=\"#141513\"/>"}, "house": "<rect x=\"458\" y=\"300\" width=\"118\" height=\"112\" rx=\"4\" fill=\"#fff\" stroke=\"#141513\" stroke-width=\"15\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/> <path d=\"M440 306 L517 236 L594 306 Z\" fill=\"#fff\" stroke=\"#141513\" stroke-width=\"15\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/> <path d=\"M502 412 L502 352 L532 352 L532 412\" fill=\"none\" stroke=\"#141513\" stroke-width=\"15\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"11\"/> <text x=\"517\" y=\"470\" font-size=\"38\" font-weight=\"800\" text-anchor=\"middle\" fill=\"#141513\">LOAN</text>", "result": {"kering": "<path d=\"M44 70 l-14 34 M76 168 l-14 34 M34 270 l-14 34 M74 372 l-14 34 M552 76 l-14 34 M582 178 l-14 34 M546 282 l-14 34 M580 384 l-14 34 M190 14 l-14 34 M420 14 l-14 34\" fill=\"none\" stroke=\"#141513\" stroke-width=\"15\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"9\"/> <path d=\"M300 180 L300 330 Q300 358 324 358 Q346 358 346 336\" fill=\"none\" stroke=\"#141513\" stroke-width=\"15\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/> <path d=\"M100 180 Q300 -10 500 180 Q450 150 400 180 Q350 150 300 180 Q250 150 200 180 Q150 150 100 180 Z\" fill=\"#fff\" stroke=\"#141513\" stroke-width=\"15\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><path d=\"M300 86 L300 58\" fill=\"none\" stroke=\"#141513\" stroke-width=\"15\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/> <path d=\"M220 386 L202 512 L174 512 M252 386 L270 512 L298 512\" fill=\"none\" stroke=\"#141513\" stroke-width=\"15\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M270 284 L300 300 M202 284 L180 360\" fill=\"none\" stroke=\"#141513\" stroke-width=\"15\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"300\" cy=\"300\" r=\"15\" fill=\"#fff\" stroke=\"#141513\" stroke-width=\"11\"/><circle cx=\"180\" cy=\"360\" r=\"15\" fill=\"#fff\" stroke=\"#141513\" stroke-width=\"11\"/><path d=\"M200 270 Q236 258 272 270 L278 390 L194 390 Z\" fill=\"#fff\" stroke=\"#141513\" stroke-width=\"15\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><circle cx=\"236\" cy=\"224\" r=\"42\" fill=\"#fff\" stroke=\"#141513\" stroke-width=\"15\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><circle cx=\"223\" cy=\"218\" r=\"5\" fill=\"#141513\"/><circle cx=\"249\" cy=\"218\" r=\"5\" fill=\"#141513\"/><path d=\"M220 234 Q236 250 252 234\" fill=\"none\" stroke=\"#141513\" stroke-width=\"15\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"9\"/><path d=\"M194 220 C194 165 278 165 278 220 C259 203 213 203 194 220 Z\" fill=\"#141513\"/>", "bocor": "<path d=\"M44 70 l-14 34 M76 168 l-14 34 M34 270 l-14 34 M74 372 l-14 34 M552 76 l-14 34 M582 178 l-14 34 M546 282 l-14 34 M580 384 l-14 34 M190 14 l-14 34 M420 14 l-14 34\" fill=\"none\" stroke=\"#141513\" stroke-width=\"15\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"9\"/> <path d=\"M300 180 L300 330 Q300 358 324 358 Q346 358 346 336\" fill=\"none\" stroke=\"#141513\" stroke-width=\"15\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/> <path d=\"M100 180 Q300 -10 500 180 Q450 150 400 180 Q350 150 300 180 Q250 150 200 180 Q150 150 100 180 Z\" fill=\"#fff\" stroke=\"#141513\" stroke-width=\"15\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><path d=\"M300 86 L300 58\" fill=\"none\" stroke=\"#141513\" stroke-width=\"15\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/> <circle cx=\"214\" cy=\"124\" r=\"15\" fill=\"#FFFFFF\" stroke=\"#141513\" stroke-width=\"9\"/> <circle cx=\"372\" cy=\"96\" r=\"13\" fill=\"#FFFFFF\" stroke=\"#141513\" stroke-width=\"9\"/> <circle cx=\"430\" cy=\"150\" r=\"12\" fill=\"#FFFFFF\" stroke=\"#141513\" stroke-width=\"9\"/> <path d=\"M214 160 q-13 20 0 28 q13 -8 0 -28z\" fill=\"#141513\"/><path d=\"M206 206 q-13 20 0 28 q13 -8 0 -28z\" fill=\"#141513\"/><path d=\"M372 128 q-13 20 0 28 q13 -8 0 -28z\" fill=\"#141513\"/><path d=\"M430 190 q-13 20 0 28 q13 -8 0 -28z\" fill=\"#141513\"/> <path d=\"M220 386 L202 512 L174 512 M252 386 L270 512 L298 512\" fill=\"none\" stroke=\"#141513\" stroke-width=\"15\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M270 284 L300 300 M202 284 L180 360\" fill=\"none\" stroke=\"#141513\" stroke-width=\"15\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"300\" cy=\"300\" r=\"15\" fill=\"#fff\" stroke=\"#141513\" stroke-width=\"11\"/><circle cx=\"180\" cy=\"360\" r=\"15\" fill=\"#fff\" stroke=\"#141513\" stroke-width=\"11\"/><path d=\"M200 270 Q236 258 272 270 L278 390 L194 390 Z\" fill=\"#fff\" stroke=\"#141513\" stroke-width=\"15\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><circle cx=\"236\" cy=\"224\" r=\"42\" fill=\"#fff\" stroke=\"#141513\" stroke-width=\"15\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><circle cx=\"223\" cy=\"218\" r=\"5\" fill=\"#141513\"/><circle cx=\"249\" cy=\"218\" r=\"5\" fill=\"#141513\"/><path d=\"M220 245 Q236 233 252 245\" fill=\"none\" stroke=\"#141513\" stroke-width=\"15\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"9\"/><path d=\"M194 220 C194 165 278 165 278 220 C259 203 213 203 194 220 Z\" fill=\"#141513\"/>"}, "sec": ["<path d=\"M40 300 L40 478 M560 380 L560 478\" fill=\"none\" stroke=\"#141513\" stroke-width=\"15\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/> <rect x=\"40\" y=\"360\" width=\"520\" height=\"46\" rx=\"8\" fill=\"#fff\" stroke=\"#141513\" stroke-width=\"15\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/> <ellipse cx=\"124\" cy=\"338\" rx=\"60\" ry=\"24\" fill=\"#fff\" stroke=\"#141513\" stroke-width=\"15\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/> <rect x=\"182\" y=\"300\" width=\"378\" height=\"72\" rx=\"30\" fill=\"#fff\" stroke=\"#141513\" stroke-width=\"15\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/> <circle cx=\"128\" cy=\"292\" r=\"44\" fill=\"#fff\" stroke=\"#141513\" stroke-width=\"15\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/> <circle cx=\"114\" cy=\"286\" r=\"6\" fill=\"#141513\"/><circle cx=\"142\" cy=\"286\" r=\"6\" fill=\"#141513\"/> <path d=\"M112 312 Q128 302 144 312\" fill=\"none\" stroke=\"#141513\" stroke-width=\"15\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"8\"/> <path d=\"M150 250 L196 212\" fill=\"none\" stroke=\"#141513\" stroke-width=\"15\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"13\"/><circle cx=\"204\" cy=\"206\" r=\"12\" fill=\"#141513\"/> <text x=\"420\" y=\"190\" font-size=\"76\" font-weight=\"800\" text-anchor=\"middle\" fill=\"#141513\">MC</text>", "<path d=\"M408 220 L408 492 M378 228 L438 228\" fill=\"none\" stroke=\"#141513\" stroke-width=\"15\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/> <path d=\"M284 352 L266 478 L238 478 M316 352 L334 478 L362 478\" fill=\"none\" stroke=\"#141513\" stroke-width=\"15\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M334 250 L408 236 M266 250 L220 330\" fill=\"none\" stroke=\"#141513\" stroke-width=\"15\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"408\" cy=\"236\" r=\"15\" fill=\"#fff\" stroke=\"#141513\" stroke-width=\"11\"/><circle cx=\"220\" cy=\"330\" r=\"15\" fill=\"#fff\" stroke=\"#141513\" stroke-width=\"11\"/><path d=\"M264 236 Q300 224 336 236 L342 356 L258 356 Z\" fill=\"#fff\" stroke=\"#141513\" stroke-width=\"15\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><circle cx=\"300\" cy=\"190\" r=\"42\" fill=\"#fff\" stroke=\"#141513\" stroke-width=\"15\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><circle cx=\"287\" cy=\"184\" r=\"5\" fill=\"#141513\"/><circle cx=\"313\" cy=\"184\" r=\"5\" fill=\"#141513\"/><path d=\"M284 211 Q300 199 316 211\" fill=\"none\" stroke=\"#141513\" stroke-width=\"15\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"9\"/><path d=\"M258 186 C258 131 342 131 342 186 C323 169 277 169 258 186 Z\" fill=\"#141513\"/> <path d=\"M244 420 L292 420 M244 446 L288 446 M246 470 L286 470\" fill=\"none\" stroke=\"#141513\" stroke-width=\"15\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"10\"/>", "<path d=\"M300 150 C230 40 70 100 120 250 C150 340 240 400 300 460 C360 400 450 340 480 250 C530 100 370 40 300 150 Z\" fill=\"#141513\"/> <path d=\"M60 300 L200 300 L236 230 L282 380 L330 260 L360 300 L540 300\" fill=\"none\" stroke=\"#fff\" stroke-width=\"30\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/> <path d=\"M60 300 L200 300 L236 230 L282 380 L330 260 L360 300 L540 300\" fill=\"none\" stroke=\"#141513\" stroke-width=\"15\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"14\"/>", "<path d=\"M300 180 L300 300\" fill=\"none\" stroke=\"#141513\" stroke-width=\"15\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/> <path d=\"M100 180 Q300 -10 500 180 Q450 150 400 180 Q350 150 300 180 Q250 150 200 180 Q150 150 100 180 Z\" fill=\"#fff\" stroke=\"#141513\" stroke-width=\"15\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/> <path d=\"M194 424 L176 500 L148 500 M226 424 L244 500 L272 500\" fill=\"none\" stroke=\"#141513\" stroke-width=\"15\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M176 322 L150 400 M244 322 L296 300\" fill=\"none\" stroke=\"#141513\" stroke-width=\"15\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"150\" cy=\"400\" r=\"15\" fill=\"#fff\" stroke=\"#141513\" stroke-width=\"11\"/><circle cx=\"296\" cy=\"300\" r=\"15\" fill=\"#fff\" stroke=\"#141513\" stroke-width=\"11\"/><path d=\"M174 308 Q210 296 246 308 L252 428 L168 428 Z\" fill=\"#fff\" stroke=\"#141513\" stroke-width=\"15\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><circle cx=\"210\" cy=\"262\" r=\"42\" fill=\"#fff\" stroke=\"#141513\" stroke-width=\"15\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><circle cx=\"197\" cy=\"256\" r=\"5\" fill=\"#141513\"/><circle cx=\"223\" cy=\"256\" r=\"5\" fill=\"#141513\"/><path d=\"M194 272 Q210 288 226 272\" fill=\"none\" stroke=\"#141513\" stroke-width=\"15\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"9\"/><path d=\"M168 258 C168 203 252 203 252 258 C233 241 187 241 168 258 Z\" fill=\"#141513\"/> <path d=\"M392 404 L380 498 M408 404 L420 498 M378 362 L340 410 M422 362 L452 410\" fill=\"none\" stroke=\"#141513\" stroke-width=\"15\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/> <path d=\"M376 358 Q400 346 424 358 L430 410 L370 410 Z\" fill=\"#fff\" stroke=\"#141513\" stroke-width=\"15\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><circle cx=\"400\" cy=\"324\" r=\"30\" fill=\"#fff\" stroke=\"#141513\" stroke-width=\"15\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><circle cx=\"391\" cy=\"320\" r=\"4\" fill=\"#141513\"/><circle cx=\"409\" cy=\"320\" r=\"4\" fill=\"#141513\"/><path d=\"M389 332 Q400 343 411 332\" fill=\"none\" stroke=\"#141513\" stroke-width=\"15\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"7\"/><path d=\"M370 320 C370 282 430 282 430 320 C416 309 384 309 370 320 Z\" fill=\"#141513\"/>", "<path d=\"M190 40 L410 40 M190 480 L410 480\" fill=\"none\" stroke=\"#141513\" stroke-width=\"15\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/> <path d=\"M214 48 C214 170 282 220 282 260 C282 300 214 350 214 472 L386 472 C386 350 318 300 318 260 C318 220 386 170 386 48 Z\" fill=\"#fff\" stroke=\"#141513\" stroke-width=\"15\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/> <path d=\"M272 232 L328 232 L300 262 Z\" fill=\"#141513\" stroke=\"#141513\" stroke-width=\"8\" stroke-linejoin=\"round\"/> <path d=\"M226 466 Q300 360 374 466 Z\" fill=\"#141513\" stroke=\"#141513\" stroke-width=\"8\" stroke-linejoin=\"round\"/>"]};/*/art*/
+
 const $ = id => document.getElementById(id);
-const $$ = (sel, el = document) => [...el.querySelectorAll(sel)];
-const screens = $$(".screen");
-const steps = screens.filter(s => s.dataset.step);
-const source = new URLSearchParams(location.search).get("dari");
-const v = {nkids: 1};                       // every number the visitor types, by data-k
-const pick = {dep: new Set(), mrtt: null, med: null};
-let years = 0, yearsEdited = false, at = 0, extra = 0;   // extra: cover added in the simulator
-
-const SPEND = ["s_rumah", "s_kereta", "s_makan", "s_jalan", "s_anak", "s_bil", "s_ibubapa", "s_lain"];
-const DEBT = ["d_rumah", "d_kereta", "d_peribadi", "d_kad", "d_ptptn", "d_lain"];
-const DEP = {pasangan: "Pasangan", anak: "Anak", ibubapa: "Ibu bapa", tiada: "Tiada sesiapa"};
-const MED = {
-  sendiri: ["Ada, bayar sendiri", "Semak medical card korang", "Pastikan had tahunan, deductible dan had bilik masih cukup dengan kos hospital sekarang."],
-  syarikat: ["Syarikat sahaja", "Dapatkan medical card sendiri", "Kad syarikat ikut kerja. Bila berhenti atau tukar kerja, perlindungan tu biasanya tamat, dan masa tu umur korang dah naik."],
-  tiada: ["Tiada", "Dapatkan medical card", "Tanpa medical card, bil hospital swasta keluar dari simpanan korang."],
-  unsure: ["Tak pasti", "Semak polisi yang korang ada", "Hantar je apa yang korang ada, saya tolong baca dan terangkan."],
+const esc = s => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;");
+const inline = t => esc(t).replace(/\*\*(.+?)\*\*/g, "<b>$1</b>");
+// Facts: "\n" starts a new paragraph, lines starting with "• " become a list
+const rich = s => {
+  let out = "", list = false;
+  s.split("\n").forEach(l => {
+    if (l.startsWith("• ")) { if (!list) { out += "<ul>"; list = true; } out += `<li>${inline(l.slice(2))}</li>`; return; }
+    if (list) { out += "</ul>"; list = false; }
+    if (l.trim()) out += `<p>${inline(l)}</p>`;
+  });
+  return out + (list ? "</ul>" : "");
 };
+const all = LIST.flatMap(sec => sec.items);
+let source = new URLSearchParams(location.search).get("dari");
+try {
+  const first = localStorage.getItem("ganti-gaji-dari");
+  if (first) source = first; else if (source) localStorage.setItem("ganti-gaji-dari", source);
+} catch (e) { /* private mode */ }
+const KEY = "ganti-gaji-v3";
+// Items that don't apply, by answer: self-employed and gig workers have no Employment Act sick leave or employer cover; no house loan, no MRTT
+const HIDE = {kerja: {sendiri: ["cuti"], gig: ["cuti"]}, loan: {tidak: ["mrtt"]}};
+const ANS = {kerja: {gaji: "dengan majikan", sendiri: "sendiri", gig: "gig / p-hailing"}, loan: {ya: "ada", tidak: "tiada"}};
+// state[k] = "y" (dah ada) or "u" (tak pasti); prof = answers to the 2 questions
+let state = {}, prof = {}, me = {}, waText = "";
+try {
+  const saved = JSON.parse(localStorage.getItem(KEY) || "null");
+  if (saved) { state = saved.s || {}; prof = saved.p || {}; me = saved.m || {}; }
+  else JSON.parse(localStorage.getItem("ganti-gaji-v2") || "[]").forEach(k => state[k] = "y");
+  Object.keys(state).forEach(k => { if (!all.some(i => i.k === k)) delete state[k]; });
+} catch (e) { /* private mode */ }
+const save = () => { try { localStorage.setItem(KEY, JSON.stringify({s: state, p: prof, m: me})); } catch (e) { /* private mode */ } };
+const selfEmp = () => prof.kerja === "sendiri" || prof.kerja === "gig";
+const txt = it => (selfEmp() && it.alt) ? {...it, ...it.alt} : it;
+const hidden = () => new Set(Object.entries(prof).flatMap(([q, v]) => (HIDE[q] && HIDE[q][v]) || []));
 
-const rm = n => (n < 0 ? "−" : "") + "RM" + Math.round(Math.abs(n)).toLocaleString("en-MY");
-const num = k => +v[k] || 0;
-const kids = () => pick.dep.has("anak");
-const family = () => pick.dep.has("pasangan") || kids();
-const anyDep = () => family() || pick.dep.has("ibubapa");
-const spendKeys = () => SPEND.filter(k => k !== "s_anak" || kids());
-const sum = keys => keys.reduce((a, k) => a + num(k), 0);
+// A pen tick that draws itself when ticked
+const pen = '<svg viewBox="0 0 30 28" aria-hidden="true"><path d="M4 15.5 C6.5 17.5 8.5 19.6 10.6 23 C14 15 19 8.5 27 3"/></svg><span class="qm" aria-hidden="true">?</span>';
+const chev = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>';
+const moreLabel = it => it.s ? "Lihat fakta & sumber" : "Lihat apa nak semak";
+$("list").innerHTML = LIST.map((sec, si) => `<section class="sec t${si % 5}" id="s-${si}">
+  <div class="sec-head"><span class="sec-art" aria-hidden="true"><span class="pic" id="sa-${si}"></span><svg class="done-tick" viewBox="0 0 30 28"><path d="M4 15.5 C6.5 17.5 8.5 19.6 10.6 23 C14 15 19 8.5 27 3"/></svg></span><div><span class="num">${String(si + 1).padStart(2, "0")}</span><h2>${esc(sec.t)}</h2><p>${esc(sec.d)}</p></div><b id="sc-${si}"></b></div>
+  <ul class="items">${sec.items.map(it => `<li class="item" id="i-${it.k}">
+    <label><input type="checkbox" data-k="${it.k}"><span class="box">${pen}</span>
+      <span><span class="t">${esc(it.t)}</span><span class="p">${esc(it.p)}</span></span></label>
+    <div class="acts"><button class="more" type="button" aria-haspopup="dialog" data-k="${it.k}"><span>${moreLabel(it)}</span>${chev}</button>
+      <button class="unsure" type="button" aria-pressed="false" data-u="${it.k}">Tak pasti</button></div>
+    <div class="fact">${rich(it.f)}</div></li>`).join("")}</ul></section>`).join("");
 
-// [[number, unit], ...]: 46 months -> [["3", "tahun"], ["10", "bulan"]]
-function span(m) {
-  if (m <= 0) return [["0", "bulan"]];
-  if (m < 1) return [["<1", "bulan"]];
-  const t = Math.floor(m);
-  if (t < 24) return [[t, "bulan"]];
-  const y = Math.floor(t / 12), r = t % 12;
-  return r ? [[y, "tahun"], [r, "bulan"]] : [[y, "tahun"]];
-}
-const months = m => span(m).map(p => p.join(" ")).join(" ");
-const short = m => span(m).map(([n, u]) => n + " " + (u === "tahun" ? "thn" : "bln")).join(" ");
-const esc = s => String(s).replace(/</g, "&lt;");
-
-function defaultYears() {
-  if (kids()) return Math.max(23 - num("youngest"), 5);
-  return anyDep() ? 5 : 0;
-}
-
-// The whole model. Needs: living costs for the years of support, debts to clear, education, final costs.
-// Has: savings, investments, KWSP, life cover. A cleared house or car loan also stops its monthly instalment.
-function calc(add = extra) {
-  const spend = sum(spendKeys()), income = num("income");
-  const houseInst = num("d_rumah") > 0 ? num("s_rumah") : 0;
-  const carInst = num("d_kereta") > 0 ? num("s_kereta") : 0;
-  const household = Math.max(0, spend - num("s_ibubapa") - houseInst - carInst);
-  const support = (family() ? household : 0) + (pick.dep.has("ibubapa") ? num("s_ibubapa") : 0);
-  const y = support > 0 ? years : 0;
-  const covered = pick.mrtt === "ada" ? num("d_rumah") : 0;
-  const need = {
-    live: support * 12 * y,
-    debt: sum(DEBT) - covered,
-    edu: kids() ? num("e_anak") * v.nkids : 0,
-    fin: num("f_akhir"),
-  };
-  const have = {cash: num("a_tunai") + num("a_labur"), kwsp: num("a_kwsp"), cover: num("c_sendiri") + num("c_majikan"), extra: add};
-  const needT = need.live + need.debt + need.edu + need.fin, haveT = have.cash + have.kwsp + have.cover + add;
-  return {
-    spend, income, support, y, covered, need, have, needT, haveT,
-    gap: Math.max(0, needT - haveT),
-    gap0: Math.max(0, needT - haveT + add),                                // the real gap, before the simulator
-    trimmed: houseInst + carInst,
-    last: support > 0 ? (haveT - need.debt - need.fin) / support : null,  // months the family lasts
-    solo: spend > 0 ? have.cash / spend : 0,                              // months savings last without pay
-  };
-}
-
-/* ---------- inputs ---------- */
-$$("input[data-k]").forEach(inp => {
-  const money = inp.closest(".amt") && !inp.closest(".amt.short");
-  inp.addEventListener("input", () => {
-    const d = inp.value.replace(/[^\d]/g, "").slice(0, money ? 9 : 2);
-    v[inp.dataset.k] = d === "" ? null : +d;
-    inp.value = money && d ? (+d).toLocaleString("en-MY") : d;
-    update();
+const draw = (inner, vb = "0 0 600 520") => `<svg viewBox="${vb}" preserveAspectRatio="xMidYMid meet"><g filter="url(#hand)">${inner}</g></svg>`;
+// Draw-on animation: every stroke gets a length of 1 so it can be revealed; strokes start one after another
+const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
+function playIn(el) {
+  if (still) { el.classList.add("drawn"); return; }
+  el.querySelectorAll("path,circle,rect,ellipse,line,polyline,polygon").forEach((n, i) => {
+    const st = n.getAttribute("stroke");
+    const d = Math.min(i * .05, 1.1);
+    if (st && st !== "none") n.setAttribute("pathLength", "1");
+    n.style.transitionDelay = `${d}s, ${d + .6}s`;
   });
-  inp.addEventListener("keydown", e => {
-    if (e.key !== "Enter") return;
-    const all = $$("input[data-k]", inp.closest(".screen")).filter(x => x.offsetParent);
-    const nxt = all[all.indexOf(inp) + 1];
-    if (nxt) nxt.focus(); else inp.closest(".screen").querySelector("[data-next]").click();
+  el.classList.remove("drawn");
+  void el.offsetWidth;
+  requestAnimationFrame(() => el.classList.add("drawn"));
+}
+const seen = "IntersectionObserver" in window ? new IntersectionObserver(es => es.forEach(e => {
+  if (!e.isIntersecting) return;
+  e.target.dataset.seen = 1;
+  playIn(e.target);
+  seen.unobserve(e.target);
+}), {threshold: .3}) : null;
+const watch = el => { el.classList.add("anim"); if (seen) seen.observe(el); else el.classList.add("drawn"); };
+function setArt(id, html) {
+  const el = $(id);
+  if (el.dataset.html === html) return;
+  el.dataset.html = html;
+  el.innerHTML = html;
+  if (el.dataset.seen) playIn(el);
+}
+// Opening questions drawing: the kind of work they chose (or a question mark), plus a house if they have a house loan
+// Each section heading gets its own marker drawing (the same ones as the gap cards)
+LIST.forEach((_, si) => { $("sa-" + si).innerHTML = draw(ART.sec[si]); watch($("sa-" + si)); });
+$("art-hero").innerHTML = draw(ART.hero, "0 0 900 440"); watch($("art-hero"));
+watch($("art-q")); watch($("art-r"));
+document.querySelectorAll(".note").forEach(watch);
+
+function questionArt() {
+  const house = prof.loan === "ya", work = ART.work[prof.kerja || "mula"];
+  const shift = house ? (prof.kerja ? 0 : -80) : (prof.kerja ? 80 : 0);
+  return draw(`<g transform="translate(${shift} 0)">${work}</g>${house ? ART.house : ""}`, "0 0 600 520");
+}
+
+function paint() {
+  setArt("art-q", questionArt());
+  const hide = hidden();
+  all.forEach(it => {
+    const li = $("i-" + it.k), st = state[it.k];
+    li.hidden = hide.has(it.k);
+    li.classList.toggle("on", st === "y");
+    li.classList.toggle("maybe", st === "u");
+    li.querySelector("input").checked = st === "y";
+    li.querySelector(".unsure").setAttribute("aria-pressed", st === "u");
+    const tx = txt(it);
+    li.querySelector(".t").textContent = tx.t; li.querySelector(".p").textContent = tx.p;
   });
-});
+  document.querySelectorAll(".seg").forEach(g => g.querySelectorAll("button").forEach(b =>
+    b.setAttribute("aria-pressed", (g.dataset.q === "jantina" ? me : prof)[g.dataset.q] === b.dataset.v)));
+}
 
-$$(".chips[data-group]").forEach(g => {
-  const name = g.dataset.group, multi = "multi" in g.dataset;
-  $$(".chip", g).forEach(c => c.onclick = () => {
-    const val = c.dataset.value;
-    if (multi) {
-      if (val === "tiada") pick.dep = new Set(pick.dep.has("tiada") ? [] : ["tiada"]);
-      else { pick.dep.delete("tiada"); pick.dep.has(val) ? pick.dep.delete(val) : pick.dep.add(val); }
-      $$(".chip", g).forEach(x => x.setAttribute("aria-pressed", pick.dep.has(x.dataset.value)));
-    } else {
-      pick[name] = val;
-      $$(".chip", g).forEach(x => x.setAttribute("aria-pressed", x === c));
-    }
-    if (name === "dep" && !yearsEdited) years = defaultYears();
-    update();
-  });
-});
+// The walker: steps forward as they get through the questions, cheers at the flag when they reach the result
+let walkerAt = null, walkerTimer = 0;
+function moveWalker(p) {
+  const w = $("walker");
+  w.style.setProperty("--p", p);
+  w.classList.toggle("done", p >= 1);
+  if (walkerAt !== null && p !== walkerAt) {
+    w.classList.add("walking");
+    clearTimeout(walkerTimer);
+    walkerTimer = setTimeout(() => w.classList.remove("walking"), 900);
+  }
+  walkerAt = p;
+}
 
-$$(".stepper [data-step]", document.querySelector("[data-id=about]")).forEach(b => b.onclick = () => {
-  v.nkids = Math.max(1, Math.min(10, v.nkids + +b.dataset.step));
-  $("nkids").textContent = v.nkids;
-  update();
-});
-$("unsure").onchange = e => { pick.unsure = e.target.checked; update(); };
-$("years").oninput = e => { years = +e.target.value; yearsEdited = true; update(); };
+// Progress = the furthest question they've actually answered (ticked or "Tak pasti"); scrolling alone doesn't count
+function progress() {
+  const hide = hidden(), vis = all.filter(i => !hide.has(i.k)), total = vis.length;
+  const far = vis.reduce((m, i, ix) => state[i.k] ? ix + 1 : m, 0);
+  $("count").innerHTML = `Soalan <b>${far}</b> / ${total}`;
+  $("bar").style.width = (far / total * 100) + "%";
+  moveWalker(far / total);
+}
 
-// What still stops each step: shown in its dock instead of a silently disabled button
-const missing = {
-  about: () => {
-    const m = [];
-    if (!(num("age") >= 18 && num("age") <= 75)) m.push("umur");
-    if (!(num("income") > 0)) m.push("gaji");
-    if (!pick.dep.size) m.push("siapa bergantung");
-    if (kids() && (v.youngest == null || num("youngest") > 30)) m.push("umur anak bongsu");
-    return m.length ? "Isi " + m.join(", ") : "";
-  },
-  spend: () => sum(spendKeys()) > 0 ? "" : "Isi sekurang-kurangnya satu belanja",
-  debt: () => num("d_rumah") > 0 && !pick.mrtt ? "Jawab soalan MRTT/MLTT" : "",
-  cover: () => pick.med ? "" : "Pilih medical card",
-};
+// Google Sheet: one row per visitor (by a random id): Siap when they fill the form to see the result, then Hantar WA.
+// Sends nothing until SHEET is filled in, and nothing before they press "Tengok keputusan".
+const RANK = {Mula: 1, Siap: 2, "Hantar WA": 3};
+let lastSent = "";
+function sendSheet(status) {
+  if (!SHEET || !me.ok || !me.id) return;
+  if (status && (RANK[status] || 0) > (RANK[me.st] || 0)) { me.st = status; save(); }
+  const hide = hidden(), vis = all.filter(i => !hide.has(i.k));
+  const open = vis.filter(i => state[i.k] !== "y"), unsure = open.filter(i => state[i.k] === "u");
+  const row = {id: me.id, nama: me.nama || "", tel: telOk(me.tel || ""), umur: me.umur || "", jantina: me.jantina || "",
+    dari: source || "", status: me.st || "Mula", kerja: ANS.kerja[prof.kerja] || "", loan: ANS.loan[prof.loan] || "",
+    settle: `${vis.length - open.length}/${vis.length}`, jurang: open.length,
+    tak_pasti: unsure.map(i => i.w).join(", "), senarai: open.filter(i => state[i.k] !== "u").map(i => i.w).join(", ")};
+  const body = JSON.stringify(row);
+  if (body === lastSent) return;
+  lastSent = body;
+  try { fetch(SHEET, {method: "POST", mode: "no-cors", keepalive: true, body}); } catch (e) { /* offline: the next change sends it */ }
+}
+// Ticks are sent when they leave or switch apps, so a half-done list still reaches the sheet
+document.addEventListener("visibilitychange", () => { if (document.visibilityState === "hidden") sendSheet(); });
 
-// Live totals in each step's dock; show and hide the follow-up fields.
+let gapFilter = "all";
 function update() {
-  $$("[data-kids]").forEach(el => el.hidden = !kids());
-  $$("[data-dep]").forEach(el => el.hidden = !anyDep());
-  $("mrtt").hidden = !(num("d_rumah") > 0);
-  if (!yearsEdited) years = defaultYears();
-  const c = calc();
+  const hide = hidden(), vis = all.filter(i => !hide.has(i.k));
+  const total = vis.length, n = vis.filter(i => state[i.k] === "y").length;
+  const open = vis.filter(i => state[i.k] !== "y"), unsure = open.filter(i => state[i.k] === "u");
+  const secs = LIST.map(sec => { const its = sec.items.filter(i => !hide.has(i.k));
+    return {t: sec.t, n: its.length, d: its.filter(i => state[i.k] === "y").length, open: its.filter(i => state[i.k] !== "y")}; });
+  // The section with the most still open, as a share of its items (first one wins a tie)
+  const weak = secs.filter(s => s.n).reduce((a, b) => (b.d / b.n < a.d / a.n ? b : a));
+  // Nothing ticked or marked yet: don't call all 16 "jurang", show a neutral state instead
+  const none = !n && !unsure.length;
 
-  $("spend-total").textContent = rm(c.spend);
-  const left = c.income - c.spend, ratio = c.income ? Math.min(1, c.spend / c.income) : 0;
-  $("spend-left").textContent = c.income ? (left >= 0 ? `Lebihan ${rm(left)}` : `Terlebih ${rm(-left)}`) : "";
-  $("spend-left").style.color = left >= 0 ? "#2F9E57" : "#C6385A";
-  $("spend-mini").style.width = (ratio * 100) + "%";
-  $("spend-mini").style.background = left >= 0 ? "var(--ink)" : "#C6385A";
-  $("debt-total").textContent = rm(sum(DEBT));
-  $("asset-total").textContent = rm(c.have.cash + c.have.kwsp);
-  $("cover-total").textContent = rm(c.have.cover);
-  $("need-total").textContent = rm(c.needT);
-  const r = $("years");
-  r.value = years || 1;
-  r.style.setProperty("--p", ((r.value - 1) / 29 * 100) + "%");
-  $("years-out").textContent = years;
-  const why = yearsEdited ? "Ikut keadaan korang" : kids() ? "Andaian: sampai anak bongsu umur 23" : "Andaian: 5 tahun";
-  $("years-why").textContent = why;
-
-  screens.forEach(s => {
-    const go = s.querySelector("[data-next]"), m = s.querySelector("[data-miss]");
-    if (!go || !missing[s.dataset.id]) return;
-    const msg = missing[s.dataset.id]();
-    go.disabled = !!msg;
-    m.textContent = msg;
-    m.hidden = !msg;
-    const box = m.closest(".sum");
-    if (!box.querySelector("b")) { box.hidden = !msg; go.classList.toggle("wide", !msg); }
+  $("label").textContent = `Audit Ganti Gaji percuma · ${total} perkara`;
+  $("ask-n").innerHTML = Object.keys(prof).length ? `Checklist korang: <b>${total} perkara</b>.` : `Tak jawab pun takpe. Semua ${all.length} perkara akan ditunjuk.`;
+  progress();
+  secs.forEach((s, si) => {
+    const b = $("sc-" + si), full = !!s.n && s.d === s.n;
+    b.textContent = `${s.d}/${s.n}`; b.classList.toggle("full", full);
+    $("s-" + si).classList.toggle("done", full);
+    const nb = $("nav-" + si); nb.classList.toggle("full", full);
+    nb.setAttribute("aria-label", `Bahagian ${si + 1}: ${s.t}, ${s.d} daripada ${s.n} dah settle`);
   });
-  if (screens[at] && screens[at].dataset.id === "result") render();
-}
 
-/* ---------- navigation ---------- */
-function show(i, push = true) {
-  at = Math.max(0, Math.min(i, screens.length - 1));
-  const s = screens[at], si = steps.indexOf(s);
-  screens.forEach(x => x.classList.toggle("on", x === s));
-  $("nav").classList.toggle("off", at === 0);
-  $("track").classList.toggle("off", si < 0);
-  $("count").textContent = si >= 0 ? `${si + 1} / ${steps.length}` : "";
-  $("bar").style.width = si >= 0 ? ((si + 1) / steps.length * 100) + "%" : "0";
-  update();
-  if (s.dataset.id === "result") render(true);
-  window.scrollTo(0, 0);
-  s.focus({preventScroll: true});
-  if (push) history.pushState({at}, "");
-}
-history.replaceState({at: 0}, "");
-addEventListener("popstate", e => show(e.state ? e.state.at : 0, false));
-$("back").onclick = () => history.back();
-$$("[data-next]").forEach(b => b.onclick = () => show(at + 1));
+  const ring = '<svg viewBox="0 0 300 120" preserveAspectRatio="none" aria-hidden="true"><path d="M150 14 C62 6 10 30 12 62 C14 98 92 114 172 106 C252 98 294 70 288 42 C282 14 214 2 120 12"/></svg>';
+  $("big").innerHTML = none ? `<b>–</b>Belum semak lagi` : open.length ? `<b><span class="ringed">${open.length}${ring}</span></b>jurang daripada ${total} perkara` : `<b>0</b>jurang daripada ${total} perkara`;
+  $("meter-l").innerHTML = none ? "Belum tick apa-apa lagi. Mula semak dari atas ↑"
+    : open.length ? (unsure.length ? `Termasuk <b>${unsure.length} yang korang tak pasti</b>. ` : "") + `Paling banyak jurang: <b>${esc(weak.t)}</b>.`
+    : "Mantap. Asas perlindungan korang nampak kukuh.";
+  $("rows").innerHTML = secs.filter(s => s.n).map(s => `<li><span>${esc(s.t)}</span><i><u style="width:${s.d / s.n * 100}%"></u></i><b>${s.d}/${s.n}</b></li>`).join("");
+  // Filter tabs: Semua / Belum ada / Tak pasti
+  const nNo = open.length - unsure.length, cnt = {all: open.length, no: nNo, u: unsure.length};
+  if (!cnt[gapFilter]) gapFilter = "all";
+  $("filt").querySelectorAll("button").forEach(b => {
+    const f = b.dataset.f;
+    b.innerHTML = `${{all: "Semua", no: "Belum ada", u: "Tak pasti"}[f]}<b>${cnt[f]}</b>`;
+    b.setAttribute("aria-pressed", f === gapFilter); b.disabled = !cnt[f];
+  });
+  const keep = i => gapFilter === "all" || (gapFilter === "u") === (state[i.k] === "u");
+  $("open").innerHTML = secs.map((s, si) => ({...s, si, show: s.open.filter(keep)})).filter(s => s.show.length).map(s => `<div class="gap t${s.si % 5}">
+    <div class="art">${draw(ART.sec[s.si])}</div>
+    <div><h3>${esc(s.t)} <b>${s.open.length} jurang</b></h3>
+    <div class="chips">${s.show.map(i => `<span${state[i.k] === "u" ? ' class="maybe"' : ""}>${esc(i.w)}</span>`).join("")}</div></div></div>`).join("");
+  $("gaps-sub").textContent = unsure.length ? "Yang bertanda ? tu benda korang tak pasti — paling penting untuk semak dulu sebelum berlaku apa-apa."
+    : "Ni yang akan dihantar bila korang tekan WhatsApp.";
+  $("gaps-note").innerHTML = "";
+  // Result drawing: dry under the umbrella with few gaps, a leaking umbrella with many (an illustration, not a score)
+  setArt("art-r", draw(ART.result[open.length <= 3 ? "kering" : "bocor"]));
+  $("open-card").hidden = none || !open.length;
 
-/* ---------- result ---------- */
-function stack(bar, leg, parts, scale, gap) {
-  const w = n => scale ? (n / scale * 100) + "%" : "0";
-  $(bar).innerHTML = parts.filter(p => p[1] > 0).map(p => `<i style="width:${w(p[1])};background:var(${p[2]})"></i>`).join("")
-    + (gap ? `<i class="gapseg" style="width:${w(gap)}"></i>` : "");
-  $(leg).innerHTML = parts.filter(p => p[1] > 0).map(p =>
-    `<li><i style="background:var(${p[2]})"></i><span>${p[0]}${p[3] ? `<small>${p[3]}</small>` : ""}</span><b>${rm(p[1])}</b></li>`).join("")
-    || `<li><i style="background:var(--line)"></i><span>Tiada</span><b>RM0</b></li>`;
-}
+  $("cta").textContent = open.length ? "Nak tahu mana satu boleh settle percuma, dan mana satu kena tutup?" : "Nak saya semak polisi korang untuk pastikan?";
+  $("cta-sub").textContent = none ? `WhatsApp saya. Saya semak ikut bajet korang — percuma, dan korang yang buat keputusan.`
+    : open.length ? `Hantar ${open.length} jurang ni kat WhatsApp. Saya semak satu-satu ikut bajet korang — percuma, dan korang yang buat keputusan.`
+    : `WhatsApp saya. Saya semak polisi korang — percuma, dan korang yang buat keputusan.`;
+  $("wa2-l").textContent = !none && open.length ? `Hantar ${open.length} jurang ke ${NAME}` : `WhatsApp ${NAME}`;
 
-// Count a number up on first reveal; any later render cancels it
-let anim = 0;
-function countUp(paint) {
-  const id = ++anim, t0 = performance.now();
-  if (matchMedia("(prefers-reduced-motion: reduce)").matches) return paint(1);
-  const tick = now => {
-    if (id !== anim) return;
-    const t = Math.min(1, Math.max(0, (now - t0) / 900));   // a frame's timestamp can predate t0
-    paint(1 - Math.pow(1 - t, 3));
-    if (t < 1) requestAnimationFrame(tick);
-  };
-  requestAnimationFrame(tick);
-}
+  if (none) { $("dock-v").innerHTML = `${total} perkara`; $("dock-l").textContent = "Mula dari atas ↑"; }
+  else if (open.length) { $("dock-v").innerHTML = `<em>${open.length}</em> jurang`; $("dock-l").textContent = unsure.length ? `${n}/${total} · ${unsure.length} tak pasti` : `${n}/${total} settle`; }
+  else { $("dock-v").textContent = `${total}/${total} settle`; $("dock-l").textContent = "Tiada jurang"; }
 
-// The family's money after debts and final costs, spent down year by year against the years they need
-function chart(c) {
-  const W = 320, H = 156, L = 4, R = 4, T = 22, B = 28, w = W - L - R, h = H - T - B, base = T + h;
-  const Y = c.y, start = c.haveT - c.need.debt - c.need.fin, yearly = c.support * 12;
-  const top = Math.max(start, 1), tz = start <= 0 ? 0 : Math.min(start / yearly, Y), end = start - yearly * tz;
-  const X = t => L + t / Y * w, P = b => base - Math.max(0, b) / top * h;
-  let g = `<line x1="${L}" y1="${base}" x2="${W - R}" y2="${base}" stroke="var(--line)" stroke-width="2"/>`;
-  if (start > 0) {
-    g += `<path d="M${X(0)} ${base} L${X(0)} ${P(start)} L${X(tz)} ${P(end)} L${X(tz)} ${base} Z" fill="var(--green)"/>`
-       + `<path d="M${X(0)} ${P(start)} L${X(tz)} ${P(end)}" fill="none" stroke="var(--ink)" stroke-width="2.5" stroke-linecap="round"/>`
-       + `<text class="ax" x="${L}" y="${T - 9}">${rm(start)} hari ini</text>`;
-  } else {
-    g += `<text class="ax bad" x="${W / 2}" y="${T + h / 2}" text-anchor="middle" style="font-size:13px">Tiada baki untuk family hidup</text>`;
+  // Short message: unsure items in full (the best place to start), missing ones one line per section
+  const missing = secs.map(s => ({t: s.t, its: s.open.filter(i => state[i.k] !== "u")})).filter(s => s.its.length);
+  const about = Object.entries(prof).map(([q, v]) => (q === "kerja" ? "Kerja: " : "Loan rumah: ") + ANS[q][v]).join(" · ");
+  const who = [me.umur && `Umur: ${me.umur}`, me.jantina].filter(Boolean).join(" · ");
+  const lines = [me.nama ? `Hi ${NAME}, saya ${me.nama}. Saya dah buat Checklist Ganti Gaji.` : `Hi ${NAME}, saya dah buat Checklist Ganti Gaji.`];
+  if (who) lines.push(who);
+  if (about) lines.push(about);
+  if (!none) {
+    lines.push(`Dah settle: ${n} / ${total}`);
+    if (unsure.length) lines.push("", `Tak pasti (${unsure.length}):`, ...unsure.map(i => "- " + i.w));
+    if (missing.length) lines.push("", `Belum ada (${open.length - unsure.length}):`, ...missing.map(s => `- ${s.t}: ${s.its.map(i => i.w).join(", ")}`));
+    if (!open.length) lines.push("Semua dah settle.");
   }
-  if (tz < Y) {
-    const short = X(Y) - X(tz) < 110;   // too little room beside the line: leave the words to the story below
-    const mid = Math.min(Math.max((X(tz) + X(Y)) / 2, L + 70), W - R - 70);
-    g += `<rect x="${X(tz)}" y="${base - 5}" width="${X(Y) - X(tz)}" height="10" rx="5" fill="var(--c-debt)"/>`
-       + `<circle cx="${X(tz)}" cy="${base}" r="5.5" fill="#fff" stroke="var(--ink)" stroke-width="2.5"/>`
-       + (short ? "" : `<text class="ax bad" x="${mid}" y="${base - 13}" text-anchor="middle">Tak cukup ${months((Y - tz) * 12)}</text>`);
-  }
-  g += `<text class="ax" x="${L}" y="${H - 6}">Hari ini</text>`
-     + `<text class="ax" x="${W - R}" y="${H - 6}" text-anchor="end">${Y} tahun lagi${kids() ? ` (anak ${num("youngest") + Y} thn)` : ""}</text>`;
-  $("chart").innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Carta duit family: ${rm(Math.max(start, 0))} hari ini, cukup untuk ${months(tz * 12)} daripada ${Y} tahun">${g}</svg>`;
+  lines.push("", !none && open.length ? "Boleh tolong semak jurang ni dan cadangkan apa yang patut saya tengok dulu?" : "Boleh tolong semak polisi saya?",
+    "Saya boleh hantar gambar sijil yang saya ada.", `(dari: ${source || "checklist"})`);
+  waText = lines.join("\n");
+  // api.whatsapp.com hands over more reliably from the Instagram in-app browser
+  $("wa2").href = `https://api.whatsapp.com/send?phone=${WHATSAPP}&text=${encodeURIComponent(waText)}`;
+}
+const refresh = () => { save(); paint(); update(); guard(); };
+$("filt").addEventListener("click", e => {
+  const b = e.target.closest("button");
+  if (!b || b.disabled) return;
+  gapFilter = b.dataset.f; update();
+});
+
+// Section shortcuts: tap to jump; the one on screen is underlined
+$("secnav").innerHTML = LIST.map((sec, si) => `<button type="button" id="nav-${si}" data-s="${si}">${String(si + 1).padStart(2, "0")}</button>`).join("");
+$("secnav").addEventListener("click", e => {
+  const b = e.target.closest("button");
+  if (b) $("s-" + b.dataset.s).scrollIntoView({behavior: "smooth", block: "start"});
+});
+// Welcome back: offer to continue from the first item they haven't answered
+function firstOpen() {
+  const hide = hidden();
+  return all.find(i => !hide.has(i.k) && !state[i.k]);
 }
 
-function render(reveal = false) {
-  const c = calc(), dep = c.support > 0;
-  if (!reveal) anim++;
-
-  $("kicker").textContent = !dep ? "Kalau korang tak boleh kerja esok, simpanan korang tahan"
-    : extra ? `Dengan tambahan ${rm(extra)}, family boleh bertahan` : "Kalau korang tiada esok, family boleh bertahan";
-  const heroV = dep ? c.last : c.solo;
-  const paint = k => {
-    $("big").innerHTML = span(heroV > 0 ? heroV * k : heroV).map(([n, u]) => `<b>${esc(n)}</b><small>${u}</small>`).join(" ");
-    $("gap").textContent = rm(c.gap * k);
-    $("dock-v").textContent = rm(c.gap0 * k);
-  };
-  reveal ? countUp(paint) : paint(1);
-  $("meter").hidden = !dep;
-  if (dep) {
-    const pct = Math.max(0, Math.min(1, c.last / (c.y * 12)));
-    $("fill").style.background = `var(--${pct < .25 ? "pink" : pct < .75 ? "yellow" : "green"})`;
-    $("fill").style.width = Math.max(pct * 100, 1.5) + "%";
-    $("meter-l").textContent = Math.round(pct * 100) + "% dilindungi";
-    $("meter-r").textContent = `Perlu ${c.y} tahun`;
-  }
-  $("hero-note").textContent = dep
-    ? (c.last < 0 ? `Lepas hutang dan kos akhir dibayar, family mula dengan kekurangan ${rm(-c.last * c.support)}.`
-                  : `Lepas hutang dan kos akhir dibayar, pada belanja family ${rm(c.support)} sebulan.`)
-    : `Tanpa gaji, pada belanja ${rm(c.spend)} sebulan. KWSP tak dikira sebab biasanya tak boleh dikeluarkan serta-merta.`;
-
-  $("st-cover").textContent = c.income ? (c.have.cover / (c.income * 12)).toFixed(1).replace(".0", "") + "×" : "-";
-  const left = c.income - c.spend;
-  $("st-left").textContent = rm(left);
-  $("st-left").className = left < 0 ? "bad" : "";
-  // The hero already shows the no-pay months for someone with no dependents, so show their debt instead
-  $("st-solo-l").textContent = dep ? "Tanpa gaji, simpanan tahan" : "Jumlah hutang";
-  $("st-solo").textContent = dep ? short(c.solo) : rm(sum(DEBT));
-
-  const scale = Math.max(c.needT, c.haveT);
-  stack("need-bar", "need-leg", [
-    ["Belanja family " + c.y + " tahun", c.need.live, "--c-live", c.trimmed ? "Tanpa ansuran rumah & kereta, sebab loan dilunaskan" : ""],
-    ["Hutang", c.need.debt, "--c-debt", c.covered ? `Loan rumah ${rm(c.covered)} ditanggung MRTT/MLTT` : ""],
-    ["Pendidikan anak", c.need.edu, "--c-edu", kids() ? `${v.nkids} anak × ${rm(num("e_anak"))}` : ""],
-    ["Kos akhir & pusaka", c.need.fin, "--c-final"],
-  ], scale);
-  stack("have-bar", "have-leg", [
-    ["Simpanan & pelaburan", c.have.cash, "--c-cash"],
-    ["KWSP", c.have.kwsp, "--c-kwsp"],
-    ["Perlindungan hayat" + (pick.unsure ? " (tak pasti)" : ""), c.have.cover, "--c-cover"],
-    ["Perlindungan tambahan", c.have.extra, "--c-extra", "Cubaan dari kalkulator"],
-  ], scale, c.gap);
-  $("need-t").textContent = rm(c.needT);
-  $("have-t").textContent = rm(c.haveT);
-  $("gapbox").className = "gapbox" + (c.gap ? "" : " ok");
-  $("gap-l").innerHTML = c.gap ? (extra ? "Baki gap<small>Selepas tambahan cubaan</small>" : "Gap perlindungan<small>Yang family masih kurang</small>")
-    : (extra ? "Gap tertutup<small>Dengan tambahan cubaan</small>" : "Tiada gap<small>Untuk andaian ni, family cukup</small>");
-  $("dock-l").textContent = c.gap0 ? "Gap perlindungan" : "Tiada gap";
-  $("years-row").hidden = !dep;
-
-  // Money over time, the story in one line, and the simulator
-  $("time-card").hidden = !dep;
-  if (dep) {
-    chart(c);
-    const yb = num("youngest"), start = c.haveT - c.need.debt - c.need.fin;
-    $("story").innerHTML = c.last <= 0 ? `Lepas hutang dibayar, family mula dengan <b>kekurangan ${rm(-start)}</b>.`
-      : c.last >= c.y * 12 ? `Duit cukup untuk <b>${c.y} tahun</b> yang diperlukan${kids() ? `, sampai anak bongsu umur ${yb + c.y}` : ""}.`
-      : `Duit family habis lepas <b>${months(c.last)}</b>.` + (kids()
-        ? ` Masa tu anak bongsu baru <b>umur ${yb + Math.floor(c.last / 12)}</b>.`
-        : ` Masih tinggal ${months(c.y * 12 - c.last)} tanpa sokongan.`);
-    const r = $("extra"), max = Math.max(100000, Math.ceil(c.gap0 * 1.25 / 50000) * 50000);
-    r.max = max;
-    if (+r.value !== extra) r.value = extra;
-    r.style.setProperty("--p", (extra / max * 100) + "%");
-    $("extra-out").textContent = "+" + rm(extra);
-    const pct = Math.max(0, Math.min(1, c.last / (c.y * 12)));
-    $("sim-res").innerHTML = `Bertahan <b>${short(Math.max(c.last, 0))}</b> · <b>${Math.round(pct * 100)}%</b> dilindungi`;
-    $("fillgap").hidden = !c.gap0 || extra >= c.gap0;
-  }
-  $("print-meta").textContent = "Laporan Cek Perlindungan · " + new Date().toLocaleDateString("ms-MY", {day: "numeric", month: "long", year: "numeric"});
-  $("yval").textContent = years;
-  $("years-why2").textContent = $("years-why").textContent;
-
-  // Next steps, from the visitor's own numbers
-  const todo = [];
-  if (c.gap0) todo.push([`Tutup gap ${rm(c.gap0)}`, left > 0 ? `Lebihan korang ${rm(left)} sebulan. Ada cara tutup gap ni ikut bajet tu.` : "Ada cara tutup gap ni walaupun bajet ketat."]);
-  if (num("d_rumah") > 0 && pick.mrtt !== "ada") todo.push([pick.mrtt === "unsure" ? "Semak MRTT/MLTT loan rumah" : `Loan rumah ${rm(num("d_rumah"))} tanpa MRTT/MLTT`, "Kalau apa-apa jadi, baki ni perlu dilunaskan dari harta korang."]);
-  if (pick.med) todo.push(MED[pick.med].slice(1));
-  if (num("c_majikan") > 0) todo.push([`Perlindungan majikan ${rm(num("c_majikan"))} ikut kerja`, "Bila tukar kerja, jumlah ni biasanya hilang. Jangan bergantung pada ni sahaja."]);
-  if (c.solo < 3) todo.push([`Simpanan tahan ${months(c.solo)} je tanpa gaji`, "Kalau sakit dan tak boleh kerja, ini yang korang ada untuk hidup."]);
-  $("todo").innerHTML = todo.slice(0, 4).map(([t, d], i) => `<li><i>${i + 1}</i><div><b>${t}</b><span>${d}</span></div></li>`).join("");
-
-  $("art-dep").hidden = !anyDep();
-  $("art-solo").hidden = anyDep();
-
-  const b = extra ? calc(0) : c;   // the message reports their real numbers, not the simulator's
-  const lines = [
-    `Hi ${NAME}, saya dah buat Cek Perlindungan.`, "",
-    `Umur ${num("age")} · Gaji bersih ${rm(c.income)}`,
-    `Bergantung: ${[...pick.dep].map(d => DEP[d]).join(", ")}${kids() ? ` (${v.nkids} anak, bongsu ${num("youngest")} thn)` : ""}`,
-    `Belanja sebulan: ${rm(c.spend)}`,
-    `Hutang: ${rm(sum(DEBT))}${num("d_rumah") ? ` (rumah ${rm(num("d_rumah"))}, MRTT/MLTT: ${{ada: "Ada", tiada: "Tiada", unsure: "Tak pasti"}[pick.mrtt]})` : ""}`,
-    `Simpanan & aset: ${rm(c.have.cash + c.have.kwsp)} (KWSP ${rm(c.have.kwsp)})`,
-    `Perlindungan hayat: ${rm(c.have.cover)}${num("c_majikan") ? ` (majikan ${rm(num("c_majikan"))})` : ""}${pick.unsure ? " - tak pasti" : ""}`,
-    `Medical card: ${MED[pick.med][0]}`, "",
-    dep ? `Keputusan: family boleh bertahan ${months(b.last)}. Gap ${rm(b.gap)} (sokong ${c.y} tahun).`
-        : `Keputusan: simpanan tahan ${months(c.solo)} tanpa gaji. Gap ${rm(b.gap)}.`,
-    extra ? `Saya nak tahu pasal tambah perlindungan ${rm(extra)}.` : null,
-    "Boleh tolong semak untuk saya?",
-    source ? `(dari: ${source})` : null,
-  ];
-  const wa = $("wa");
-  if (WHATSAPP) {
-    wa.href = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(lines.filter(l => l !== null).join("\n"))}`;
-    wa.removeAttribute("aria-disabled");
-  } else {
-    wa.removeAttribute("href");
-    wa.setAttribute("aria-disabled", "true");
-    $("wa-label").textContent = "Nombor belum diletak";
-  }
+let reactT = 0;
+function react(kind) {
+  const w = $("walker");
+  w.classList.remove("yay", "hmm"); void w.offsetWidth; w.classList.add(kind);
+  clearTimeout(reactT); reactT = setTimeout(() => w.classList.remove("yay", "hmm"), 750);
 }
+$("list").addEventListener("change", e => {
+  const k = e.target.dataset.k;
+  if (!k) return;
+  if (e.target.checked) state[k] = "y"; else delete state[k];
+  refresh();
+  if (e.target.checked) react("yay");
+});
+// "Tak pasti" marks an item as unsure (tap again to clear); ticking the box replaces it
+$("list").addEventListener("click", e => {
+  const b = e.target.closest("[data-u]");
+  if (!b) return;
+  const k = b.dataset.u;
+  if (state[k] === "u") delete state[k]; else state[k] = "u";
+  refresh();
+  if (state[k] === "u") react("hmm");
+});
+document.querySelectorAll(".seg").forEach(g => g.addEventListener("click", e => {
+  const b = e.target.closest("button");
+  if (!b) return;
+  const bag = g.dataset.q === "jantina" ? me : prof;
+  if (bag[g.dataset.q] === b.dataset.v) delete bag[g.dataset.q]; else bag[g.dataset.q] = b.dataset.v;
+  refresh();
+  if (!$("g-need").hidden) startNeed();
+}));
+// "Lihat fakta" opens a centred pop-up over the blurred page, with that item's official sources
+let lastBtn = null, okAction = null, leaveAction = null;
+function showModal(kicker, title, bodyHtml, src, ok = "Faham", onOk = null, onLeave = null) {
+  $("modal-k").textContent = kicker;
+  $("modal-t").textContent = title;
+  $("modal-b").innerHTML = bodyHtml;
+  $("modal-s").textContent = src;
+  $("modal-ok").textContent = ok;
+  okAction = onOk; leaveAction = onLeave;
+  $("modal-leave").hidden = !onLeave;
+  const bg = $("modal");
+  bg.hidden = false; document.body.classList.add("lock");
+  bg.querySelector(".scroll").scrollTop = 0;
+  requestAnimationFrame(() => requestAnimationFrame(() => bg.classList.add("show")));
+  $("modal-x").focus({preventScroll: true});
+}
+function openFact(k) {
+  const sec = LIST.find(x => x.items.some(i => i.k === k)), it = txt(sec.items.find(i => i.k === k));
+  // sources are shown as a plain reference, not links
+  const names = it.s ? [...new Set(it.s.map(n => SOURCES[n - 1][2]))] : [];
+  showModal(sec.t, it.t, rich(it.f), names.length ? "Sumber: " + names.join(" · ") : "Semak sendiri.");
+}
+function closeFact() {
+  const bg = $("modal");
+  if (bg.hidden) return;
+  bg.classList.remove("show"); document.body.classList.remove("lock");
+  setTimeout(() => { bg.hidden = true; }, 200);
+  if (lastBtn) lastBtn.focus({preventScroll: true});
+}
+$("list").addEventListener("click", e => {
+  const b = e.target.closest(".more");
+  if (b) { lastBtn = b; openFact(b.dataset.k); }
+});
+$("modal").addEventListener("click", e => { if (e.target === $("modal")) closeFact(); });
+$("modal-x").onclick = closeFact;
+$("modal-ok").onclick = () => { const a = okAction; closeFact(); if (a) setTimeout(a, 220); };
+$("modal-leave").onclick = () => { const a = leaveAction; closeFact(); if (a) setTimeout(a, 220); };
+document.addEventListener("keydown", e => {
+  if ($("modal").hidden) return;
+  if (e.key === "Escape") return closeFact();
+  if (e.key !== "Tab") return;
+  const f = [...$("modal").querySelectorAll("button, a[href]")], first = f[0], last = f[f.length - 1];
+  if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+  else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+});
 
-const stepYears = d => { years = Math.max(1, Math.min(30, years + d)); yearsEdited = true; update(); };
-$("yminus").onclick = () => stepYears(-1);
-$("yplus").onclick = () => stepYears(1);
-$("extra").oninput = e => { extra = +e.target.value; update(); };
-$("fillgap").onclick = () => { extra = Math.ceil(calc(0).gap / 10000) * 10000; update(); };
-$("pdf").onclick = () => window.print();
-$("again").onclick = () => location.replace(location.pathname + location.search);
-$("share").onclick = async () => {
-  const url = location.origin + location.pathname, b = $("share");
-  const text = "Cuba kira ni: kalau apa-apa jadi, family kita boleh bertahan berapa lama?";
-  try {
-    if (navigator.share) await navigator.share({title: document.title, text, url});
-    else { await navigator.clipboard.writeText(text + " " + url); b.textContent = "Link disalin"; }
-  } catch (e) { /* cancelled */ }
+$("print-meta").textContent = "Checklist Ganti Gaji · cek.saganproductions.com · dicetak " + new Date().toLocaleDateString("ms-MY", {day: "numeric", month: "long", year: "numeric"});
+$("wa-num").textContent = WHATSAPP.replace(/^6(01\d)(\d{3,4})(\d{4})$/, "$1-$2 $3");
+// The app's own browser sometimes fails to hand over to WhatsApp, so always leave a way to send it by hand
+// Name and age are required: without them the button points at the empty box instead of opening WhatsApp
+function missing() {
+  const m = [];
+  if (!me.nama) m.push("nama");
+  if (!me.umur) m.push("umur");
+  return m;
+}
+function showNeed(m) {
+  ["nama", "umur"].forEach(f => $("fd-" + f).classList.toggle("bad", m.includes(f)));
+  const raw = $("f-umur").value.trim();
+  const ageBad = m.includes("umur") && raw && (+raw < 16 || +raw > 80);
+  $("need").textContent = !m.length ? "" : ageBad && m.length === 1 ? "Umur mesti antara 16 hingga 80."
+    : m.length === 2 ? "Isi nama dan umur dulu, baru boleh hantar." : m[0] === "nama" ? "Isi nama dulu, baru boleh hantar." : "Isi umur dulu, baru boleh hantar.";
+  $("need").hidden = !m.length;
+}
+$("wa2").addEventListener("click", e => {
+  const m = missing();
+  if (m.length) {
+    e.preventDefault();
+    showNeed(m);
+    $("details").scrollIntoView({behavior: "smooth", block: "start"});
+    setTimeout(() => $("f-" + m[0]).focus({preventScroll: true}), 450);
+    return;
+  }
+  setTimeout(() => {
+    $("fallback").hidden = false;
+    if (document.visibilityState === "visible") $("fallback").scrollIntoView({block: "center", behavior: "smooth"});
+  }, 1500);
+});
+// The bottom bar takes them to the short form above the big WhatsApp button
+$("jump").addEventListener("click", e => {
+  if (!document.body.classList.contains("gated")) return;
+  e.preventDefault();
+  $("start").scrollIntoView({behavior: "smooth", block: "start"});
+});
+$("wa").addEventListener("click", e => {
+  e.preventDefault();
+  if (document.body.classList.contains("gated")) { $("start").scrollIntoView({behavior: "smooth", block: "start"}); return; }
+  $("details").scrollIntoView({behavior: "smooth", block: "start"});
+  if (!me.nama) setTimeout(() => $("f-nama").focus({preventScroll: true}), 600);
+});
+// Name, number and age: the same fields appear at the start and above the WhatsApp button, and stay in step
+const tidy = {nama: v => v.replace(/\s+/g, " ").trimStart().slice(0, 40), umur: v => v.replace(/\D/g, "").slice(0, 2),
+  tel: v => v.replace(/[^\d+\- ]/g, "").slice(0, 16)};
+// Malaysian mobile numbers only: 01x-xxx xxxx, with or without +60. Returns 601xxxxxxxx, or "" if it doesn't look right.
+const telOk = v => { const d = v.replace(/\D/g, "").replace(/^0/, "60"); return /^601\d{8,9}$/.test(d) ? d : ""; };
+const valid = {nama: v => !!v, umur: v => +v >= 16 && +v <= 80, tel: v => !!telOk(v)};
+document.querySelectorAll("input[data-f]").forEach(el => {
+  const f = el.dataset.f;
+  el.value = me[f] || "";
+  el.addEventListener("input", () => {
+    el.value = tidy[f](el.value);
+    const v = el.value.trim();
+    if (v && valid[f](v)) me[f] = v; else delete me[f];
+    document.querySelectorAll(`input[data-f="${f}"]`).forEach(o => { if (o !== el) o.value = el.value; });
+    save(); update();
+    if (!$("need").hidden) showNeed(missing());
+    if (!$("g-need").hidden) startNeed();
+  });
+});
+
+// The form before the result: everything is required, then the result and the offer open. Returning visitors who already did it skip it.
+const LABEL = {nama: "nama", tel: "nombor telefon", umur: "umur", jantina: "jantina", ok: "tick setuju"};
+function startMissing() {
+  const m = ["nama", "tel", "umur", "jantina"].filter(f => !me[f]);
+  if (!$("g-ok").checked) m.push("ok");
+  return m;
+}
+function startNeed() {
+  const m = startMissing();
+  ["nama", "tel", "umur", "jantina", "ok"].forEach(f => $("gd-" + f).classList.toggle("bad", m.includes(f)));
+  const telRaw = $("g-tel").value.trim(), ageRaw = $("g-umur").value.trim();
+  const hints = [];
+  if (m.includes("tel") && telRaw) hints.push("Nombor mesti nombor telefon bimbit Malaysia, contoh 012-345 6789.");
+  if (m.includes("umur") && ageRaw) hints.push("Umur mesti antara 16 hingga 80.");
+  const empty = m.filter(f => !(f === "tel" && telRaw) && !(f === "umur" && ageRaw)).map(f => LABEL[f]);
+  if (empty.length) hints.unshift("Isi " + (empty.length > 1 ? empty.slice(0, -1).join(", ") + " dan " + empty.slice(-1) : empty[0]) + " dulu.");
+  $("g-need").textContent = hints.join(" ");
+  $("g-need").hidden = !m.length;
+  return m;
+}
+$("g-ok").checked = !!me.ok;
+$("g-ok").addEventListener("change", () => { if (!$("g-need").hidden) startNeed(); });
+$("start").addEventListener("submit", e => {
+  e.preventDefault();
+  if ($("g-web").value) return;           // a bot filled the hidden field
+  const m = startNeed();
+  if (m.length) {
+    const f = m[0], el = f === "ok" ? $("g-ok") : f === "jantina" ? $("gd-jantina").querySelector("button") : $("g-" + f);
+    el.focus();
+    return;
+  }
+  me.ok = 1;
+  if (!me.id) me.id = Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
+  save();
+  sendSheet("Siap");
+  document.body.classList.remove("gated");
+  update(); guard();
+  setTimeout(() => $("result").scrollIntoView({behavior: "smooth", block: "start"}), 60);
+});
+if (!me.ok) document.body.classList.add("gated");
+$("copy").onclick = async () => {
+  try { await navigator.clipboard.writeText(waText); $("copy").textContent = "Disalin ✓"; setTimeout(() => { $("copy").textContent = "Salin mesej"; }, 2500); }
+  catch (e) { const m = $("msg"); m.value = waText; m.hidden = false; m.focus(); m.select(); }
 };
+// One WhatsApp button at a time: the bottom bar stays while scrolling and leaves only when the big WhatsApp button at the end is on screen
+if ("IntersectionObserver" in window) {
+  // Underline the section that is on screen
+  const spy = new IntersectionObserver(es => es.forEach(e => {
+    if (!e.isIntersecting) return;
+    document.querySelectorAll(".secnav button").forEach(b => b.classList.toggle("cur", b.dataset.s === e.target.id.slice(2)));
+  }), {rootMargin: "-40% 0px -55% 0px"});
+  document.querySelectorAll(".sec").forEach(sec => spy.observe(sec));
+  // "Tengok keputusan" shows while the last two sections are on screen and the result isn't yet
+  let lastIn = false, resIn = false;
+  const nudge = () => { $("jump").hidden = !(lastIn && !resIn); };
+  // the last two sections count as "near the end"
+  const near = new Set(), ends = [...document.querySelectorAll(".sec")].slice(-2);
+  const endObs = new IntersectionObserver(es => { es.forEach(e => e.isIntersecting ? near.add(e.target) : near.delete(e.target)); lastIn = near.size > 0; nudge(); });
+  ends.forEach(sec => endObs.observe(sec));
+  new IntersectionObserver(([e]) => { resIn = e.isIntersecting || e.boundingClientRect.top < 0; nudge(); }).observe($("result"));
+}
+if ("IntersectionObserver" in window) new IntersectionObserver(([e]) => $("dock").classList.toggle("away", e.isIntersecting || e.boundingClientRect.top < 0))
+  .observe($("wa2"));
+if (AGENT) { $("fine-name").textContent = AGENT; document.querySelectorAll(".who-name").forEach(el => el.textContent = AGENT); }
+$("fine-title").textContent = TITLE; $("fine-code").textContent = CODE;
+if (REASON) { $("reason").textContent = REASON; $("reason").hidden = false; }
+// Reminder to finish: shown at most once per visit, only if they started but haven't sent it to WhatsApp.
+// On phones it catches the back button; on computers, the mouse heading for the tab bar. A second back leaves normally.
+let reminded = false, sent = false, guarded = false;
+$("wa2").addEventListener("click", () => { if (!$("need").hidden) return; sent = true; sendSheet("Hantar WA"); });
+const started = () => Object.keys(state).length >= 2;
+function remind() {
+  if (reminded || sent || !started() || !$("modal").hidden) return false;
+  reminded = true;
+  const hide = hidden(), left = all.filter(i => !hide.has(i.k) && !state[i.k]).length;
+  const first = all.find(i => !hide.has(i.k) && !state[i.k]);
+  if (left) showModal("Sekejap", "Eh, dah nak pergi?", `<p>Tinggal <b>${left} perkara</b> je lagi untuk nampak jurang penuh korang.</p>`, "", "Sambung",
+    () => $("i-" + first.k).scrollIntoView({behavior: "smooth", block: "start"}), () => history.back());
+  else showModal("Sekejap", "Senarai korang dah siap", `<p>Hantar ke ${esc(NAME)} dulu? Saya semak dan balas hari yang sama. <b>Percuma.</b></p>`, "", "Hantar sekarang",
+    () => $(document.body.classList.contains("gated") ? "start" : "details").scrollIntoView({behavior: "smooth", block: "start"}), () => history.back());
+  return true;
+}
+// Phones: add one history step after their first answer, so the first back press can show the reminder
+function guard() {
+  if (guarded) return;
+  guarded = true;
+  history.pushState({ganti: 1}, "");
+}
+addEventListener("popstate", () => { if (!remind()) history.back(); });
+document.addEventListener("mouseout", e => {
+  if (!matchMedia("(hover: hover)").matches || e.relatedTarget || e.clientY > 0) return;
+  remind();
+});
+
+paint();
 update();
+{
+  const answered = Object.keys(state).length, nxt = firstOpen();
+  if (answered && nxt) {
+    const hide = hidden(), vis = all.filter(i => !hide.has(i.k));
+    $("resume-n").textContent = `${vis.filter(i => state[i.k] === "y").length} / ${vis.length}`;
+    $("resume").hidden = false;
+    $("resume-go").onclick = () => { $("i-" + nxt.k).scrollIntoView({behavior: "smooth", block: "start"}); $("resume").hidden = true; };
+  }
+}
 </script>
 </body>
 </html>
