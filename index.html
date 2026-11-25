@@ -826,6 +826,12 @@ try {
   const first = localStorage.getItem("ganti-gaji-dari");
   if (first) source = first; else if (source) localStorage.setItem("ganti-gaji-dari", source);
 } catch (e) { /* private mode */ }
+// Kiraan tanpa nama untuk dashboard: sekali "buka" dan sekali "jawab" setiap telefon. Tiada nama, nombor atau ID dihantar.
+function visit(ev) {
+  if (!SHEET) return;
+  try { const k = "ganti-gaji-visit-" + ev; if (localStorage.getItem(k)) return; localStorage.setItem(k, "1"); } catch (e) { return; }
+  try { fetch(SHEET, {method: "POST", mode: "no-cors", keepalive: true, body: JSON.stringify({visit: ev, form: "gaji", dari: source || ""})}); } catch (e) { /* offline */ }
+}
 const KEY = "ganti-gaji-v3";
 // Items that don't apply, by answer: self-employed and gig workers have no Employment Act sick leave or employer cover; no house loan, no MRTT
 const HIDE = {kerja: {sendiri: ["cuti"], gig: ["cuti"]}, loan: {tidak: ["mrtt"]}};
@@ -1068,6 +1074,7 @@ $("list").addEventListener("change", e => {
   if (e.target.checked) state[k] = "y"; else delete state[k];
   refresh();
   if (e.target.checked) react("yay");
+  visit("jawab");
 });
 // "Tak pasti" marks an item as unsure (tap again to clear); ticking the box replaces it
 $("list").addEventListener("click", e => {
@@ -1077,6 +1084,7 @@ $("list").addEventListener("click", e => {
   if (state[k] === "u") delete state[k]; else state[k] = "u";
   refresh();
   if (state[k] === "u") react("hmm");
+  visit("jawab");
 });
 document.querySelectorAll(".seg").forEach(g => g.addEventListener("click", e => {
   const b = e.target.closest("button");
@@ -1292,6 +1300,7 @@ document.addEventListener("mouseout", e => {
 
 paint();
 update();
+visit("buka");
 {
   const answered = Object.keys(state).length, nxt = firstOpen();
   if (answered && nxt) {
