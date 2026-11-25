@@ -178,7 +178,9 @@ Ticks are sent when they reach the result, press WhatsApp, or leave/switch apps.
 - **Dashboard**: total leads, today, last 7 days, how many pressed WhatsApp, how many need follow-up; counts by status, by `?dari=` tag and by kind of work; the most common gaps with bars; and a follow-up list (everyone who hasn't pressed WhatsApp yet, newest first, with a tap-to-chat link). Everything updates by itself. Hidden columns K:L hold the item names the gap count uses; if an item's short name changes in `index.html`, change it there too.
 - **Leads**: one row per visitor (columns above), with a filter on the header row. "Mula" rows are pink, "Hantar WA" rows green.
 
-**To start receiving leads (about 5 minutes, you do the sign-in):**
+**Connected and live since 25 Nov 2026.** The script is in the sheet (Extensions → Apps Script), deployed as a web app ("Checklist leads", execute as the sheet owner, access: Anyone), and its link is in `SHEET` in `index.html`. Tested end to end from the live page. The Dashboard status block now reads "Isi borang, nampak keputusan" (Siap, plus any old Mula rows), "Tekan WhatsApp", and the share who pressed WhatsApp.
+
+**If you ever set it up again (about 5 minutes, you do the sign-in):**
 1. Open the sheet.
 2. **Extensions → Apps Script.** Delete what's there, paste the whole of `google-sheet/Code.gs`, and press **Save**.
 3. At the top, pick `testRow` and press **▶ Run**. Google asks you to allow access to your sheet: sign in and allow it (if it says "Google hasn't verified this app", press **Advanced → Go to … (unsafe)**; it's your own script). A test row appears in the Leads tab. Delete that row.
