@@ -1,6 +1,6 @@
 # Checklist Ganti Gaji (free lead magnet)
 
-Will be live at **https://cek.saganproductions.com** (GitHub Pages, repo `visagannn/sagan-lead-magnet`, DNS at GoDaddy: `CNAME cek → visagannn.github.io`).
+Live at **https://check.saganproductions.com** (GitHub Pages, repo `visagannn/sagan-lead-magnet`, DNS at GoDaddy: `CNAME check → visagannn.github.io`; the old `cek.` address forwards here).
 
 One phone page, one question: **"Kalau esok korang tak boleh kerja, apa yang ganti gaji korang?"**
 
@@ -12,8 +12,8 @@ The Cek Perlindungan calculator that used to be at this address is off the site.
 
 | Page | Address | For | Language |
 | --- | --- | --- | --- |
-| **Checklist Ganti Gaji** (`index.html`) | `cek.saganproductions.com` | Individuals, from Instagram | Malay ("korang") |
-| **SME Benefits Gap Audit** (`sme/index.html`) | `cek.saganproductions.com/sme/` | SME owners and HR, from LinkedIn | English |
+| **Checklist Ganti Gaji** (`index.html`) | `check.saganproductions.com` | Individuals, from Instagram | Malay ("korang") |
+| **SME Benefits Gap Audit** (`sme/index.html`) | `check.saganproductions.com/sme/` | SME owners and HR, from LinkedIn | English |
 
 Both use the same white design and the same code, but they are separate files: a design or behaviour change has to be made in both. Most of this README describes the Instagram page; the SME page has its own section near the end.
 
@@ -111,13 +111,13 @@ Add `?dari=` and a short tag to every link. The tag shows at the end of the What
 
 | Where | Link |
 | --- | --- |
-| Instagram bio | `https://cek.saganproductions.com/?dari=ig` |
-| Threads bio | `https://cek.saganproductions.com/?dari=threads` |
-| TikTok bio | `https://cek.saganproductions.com/?dari=tiktok` |
-| Instagram Story link sticker | `https://cek.saganproductions.com/?dari=story` |
-| Comment-to-DM reply | `https://cek.saganproductions.com/?dari=dm` |
-| A specific reel or carousel | `https://cek.saganproductions.com/?dari=reel-perkeso` (name it after the post) |
-| WhatsApp status / broadcast | `https://cek.saganproductions.com/?dari=wa-status` |
+| Instagram bio | `https://check.saganproductions.com/?dari=bio` |
+| Threads bio | `https://check.saganproductions.com/?dari=threads` |
+| TikTok bio | `https://check.saganproductions.com/?dari=tiktok` |
+| Instagram Story link sticker | `https://check.saganproductions.com/?dari=story` |
+| Comment-to-DM reply | `https://check.saganproductions.com/?dari=dm` |
+| A specific reel or carousel | `https://check.saganproductions.com/?dari=reel-perkeso` (name it after the post) |
+| WhatsApp status / broadcast | `https://check.saganproductions.com/?dari=wa-status` |
 
 Use lowercase letters, numbers and dashes only.
 
@@ -126,7 +126,7 @@ Use lowercase letters, numbers and dashes only.
 1. Open **Meta Business Suite → Inbox → Automations** (on the phone app: **Inbox → ⋯ → Automations**).
 2. Choose **Comment to message** (Meta also calls it "Keyword reply" for comments) and pick the post or reel, or "Any post".
 3. Keywords: add **CHECK**, **check** and **Check** (keywords are case-sensitive).
-4. Message: "Ni checklist yang saya janji: https://cek.saganproductions.com/?dari=dm"
+4. Message: "Ni checklist yang saya janji: https://check.saganproductions.com/?dari=dm"
 5. Turn it on, then comment "CHECK" from another account to test it.
 6. In the post's caption say: "Comment CHECK, saya DM link checklist."
 
@@ -195,7 +195,7 @@ Only share the sheet with people who should see leads. The Web app link is visib
 
 **Not live yet.** The SME page is kept on the local branch `sme-page` and left out of `main`, so publishing the checklist doesn't publish it. To publish it later, bring `sme/` into `main` as a new commit (don't push the `sme-page` branch itself: its history has private notes).
 
-Built 25 Nov 2026 from the Instagram page, then translated and given its own content. Link to use on LinkedIn: `https://cek.saganproductions.com/sme/?from=linkedin` (`?from=` or `?dari=` both work; name other tags after the post).
+Built 25 Nov 2026 from the Instagram page, then translated and given its own content. Link to use on LinkedIn: `https://check.saganproductions.com/sme/?from=linkedin` (`?from=` or `?dari=` both work; name other tags after the post).
 
 - **Hero:** "If a key employee is out tomorrow, / What does your company actually cover?" with a drawing of a team holding up a "YOUR COMPANY" beam; one place is empty and circled as the GAP.
 - **2 quick questions:** business type (Sdn Bhd / Partnership / Sole proprietor) and number of employees (1–5, 6–20, 21–50, 51+). The business type shows the one owner-succession point that fits (shareholders' agreement, partnership agreement, or personal liability). Before they choose, all three show (18 points; 16 after).

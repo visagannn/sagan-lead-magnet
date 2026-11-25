@@ -1,9 +1,9 @@
 /**
  * Checklist Ganti Gaji → Google Sheet
  *
- * Receives one row per visitor from cek.saganproductions.com and keeps it up to date
+ * Receives one row per visitor from check.saganproductions.com and keeps it up to date
  * (Siap → Hantar WA). The Instagram checklist goes to the "Leads" tab; the LinkedIn
- * SME audit (cek.saganproductions.com/sme) goes to its own "SME Leads" tab. Paste this whole file into the sheet's Extensions → Apps Script,
+ * SME audit (check.saganproductions.com/sme) goes to its own "SME Leads" tab. Paste this whole file into the sheet's Extensions → Apps Script,
  * then Deploy → New deployment → Web app (Execute as: Me, Who has access: Anyone).
  * Setup steps are in the README, section "Google Sheet".
  *
