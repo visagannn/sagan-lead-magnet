@@ -121,16 +121,18 @@ Add `?dari=` and a short tag to every link. The tag shows at the end of the What
 
 Use lowercase letters, numbers and dashes only.
 
-### Comment-to-DM on Instagram (free, in Meta Business Suite)
+### Comment-to-DM and Story replies (free, in Meta Business Suite)
 
-1. Open **Meta Business Suite → Inbox → Automations** (on the phone app: **Inbox → ⋯ → Automations**).
-2. Choose **Comment to message** (Meta also calls it "Keyword reply" for comments) and pick the post or reel, or "Any post".
-3. Keywords: add **CHECK**, **check** and **Check** (keywords are case-sensitive).
-4. Message: "Ni checklist yang saya janji: https://check.saganproductions.com/?dari=dm"
-5. Turn it on, then comment "CHECK" from another account to test it.
-6. In the post's caption say: "Comment CHECK, saya DM link checklist."
+Both are on, under **Meta Business Suite → Inbox → Automations**, for Instagram and the Facebook Page:
 
-Instagram allows one private reply per comment. Meta changes these menus often, so the names may differ slightly.
+| Automation | Trigger | Link it sends |
+| --- | --- | --- |
+| Comment to message – Checklist Ganti Gaji (SEMAK) | A comment containing SEMAK / semak / Semak | `https://check.saganproductions.com/?dari=dm` |
+| Custom keywords – DM SEMAK (Stories) | A DM or Story reply containing SEMAK / semak / Semak | `https://check.saganproductions.com/?dari=story` |
+
+The comment version also replies publicly: "Dah hantar DM! Tak nampak? Tengok dalam Message Requests."
+Instagram allows one private reply per comment, within 7 days. The DM keyword reply only fires when the chat
+has been quiet for 15 minutes. Meta changes these menus often, so the names may differ slightly.
 
 ## To publish a change
 
