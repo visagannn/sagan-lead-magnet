@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>SME Benefits Gap Audit · SAGAN</title>
 <meta name="description" content="A free 2-minute audit for Malaysian SME owners and HR: what the law already covers for your team, and where the gaps are. Every fact has an official source.">
-<link rel="canonical" href="https://cek.saganproductions.com/sme/">
+<link rel="canonical" href="https://check.saganproductions.com/sme/">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://cek.saganproductions.com/sme/">
+<meta property="og:url" content="https://check.saganproductions.com/sme/">
 <meta property="og:title" content="If a key employee is out tomorrow, what does your company actually cover?">
 <meta property="og:description" content="Free SME Benefits Gap Audit: 2 minutes, every fact from an official source.">
-<meta property="og:image" content="https://cek.saganproductions.com/sme/og.png">
+<meta property="og:image" content="https://check.saganproductions.com/sme/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
@@ -703,7 +703,7 @@ const AGENT = "";
 const TITLE = "Corporate Wealth & Takaful Consultant";
 const CODE = "1353Z";
 // Link "Web app" dari Google Apps Script (lihat google-sheet/Code.gs). Kosong = tiada apa dihantar ke Google Sheet.
-const SHEET = "";
+const SHEET = "https://script.google.com/macros/s/AKfycbwKJY6PZdY15OFBP357hH_NoEc_KAitPQVCCd8MhxiAzWD_5uH-SWVxoLfHg10Z2l4EQw/exec";
 // Satu sebab JUJUR untuk bertindak sekarang, contoh "Saya semak 10 senarai seminggu." Kosong = tak dipapar. Jangan reka.
 const REASON = "";
 // =========================
@@ -1116,7 +1116,7 @@ document.addEventListener("keydown", e => {
   else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
 });
 
-$("print-meta").textContent = "SME Benefits Gap Audit · cek.saganproductions.com/sme · printed " + new Date().toLocaleDateString("en-MY", {day: "numeric", month: "long", year: "numeric"});
+$("print-meta").textContent = "SME Benefits Gap Audit · check.saganproductions.com/sme · printed " + new Date().toLocaleDateString("en-MY", {day: "numeric", month: "long", year: "numeric"});
 $("wa-num").textContent = WHATSAPP.replace(/^6(01\d)(\d{3,4})(\d{4})$/, "$1-$2 $3");
 // The app's own browser sometimes fails to hand over to WhatsApp, so always leave a way to send it by hand
 // Name and age are required: without them the button points at the empty box instead of opening WhatsApp
