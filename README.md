@@ -1,6 +1,6 @@
 # Checklist Ganti Gaji (free lead magnet)
 
-Live at **https://check.saganproductions.com** (GitHub Pages, repo `visagannn/sagan-lead-magnet`, DNS at GoDaddy: `CNAME check → visagannn.github.io`; the old `cek.` address forwards here).
+Live at **https://check.saganproductions.com** (GitHub Pages, repo `visagannn/sagan-lead-magnet`, DNS at GoDaddy: `CNAME check → visagannn.github.io`).
 
 One phone page, one question: **"Kalau esok korang tak boleh kerja, apa yang ganti gaji korang?"**
 
